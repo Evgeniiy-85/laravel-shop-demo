@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <div class="row">
+    <div class="row mb-3">
         <div class="col-sm-6">
             <h1>@yield('h1')</h1>
         </div>

@@ -4,8 +4,12 @@
     Список продуктов
 @endsection
 
-@section('content_header')
-    <h1>Список продуктов</h1>
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('admin.products') }}
+@endsection
+
+@section('h1')
+    Список продуктов
 @endsection
 
 @section('content')
