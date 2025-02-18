@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-
+    php artisan make:form text {type=text}
 @stop
 
 @section('css')
