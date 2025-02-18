@@ -4,12 +4,14 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 
-Route::get('/admin', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
-Route::get('/admin/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
-Route::get('/admin/orders', [App\Http\Controllers\Admin\OrdersController::class, 'index'])->name('admin.orders');
-Route::get('/admin/products', [App\Http\Controllers\Admin\ProductsController::class, 'index'])->name('admin.products');
-Route::get('/admin/products/add', [App\Http\Controllers\Admin\ProductsController::class, 'add'])->name('admin.products.add');
-Route::get('/admin/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
+    Route::get('/categories', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
+    Route::get('/orders', [App\Http\Controllers\Admin\OrdersController::class, 'index'])->name('admin.orders');
+    Route::get('/products', [App\Http\Controllers\Admin\ProductsController::class, 'index'])->name('admin.products');
+    Route::get('/products/add', [App\Http\Controllers\Admin\ProductsController::class, 'add'])->name('admin.products.add');
+    Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+});
 
 
 Route::get('/', function () {

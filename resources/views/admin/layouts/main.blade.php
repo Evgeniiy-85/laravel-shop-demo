@@ -3,11 +3,15 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard2</h1>
-@stop
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>@yield('h1')</h1>
+        </div>
 
-@section('content')
-    php artisan make:form text {type=text}
+        <div class="col-sm-6" style="justify-items: right;">
+            @yield('breadcrumbs')
+        </div>
+    </div>
 @stop
 
 @section('css')
