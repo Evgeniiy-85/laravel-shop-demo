@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
-use App\Models\Contact;
+use App\Models\Product;
 
 class ProductsController extends Controller {
 
@@ -15,7 +15,10 @@ class ProductsController extends Controller {
     }
 
     public function add() {
-
-        return view('admin.products.add', []);
+        $categories = [];
+        return view('admin.products.add', [
+            'categories' => $categories,
+            'statuses' => Product::getStatuses(),
+        ]);
     }
 }

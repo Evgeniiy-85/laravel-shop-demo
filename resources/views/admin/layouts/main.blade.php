@@ -20,5 +20,8 @@
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    @if(Request::is('admin'))
+        <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
+        <script src="{{ asset('dist/js/chart.js') }}"></script>
+    @endif
 @stop

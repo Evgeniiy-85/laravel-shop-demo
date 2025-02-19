@@ -104,10 +104,3 @@
         </section>
     </div>
 @endsection
-
-<script src="plugins/jquery/jquery.min.js"></script>
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-
-<script src="plugins/chart.js/Chart.min.js"></script>
-<script src="dist/js/adminlte.js"></script>
-<script src="dist/js/chart.js"></script>

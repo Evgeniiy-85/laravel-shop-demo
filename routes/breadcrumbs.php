@@ -13,11 +13,20 @@ Breadcrumbs::for('admin.index', function (BreadcrumbTrail $trail) {
     $trail->push('Главная панель', route('admin.index'));
 });
 
+Breadcrumbs::for('admin.categories', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Список категорий', route('admin.categories'));
+});
+Breadcrumbs::for('admin.categories.add', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Список категорий', route('admin.categories'));
+    $trail->push('Добавить категорию', route('admin.categories.add'));
+});
+
 Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
     $trail->push('Список продуктов', route('admin.products'));
 });
-
 Breadcrumbs::for('admin.products.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
     $trail->push('Список продуктов', route('admin.products'));

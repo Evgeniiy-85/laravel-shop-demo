@@ -1,15 +1,15 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Добавить продукт
+    Добавить категорию
 @endsection
 
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.products.add') }}
+    {{ Breadcrumbs::render('admin.categories.add') }}
 @endsection
 
 @section('h1')
-    Добавить продукт
+    Добавить категорию
 @endsection
 
 @section('content')
@@ -17,23 +17,23 @@
         <div class="col-md-5">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Новый продукт</h3>
+                    <h3 class="card-title">Новый категорию</h3>
                 </div>
 
-                <form action="{{ route('admin.products.add') }}" method="post">
+                <form action="{{ route('admin.categories.save') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
-                            <input type="text" class="form-control" name="prod_name" placeholder="Введите название продукта">
+                            <input type="text" class="form-control" name="cat_title" placeholder="Введите название категории">
                         </div>
 
                         <div class="form-group"><label>Алиас</label>
-                            <input type="text" class="form-control" name="prod_alias" placeholder="Алиас продукта подставится автоматически">
+                            <input type="text" class="form-control" name="cat_alias" placeholder="Алиас категории подставится автоматически">
                         </div>
 
-                        <div class="form-group"><label>Категория</label>
-                            <select class="form-control" name="parent_id">
-                                <option value="">-</option>
+                        <div class="form-group"><label>Родительская категория</label>
+                            <select class="form-control" name="cat_parent">
+                                <option value="0">-</option>
                                 @if($categories)
                                     @foreach ($categories as $cat)
                                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
@@ -42,12 +42,8 @@
                             </select>
                         </div>
 
-                        <div class="form-group"><label>Цена</label>
-                            <input type="number" min="0" max="999999999" class="form-control" name="prod_alias" placeholder="Введите цену продукта" value="0">
-                        </div>
-
                         <div class="form-group"><label>Статус</label>
-                            <select class="form-control" name="parent_id">
+                            <select class="form-control" name="cat_status">
                                 @foreach ($statuses as $status => $title)
                                     <option value="{{ $status }}">{{ $title }}</option>
                                 @endforeach
