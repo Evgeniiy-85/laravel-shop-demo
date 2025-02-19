@@ -36,7 +36,7 @@
                                 <option value="0">-</option>
                                 @if($categories)
                                     @foreach ($categories as $cat)
-                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                        <option value="{{ $cat->cat_id }}">{{ $cat->cat_title }}</option>
                                   @endforeach
                                 @endif
                             </select>

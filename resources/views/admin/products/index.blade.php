@@ -18,68 +18,69 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Responsive Hover Table</h3>
-
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
+                <div class="card-body">
+                    <table class="table table-bordered table-hover">
                         <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Reason</th>
-                        </tr>
+                            <tr>
+                                <th>Изображение</th>
+                                <th>Название</th>
+                                <th>Категория</th>
+                                <th>Статус</th>
+                                <th class="text-right" width="140">Действие</th>
+                            </tr>
                         </thead>
+
                         <tbody>
-                        <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
-                        <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-warning">Pending</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
-                        <tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-primary">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
-                        <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-danger">Denied</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
+                            @if($products->count())
+                                @foreach($products as $product)
+                                    @php
+                                        $category = $product->prod_category ? App\Models\Category::find($product->prod_category) : false;
+                                    @endphp
+                                    <tr>
+                                        <td width="160">
+                                            <div class="card_cover">
+                                                <img src="{{ asset($product->prod_image ? "/load/products/{$product['prod_image']}" : '/images/no-img.png') }}"/>
+                                            </div>
+                                        </td>
+
+                                        <td width="300">
+                                            <a href="/admin/products/{{ $product->prod_id }}">{{ $product->prod_title }}</a>
+                                        </td>
+
+                                        <td>
+                                            @if($category)
+                                                <a href="{{ '/admin/products/'.$product->category }}">{{ $category->cat_title }}</a>
+                                            @else
+                                                <span>--</span>
+                                            @endif
+                                        </td>
+
+                                        <td>
+                                            <small class="badge {{ $product->prod_status == App\Models\Product::STATUS_ACTIVE ? 'badge-success' : 'badge-danger' }}">
+                                                {{ App\Models\Product::getStatuses($product->prod_status) }}
+                                            </small>
+                                        </td>
+
+                                        <td class="text-right">
+                                            <div class="card-tools" style="width:140px;">
+                                                <a class="btn btn-tool btn-default bg-gradient-primary" href="{{ "/products/{$product->prod_alias}" }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+                                                <a class="btn btn-tool btn-default bg-gradient-success" href="{{ "/admin/products/{$product->prod_id}" }}"><i class="fa fa-pencil-alt"></i></a>
+                                                <a class="btn btn-tool btn-default bg-gradient-danger" href="{{ "/admin.products/delete/{$product->prod_id}" }}" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
+
+                <div class="card-footer clearfix">
+                    @if(!$products->count())
+                        Ничего не найден
+                    @endif
+                </div>
             </div>
-            <!-- /.card -->
         </div>
     </div>
 @endsection

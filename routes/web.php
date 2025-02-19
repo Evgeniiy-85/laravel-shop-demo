@@ -14,6 +14,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
     Route::get('/products', [App\Http\Controllers\Admin\ProductsController::class, 'index'])->name('admin.products');
     Route::get('/products/add', [App\Http\Controllers\Admin\ProductsController::class, 'add'])->name('admin.products.add');
+    Route::post('/products/save', [App\Http\Controllers\Admin\ProductsController::class, 'save'])->name('admin.products.save');
 
     Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
 });

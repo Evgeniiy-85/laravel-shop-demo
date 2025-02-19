@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model {
     use HasFactory;
 
-    public $timestamps = false;
-
     const STATUS_DISABLED = 0;
     const STATUS_ACTIVE = 1;
 
@@ -17,6 +15,9 @@ class Category extends Model {
         1 => 'Активен',
         0 => 'Отключен',
     ];
+
+    public $primaryKey = 'cat_id';
+    public $timestamps = false;
 
     /**
      * @param int|null $status

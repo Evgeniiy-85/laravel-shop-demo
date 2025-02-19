@@ -20,11 +20,11 @@
                     <h3 class="card-title">Новый продукт</h3>
                 </div>
 
-                <form action="{{ route('admin.products.add') }}" method="post">
+                <form action="{{ route('admin.products.save') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
-                            <input type="text" class="form-control" name="prod_name" placeholder="Введите название продукта">
+                            <input type="text" class="form-control" name="prod_title" placeholder="Введите название продукта">
                         </div>
 
                         <div class="form-group"><label>Алиас</label>
@@ -32,22 +32,26 @@
                         </div>
 
                         <div class="form-group"><label>Категория</label>
-                            <select class="form-control" name="parent_id">
-                                <option value="">-</option>
+                            <select class="form-control" name="prod_category">
+                                <option value="0">-</option>
                                 @if($categories)
                                     @foreach ($categories as $cat)
-                                        <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                        <option value="{{ $cat->cat_id }}">{{ $cat->cat_title }}</option>
                                   @endforeach
                                 @endif
                             </select>
                         </div>
 
                         <div class="form-group"><label>Цена</label>
-                            <input type="number" min="0" max="999999999" class="form-control" name="prod_alias" placeholder="Введите цену продукта" value="0">
+                            <input type="number" min="0" max="999999999" class="form-control" name="prod_price" placeholder="Введите цену продукта" value="0">
+                        </div>
+
+                        <div class="form-group"><label>Количество</label>
+                            <input type="number" min="0" max="999999999" class="form-control" name="prod_quantity" placeholder="Введите количество продуктов" value="0">
                         </div>
 
                         <div class="form-group"><label>Статус</label>
-                            <select class="form-control" name="parent_id">
+                            <select class="form-control" name="prod_status">
                                 @foreach ($statuses as $status => $title)
                                     <option value="{{ $status }}">{{ $title }}</option>
                                 @endforeach
