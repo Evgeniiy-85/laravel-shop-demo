@@ -5,8 +5,8 @@ use Illuminate\Support\Str;
 
 class Helper {
     public static function createAlias($title) {
-        $alias = Str::ascii(str_replace(' ', '-', $title));
+        $alias = Str::slug($title);
 
-        return strtolower($alias);
+        return $alias;
     }
 }

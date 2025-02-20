@@ -27,4 +27,9 @@ class Category extends Model {
         return $status !== null ? self::STATUSES[$status] : self::STATUSES;
     }
 
+
+    /**
+     * @var string[]
+     */
+    protected $fillable = ['cat_title', 'cat_parent', 'cat_alias', 'cat_status', 'cat_image'];
 }

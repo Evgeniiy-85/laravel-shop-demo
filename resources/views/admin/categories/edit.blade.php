@@ -17,14 +17,14 @@
         <div class="col-md-5">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Новый категорию</h3>
+                    <h3 class="card-title">{{ $category->cat_title }}</h3>
                 </div>
 
                 <form action="{{ route('admin.categories.update', $category->cat_id) }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
-                            <input type="text" class="form-control" name="cat_title" placeholder="Введите название категории" value="{{ $category->cat_title }}">
+                            <input type="text" class="form-control" name="cat_title" placeholder="Введите название категории" value="{{ $category->cat_title }}" required>
                         </div>
 
                         <div class="form-group"><label>Алиас</label>

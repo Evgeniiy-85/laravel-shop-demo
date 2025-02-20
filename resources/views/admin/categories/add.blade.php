@@ -20,11 +20,11 @@
                     <h3 class="card-title">Новая категория</h3>
                 </div>
 
-                <form action="{{ route('admin.categories.create') }}" method="post">
+                <form action="{{ route('admin.categories.store') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
-                            <input type="text" class="form-control" name="cat_title" placeholder="Введите название категории">
+                            <input type="text" class="form-control" name="cat_title" placeholder="Введите название категории" required>
                         </div>
 
                         <div class="form-group"><label>Алиас</label>

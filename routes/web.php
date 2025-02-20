@@ -6,12 +6,13 @@ use App\Http\Controllers\ContactController;
 
 Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
+    Route::get('/404', [App\Http\Controllers\Admin\AdminController::class, 'error404'])->name('admin.errors.404');
     Route::get('/orders', [App\Http\Controllers\Admin\OrdersController::class, 'index'])->name('admin.orders');
 
     Route::group(['prefix' => '/categories'], function () {
         Route::get('/', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');
         Route::get('/add', [App\Http\Controllers\Admin\CategoriesController::class, 'add'])->name('admin.categories.add');
-        Route::post('/create', [App\Http\Controllers\Admin\CategoriesController::class, 'create'])->name('admin.categories.create');
+        Route::post('/store', [App\Http\Controllers\Admin\CategoriesController::class, 'store'])->name('admin.categories.store');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.categories.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'update'])->name('admin.categories.update');
     });
@@ -19,7 +20,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::group(['prefix' => '/products'], function () {
         Route::get('/', [App\Http\Controllers\Admin\ProductsController::class, 'index'])->name('admin.products');
         Route::get('/add', [App\Http\Controllers\Admin\ProductsController::class, 'add'])->name('admin.products.add');
-        Route::post('/create', [App\Http\Controllers\Admin\ProductsController::class, 'create'])->name('admin.products.create');
+        Route::post('/store', [App\Http\Controllers\Admin\ProductsController::class, 'store'])->name('admin.products.store');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'edit'])->name('admin.products.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'update'])->name('admin.products.update');
     });

@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoriesRequest;
 use App\Models\Category;
 use App\Helpers\Helper;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\App;
 class CategoriesController extends Controller {
 
     /**
@@ -32,6 +33,9 @@ class CategoriesController extends Controller {
     public function edit($id) {
         $category = Category::find($id);
         $categories = Category::all();
+        if (is_null($category)) {
+            return view('admin.errors.404');
+        }
 
         return view('admin.categories.edit', [
             'statuses' => Category::getStatuses(),
@@ -44,17 +48,13 @@ class CategoriesController extends Controller {
      * @param CategoriesRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(CategoriesRequest $request) {
+    public function store(CategoriesRequest $request) {
         $category = new Category();
-        $category->cat_title = $request->input('cat_title');
-        $category->cat_parent = $request->input('cat_parent');
-        $category->cat_alias = $request->input('cat_alias');
-        if (!$category->cat_alias) {
-            $category->cat_alias = Helper::createAlias($category->cat_title);
+        $request['cat_image'] = '';
+        if (!$request['cat_alias']) {
+            $request['cat_alias'] = Str::slug($request['cat_title']);
         }
-        $category->cat_image = '';
-        $category->cat_status = $request->input('cat_status');
-        $res = $category->save();
+        $category->fill($request->all())->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
@@ -65,16 +65,13 @@ class CategoriesController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, CategoriesRequest $request) {
-        $category = Category::find($id);
-        $category->cat_title = $request->input('cat_title');
-        $category->cat_parent = $request->input('cat_parent');
-        $category->cat_alias = $request->input('cat_alias');
-        if (!$category->cat_alias) {
-            $category->cat_alias = Helper::createAlias($category->cat_title);
+        $category = Category::findOrFail($id);
+        $request['cat_image'] = '';
+        if (!$request['cat_alias']) {
+            $request['cat_alias'] = Str::slug($request['cat_title']);
         }
-        $category->cat_image = '';
-        $category->cat_status = $request->input('cat_status');
-        $res = $category->save();
+        $category->fill($request->all())->save();
+        $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }

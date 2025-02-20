@@ -11,6 +11,10 @@
         <div class="col-sm-6" style="justify-items: right;">
             @yield('breadcrumbs')
         </div>
+
+        <div class="col-sm-12">
+            @include('admin/layouts/notices')
+        </div>
     </div>
 @stop
 
