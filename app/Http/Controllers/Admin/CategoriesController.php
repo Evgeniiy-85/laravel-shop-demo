@@ -75,4 +75,19 @@ class CategoriesController extends Controller {
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
+
+    /**
+     * @param $id
+     * @param CategoriesRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete($id) {
+        $category = Category::find($id);
+        if (is_null($category)) {
+            return view('admin.errors.404');
+        }
+        $category->delete();
+
+        return redirect()->route('admin.categories')->with('success', 'Успешно');
+    }
 }

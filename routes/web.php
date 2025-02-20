@@ -15,6 +15,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         Route::post('/store', [App\Http\Controllers\Admin\CategoriesController::class, 'store'])->name('admin.categories.store');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'edit'])->name('admin.categories.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'update'])->name('admin.categories.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Admin\CategoriesController::class, 'delete'])->name('admin.categories.delete');
     });
 
     Route::group(['prefix' => '/products'], function () {
@@ -26,6 +27,11 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     });
 
     Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+});
+
+Route::group(['prefix' => '/categories'], function () {
+    Route::get('/', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('categories');
+    Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
 });
 
 
