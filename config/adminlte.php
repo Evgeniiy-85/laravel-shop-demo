@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Laravel Shop',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -221,7 +221,7 @@ return [
     'sidebar_collapse_remember_no_transition' => true,
     'sidebar_scrollbar_theme' => 'os-theme-light',
     'sidebar_scrollbar_auto_hide' => 'l',
-    'sidebar_nav_accordion' => true,
+    'sidebar_nav_accordion' => false,
     'sidebar_nav_animation_speed' => 300,
 
     /*
@@ -306,24 +306,26 @@ return [
         ],
         [
             'text' => 'Категории',
-            'url' => 'admin/categories',
+            'url' => '#',
             'icon' => 'far fa-fw fa-file',
+            'active' => ['regex:@^admin/categories@'],
             'submenu' => [
                 [
                     'text' => 'Список категорий',
-                    'url' => '/admin/categories',
+                    'url' => 'admin/categories',
                 ],
             ],
         ],
         [
             'text' => 'Продукты',
-            'url' => 'admin/pages',
+            'url' => '#',
             'icon' => 'far fa-fw fa-file',
             'label_color' => 'success',
+            'active' => ['regex:@^admin/products@'],
             'submenu' => [
                 [
                     'text' => 'Список продуктов',
-                    'url' => '/admin/products',
+                    'url' => 'admin/products',
                 ],
             ],
         ],
