@@ -31,7 +31,7 @@
                         </thead>
 
                         <tbody>
-                            @if($categories)
+                            @if($categories->count())
                                 @foreach($categories as $category)
                                     @php
                                         $parent_category = $category->cat_parent ? App\Models\Category::find($category->cat_parent) : false;
@@ -44,7 +44,7 @@
                                         </td>
 
                                         <td width="300">
-                                            <a href="/admin/categories/{{ $category->cat_id }}">{{ $category->cat_title }}</a>
+                                            <a href="/admin/categories/edit/{{ $category->cat_id }}">{{ $category->cat_title }}</a>
                                         </td>
 
                                         <td>
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="card-footer clearfix">
-                    @if(!$products->count())
+                    @if(!$categories->count())
                         Ничего не найден
                     @endif
                 </div>

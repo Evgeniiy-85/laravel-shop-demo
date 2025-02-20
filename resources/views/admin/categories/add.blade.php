@@ -17,10 +17,10 @@
         <div class="col-md-5">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Новый категорию</h3>
+                    <h3 class="card-title">Новая категория</h3>
                 </div>
 
-                <form action="{{ route('admin.categories.save') }}" method="post">
+                <form action="{{ route('admin.categories.create') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>

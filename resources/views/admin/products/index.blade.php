@@ -44,7 +44,7 @@
                                         </td>
 
                                         <td width="300">
-                                            <a href="/admin/products/{{ $product->prod_id }}">{{ $product->prod_title }}</a>
+                                            <a href="/admin/products/edit/{{ $product->prod_id }}">{{ $product->prod_title }}</a>
                                         </td>
 
                                         <td>

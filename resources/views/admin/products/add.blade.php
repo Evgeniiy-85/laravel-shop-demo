@@ -20,7 +20,7 @@
                     <h3 class="card-title">Новый продукт</h3>
                 </div>
 
-                <form action="{{ route('admin.products.save') }}" method="post">
+                <form action="{{ route('admin.products.create') }}" method="post">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
