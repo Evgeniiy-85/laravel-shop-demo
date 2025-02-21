@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Изображение</th>
@@ -39,7 +39,7 @@
                                     <tr>
                                         <td width="160">
                                             <div class="card_cover">
-                                                <img src="{{ $category->cat_image }}"/>
+                                                <img src="{{ $category->cat_image_url }}"/>
                                             </div>
                                         </td>
 

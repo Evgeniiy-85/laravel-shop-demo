@@ -24,6 +24,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         Route::post('/store', [App\Http\Controllers\Admin\ProductsController::class, 'store'])->name('admin.products.store');
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'edit'])->name('admin.products.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'update'])->name('admin.products.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'delete'])->name('admin.products.delete');
     });
 
     Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
@@ -34,6 +35,10 @@ Route::group(['prefix' => '/categories'], function () {
     Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
 });
 
+Route::group(['prefix' => '/products'], function () {
+    Route::get('/', [App\Http\Controllers\Admin\ProductsController::class, 'index'])->name('products');
+    Route::get('/product', [App\Http\Controllers\Admin\ProductsController::class, 'category'])->name('products.product');
+});
 
 Route::get('/', function () {
     return view('home');

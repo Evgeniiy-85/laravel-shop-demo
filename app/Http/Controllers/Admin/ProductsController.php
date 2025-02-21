@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ProductsRequest;
 use App\Models\Product;
 use App\Models\Category;
-
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller {
 
@@ -42,19 +43,20 @@ class ProductsController extends Controller {
      * @param ProductsRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(ProductsRequest $request) {
+    public function store(ProductsRequest $request) {
         $product = new Product();
-        $product->prod_title = $request->input('prod_title');
-        $product->prod_category = $request->input('prod_category');
-        $product->prod_alias = $request->input('prod_alias');
-        if (!$product->prod_alias) {
-            $product->prod_alias = Helper::createAlias($product->prod_title);
+        $product->fill($request->all());
+
+        if ($request->hasFile('prod_image')) {
+            $image = $request->file('prod_image');
+            $product->prod_image = $image->store('', 'products');
         }
-        $product->prod_image = '';
-        $product->prod_price = $request->input('prod_price');
-        $product->prod_quantity = $request->input('prod_quantity');
-        $product->prod_status = $request->input('prod_status');
-        $res = $product->save();
+
+        if (!$product->prod_alias) {
+            $product->prod_alias = Str::slug($product->prod_title);
+        }
+
+        $product->save();
 
         return redirect()->route('admin.products')->with('success', 'Успешно');
     }
@@ -66,18 +68,41 @@ class ProductsController extends Controller {
      */
     public function update($id, ProductsRequest $request) {
         $product = Product::find($id);
-        $product->prod_title = $request->input('prod_title');
-        $product->prod_category = $request->input('prod_category');
-        $product->prod_alias = $request->input('prod_alias');
-        if (!$product->prod_alias) {
-            $product->prod_alias = Helper::createAlias($product->prod_title);
+        $product->fill($request->all());
+
+        if ($request->hasFile('prod_image')) {
+            if ($product->prod_image) {
+                Storage::disk('images')->delete($product->prod_image);
+            }
+
+            $image = $request->file('prod_image');
+            $product->prod_image = $image->store('', 'products');
         }
-        $product->prod_image = '';
-        $product->prod_price = $request->input('prod_price');
-        $product->prod_quantity = $request->input('prod_quantity');
-        $product->prod_status = $request->input('prod_status');
-        $res = $product->save();
+
+        if (!$product->prod_alias) {
+            $product->prod_alias = Str::slug($product->prod_title);
+        }
+
+        $product->save();
 
         return redirect()->route('admin.products')->with('success', 'Успешно');
+    }
+
+
+    /*
+    * Delete category
+    */
+    public function delete($id) {
+        $product = Product::find($id);
+        if (is_null($product)) {
+            return view('admin.errors.404');
+        }
+
+        if ($product->prod_image) {
+            Storage::disk('products')->delete($product->prod_image);
+        }
+        $product->delete();
+
+        return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
 }

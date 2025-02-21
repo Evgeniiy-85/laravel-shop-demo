@@ -19,7 +19,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-bordered table-hover">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Изображение</th>
@@ -39,7 +39,7 @@
                                     <tr>
                                         <td width="160">
                                             <div class="card_cover">
-                                                <img src="{{ asset($product->prod_image ? "/load/products/{$product['prod_image']}" : '/images/no-img.png') }}"/>
+                                                <img src="{{ $product->prod_image_url }}"/>
                                             </div>
                                         </td>
 
@@ -63,9 +63,9 @@
 
                                         <td class="text-right">
                                             <div class="card-tools" style="width:140px;">
-                                                <a class="btn btn-tool btn-default bg-gradient-primary" href="{{ "/products/{$product->prod_alias}" }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                                <a class="btn btn-tool btn-default bg-gradient-success" href="{{ "/admin/products/{$product->prod_id}" }}"><i class="fa fa-pencil-alt"></i></a>
-                                                <a class="btn btn-tool btn-default bg-gradient-danger" href="{{ "/admin.products/delete/{$product->prod_id}" }}" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-tool btn-default bg-gradient-primary" href="{{ route('products', $product->prod_alias) }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+                                                <a class="btn btn-tool btn-default bg-gradient-success" href="{{ route('admin.products.edit', $product->prod_id) }}"><i class="fa fa-pencil-alt"></i></a>
+                                                <a class="btn btn-tool btn-default bg-gradient-danger" href="{{ route('admin.products.delete', $product->prod_id) }}" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

@@ -71,6 +71,14 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'products' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/products'),
+            'url' => '/storage/products',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
     ],
 
     /*

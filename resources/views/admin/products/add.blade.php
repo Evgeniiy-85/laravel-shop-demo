@@ -20,7 +20,7 @@
                     <h3 class="card-title">Новый продукт</h3>
                 </div>
 
-                <form action="{{ route('admin.products.store') }}" method="post">
+                <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
@@ -48,6 +48,16 @@
 
                         <div class="form-group"><label>Количество</label>
                             <input type="number" min="0" max="999999999" class="form-control" name="prod_quantity" placeholder="Введите количество продуктов" value="0">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_file">Изображение</label>
+                            <div class="input-group">
+                                <label class="btn bg-purple input-file" for="prod_image">
+                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
+                                    <input type="file" class="custom-file-input hidden" name="prod_image" id="prod_image">
+                                </label>
+                            </div>
                         </div>
 
                         <div class="form-group"><label>Статус</label>

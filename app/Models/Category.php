@@ -37,9 +37,9 @@ class Category extends Model {
     /**
      * Get the user's first name.
      */
-    protected function catImage(): Attribute {
+    protected function catImageUrl(): Attribute {
         return Attribute::make(
-            get: fn (string $value) =>  $value ? Storage::disk('categories')->url($value) : asset('/images/no-img.png'),
+            get: fn () =>  $this->cat_image ? Storage::disk('categories')->url($this->cat_image) : asset('/images/no-img.png'),
         );
     }
 
