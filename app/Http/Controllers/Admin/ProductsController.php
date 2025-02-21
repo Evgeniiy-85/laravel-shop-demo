@@ -31,6 +31,9 @@ class ProductsController extends Controller {
 
     public function edit($id) {
         $product = Product::find($id);
+        if (is_null($product)) {
+            return view('admin.errors.404');
+        }
 
         return view('admin.products.edit', [
             'product' => $product,
@@ -67,7 +70,7 @@ class ProductsController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, ProductsRequest $request) {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->fill($request->all());
 
         if ($request->hasFile('prod_image')) {

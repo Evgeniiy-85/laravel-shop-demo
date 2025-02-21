@@ -15,10 +15,8 @@ class CategoriesController extends Controller {
      * list categories
      */
     public function index() {
-        $categories = Category::all();
-
         return view('admin.categories.index', [
-            'categories' => $categories,
+            'categories' => Category::all(),
         ]);
     }
 
@@ -26,11 +24,9 @@ class CategoriesController extends Controller {
      * View add category
      */
     public function add() {
-        $categories = Category::all();
-
         return view('admin.categories.add', [
             'statuses' => Category::getStatuses(),
-            'categories' => $categories,
+            'categories' => Category::all(),
         ]);
     }
 
@@ -39,7 +35,6 @@ class CategoriesController extends Controller {
      */
     public function edit($id) {
         $category = Category::find($id);
-        $categories = Category::all();
         if (is_null($category)) {
             return view('admin.errors.404');
         }
@@ -47,7 +42,7 @@ class CategoriesController extends Controller {
         return view('admin.categories.edit', [
             'statuses' => Category::getStatuses(),
             'category' => $category,
-            'categories' => $categories,
+            'categories' => Category::all(),
         ]);
     }
 

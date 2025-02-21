@@ -1,15 +1,15 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Добавить продукт
+    Добавить пользователя
 @endsection
 
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.products.add') }}
+    {{ Breadcrumbs::render('admin.users.add') }}
 @endsection
 
 @section('h1')
-    Редактировать продукт
+    Редактировать пользователя
 @endsection
 
 @section('content')
@@ -17,53 +17,48 @@
         <div class="col-md-5">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">{{ $product->prod_title }}</h3>
+                    <h3 class="card-title">{{ $user->user_name }}</h3>
                 </div>
 
-                <form action="{{ route('admin.products.update', $product->prod_id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.users.update', $user->user_id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group"><label>Название</label>
-                            <input type="text" class="form-control" name="prod_title" placeholder="Введите название продукта" value="{{ $product->prod_title }}">
+                        <div class="form-group"><label>Имя</label>
+                            <input type="text" class="form-control" name="user_name" value="{{ $user->user_name }}" placeholder="Введите имя пользователя">
                         </div>
 
-                        <div class="form-group"><label>Алиас</label>
-                            <input type="text" class="form-control" name="prod_alias" value="{{ $product->prod_alias }}">
+                        <div class="form-group"><label>Фамилия</label>
+                            <input type="text" class="form-control" name="user_surname" value="{{ $user->user_surname }}" placeholder="Введите фамилию пользователя">
                         </div>
 
-                        <div class="form-group"><label>Категория</label>
-                            <select class="form-control" name="prod_category">
-                                <option value="0">-</option>
-                                @if($categories)
-                                    @foreach ($categories as $cat)
-                                        <option value="{{ $cat->cat_id }}" @if($product->prod_category == $cat->cat_id) selected @endif">{{ $cat->cat_title }}</option>
-                                    @endforeach
-                                @endif
+                        <div class="form-group"><label>Отчество</label>
+                            <input type="text" class="form-control" name="user_patronymic" value="{{ $user->user_patronimic }}" placeholder="Введите отчество пользователя">
+                        </div>
+
+                        <div class="form-group"><label>E-mail</label>
+                            <input type="text" class="form-control" name="user_email" value="{{ $user->user_email }}" placeholder="Введите e-mail пользователя">
+                        </div>
+
+                        <div class="form-group"><label>Телефон</label>
+                            <input type="text" class="form-control" name="user_phone" value="{{ $user->user_phone }}" placeholder="Введите телефон пользователя">
+                        </div>
+
+                        <div class="form-group"><label>Пароль</label>
+                            <input type="text" class="form-control" name="user_password" value="{{ $user->user_password }}" placeholder="Введите пароль, если нужно его обновить">
+                        </div>
+
+                        <div class="form-group"><label>Роль</label>
+                            <select class="form-control" name="user_role">
+                                @foreach ($roles as $role => $title)
+                                    <option value="{{ $role }}"  @if($user->user_role == $role) selected @endif">{{ $title }}</option>
+                                @endforeach
                             </select>
                         </div>
 
-                        <div class="form-group"><label>Цена</label>
-                            <input type="number" min="0" max="999999999" class="form-control" name="prod_price" placeholder="Введите цену продукта"  value="{{ $product->prod_price }}">
-                        </div>
-
-                        <div class="form-group"><label>Количество</label>
-                            <input type="number" min="0" max="999999999" class="form-control" name="prod_quantity" placeholder="Введите количество продуктов"  value="{{ $product->prod_quantity }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="input_file">Изображение</label>
-                            <div class="input-group">
-                                <label class="btn bg-purple input-file" for="prod_image">
-                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                    <input type="file" class="custom-file-input hidden" name="prod_image" id="prod_image">
-                                </label>
-                            </div>
-                        </div>
-
                         <div class="form-group"><label>Статус</label>
-                            <select class="form-control" name="prod_status">
+                            <select class="form-control" name="user_status">
                                 @foreach ($statuses as $status => $title)
-                                    <option value="{{ $status }}" @if($product->prod_status == $status) selected @endif">{{ $title }}</option>
+                                    <option value="{{ $status }}"  @if($user->user_role == $status) selected @endif">{{ $title }}</option>
                                 @endforeach
                             </select>
                         </div>

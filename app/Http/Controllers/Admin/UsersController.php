@@ -14,27 +14,29 @@ use Illuminate\Support\Facades\Storage;
 class UsersController extends Controller {
 
     public function index() {
-        $users = User::all();
-
         return view('admin.users.index', [
-            'users' => $users,
+            'users' => User::all(),
         ]);
     }
 
     public function add() {
         return view('admin.users.add', [
             'statuses' => User::getStatuses(),
+            'roles' => User::getRoles(),
         ]);
     }
 
 
     public function edit($id) {
-        $product = User::find($id);
+        $user = User::find($id);
+        if (is_null($user)) {
+            return view('admin.errors.404');
+        }
 
         return view('admin.users.edit', [
-            'product' => $product,
-            'categories' => Category::all(),
+            'user' => $user,
             'statuses' => User::getStatuses(),
+            'roles' => User::getRoles(),
         ]);
     }
 
@@ -43,19 +45,11 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UsersRequest $request) {
-        $product = new User();
-        $product->fill($request->all());
+        $user = new User();
+        $user->fill($request->all());
+        $user->user_password_hash = md5('123456');
 
-        if ($request->hasFile('user_image')) {
-            $image = $request->file('user_image');
-            $product->user_image = $image->store('', 'users');
-        }
-
-        if (!$product->user_alias) {
-            $product->user_alias = Str::slug($product->user_title);
-        }
-
-        $product->save();
+        $user->save();
 
         return redirect()->route('admin.users')->with('success', 'Успешно');
     }
@@ -66,23 +60,10 @@ class UsersController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, UsersRequest $request) {
-        $product = User::find($id);
-        $product->fill($request->all());
-
-        if ($request->hasFile('user_image')) {
-            if ($product->user_image) {
-                Storage::disk('images')->delete($product->user_image);
-            }
-
-            $image = $request->file('user_image');
-            $product->user_image = $image->store('', 'users');
-        }
-
-        if (!$product->user_alias) {
-            $product->user_alias = Str::slug($product->user_title);
-        }
-
-        $product->save();
+        $user = User::findOrFail($id);
+        $user->fill($request->all());
+        $user->user_password_hash = md5('123456');
+        $user->save();
 
         return redirect()->route('admin.users')->with('success', 'Успешно');
     }
@@ -92,15 +73,12 @@ class UsersController extends Controller {
     * Delete category
     */
     public function delete($id) {
-        $product = User::find($id);
-        if (is_null($product)) {
+        $user = User::find($id);
+        if (is_null($user)) {
             return view('admin.errors.404');
         }
 
-        if ($product->user_image) {
-            Storage::disk('users')->delete($product->user_image);
-        }
-        $product->delete();
+        $user->delete();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
