@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Storage;
 
 class Category extends Model {
     use HasFactory;
@@ -25,6 +27,16 @@ class Category extends Model {
      */
     public static function getStatuses(int|null $status = null) :string|array {
         return $status !== null ? self::STATUSES[$status] : self::STATUSES;
+    }
+
+
+    /**
+     * Get the user's first name.
+     */
+    protected function catImage(): Attribute {
+        return Attribute::make(
+            get: fn (string $value) =>  $value ? Storage::disk('categories')->url($value) : asset('/images/no-img.png'),
+        );
     }
 
 
