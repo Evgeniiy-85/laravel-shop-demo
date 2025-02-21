@@ -21,6 +21,10 @@ class Category extends Model {
     public $primaryKey = 'cat_id';
     public $timestamps = false;
 
+    protected $attributes = [
+        'cat_image' => '',
+    ];
+
     /**
      * @param int|null $status
      * @return int|array
