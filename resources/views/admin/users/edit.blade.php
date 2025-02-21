@@ -5,7 +5,7 @@
 @endsection
 
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.products.edit') }}
+    {{ Breadcrumbs::render('admin.products.add') }}
 @endsection
 
 @section('h1')

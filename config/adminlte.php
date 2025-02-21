@@ -330,6 +330,19 @@ return [
             ],
         ],
         [
+            'text' => 'Пользователи',
+            'url' => '#',
+            'icon' => 'far fa-fw fa-file',
+            'label_color' => 'success',
+            'active' => ['regex:@^admin/users@'],
+            'submenu' => [
+                [
+                    'text' => 'Список пользователей',
+                    'url' => 'admin/users',
+                ],
+            ],
+        ],
+        [
             'text' => 'Настройки',
             'icon' => 'fas fa-fw fa-share',
             'submenu' => [

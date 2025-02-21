@@ -27,6 +27,15 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         Route::get('/delete/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'delete'])->name('admin.products.delete');
     });
 
+    Route::group(['prefix' => '/users'], function () {
+        Route::get('/', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('admin.users');
+        Route::get('/add', [App\Http\Controllers\Admin\UsersController::class, 'add'])->name('admin.users.add');
+        Route::post('/store', [App\Http\Controllers\Admin\UsersController::class, 'store'])->name('admin.users.store');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\UsersController::class, 'edit'])->name('admin.users.edit');
+        Route::post('/update/{id}', [App\Http\Controllers\Admin\UsersController::class, 'update'])->name('admin.users.update');
+        Route::get('/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('admin.users.delete');
+    });
+
     Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
 });
 

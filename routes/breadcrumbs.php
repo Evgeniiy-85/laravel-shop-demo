@@ -13,24 +13,46 @@ Breadcrumbs::for('admin.index', function (BreadcrumbTrail $trail) {
     $trail->push('Главная панель', route('admin.index'));
 });
 
+/* Категории*/
 Breadcrumbs::for('admin.categories', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
     $trail->push('Список категорий', route('admin.categories'));
 });
 Breadcrumbs::for('admin.categories.add', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.index');
-    $trail->push('Список категорий', route('admin.categories'));
+    $trail->parent('admin.categories');
     $trail->push('Добавить категорию', route('admin.categories.add'));
 });
+Breadcrumbs::for('admin.categories.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.categories');
+    $trail->push('Редактировать категорию');
+});
 
+/* Продукты*/
 Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
     $trail->push('Список продуктов', route('admin.products'));
 });
 Breadcrumbs::for('admin.products.add', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.index');
-    $trail->push('Список продуктов', route('admin.products'));
+    $trail->parent('admin.products');
     $trail->push('Добавить продукт', route('admin.products.add'));
+});
+Breadcrumbs::for('admin.products.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.products');
+    $trail->push('Редактировать продукт');
+});
+
+/* Пользователи*/
+Breadcrumbs::for('admin.users', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Список пользователей', route('admin.users'));
+});
+Breadcrumbs::for('admin.users.add', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.users');
+    $trail->push('Добавить пользователя', route('admin.users.add'));
+});
+Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.users');
+    $trail->push('Редактировать пользователя');
 });
 
 // Home > Blog > [Category]

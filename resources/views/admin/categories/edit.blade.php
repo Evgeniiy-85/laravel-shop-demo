@@ -1,11 +1,11 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Добавить категорию
+    Редактировать категорию
 @endsection
 
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.categories.add') }}
+    {{ Breadcrumbs::render('admin.categories.edit') }}
 @endsection
 
 @section('h1')
