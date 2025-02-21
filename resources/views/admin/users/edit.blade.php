@@ -1,11 +1,11 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Добавить пользователя
+    Редактировать пользователя
 @endsection
 
 @section('breadcrumbs')
-    {{ Breadcrumbs::render('admin.users.add') }}
+    {{ Breadcrumbs::render('admin.users.edit') }}
 @endsection
 
 @section('h1')
