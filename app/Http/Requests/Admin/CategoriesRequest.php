@@ -24,6 +24,13 @@ class CategoriesRequest extends FormRequest
         return [
             'cat_title' => 'required|min:1|max:255',
             'cat_status' => 'required',
+           'cat_image' => [
+                'nullable',
+                'image',
+                'mimes:jpg,png,webp',
+            ],
+//            required|image|max:1024|mimes:jpg,jpeg,png
+//            nullable|image|max:1024|mimes:jpg,jpeg,png
         ];
     }
 

@@ -20,7 +20,7 @@
                     <h3 class="card-title">{{ $category->cat_title }}</h3>
                 </div>
 
-                <form action="{{ route('admin.categories.update', $category->cat_id) }}" method="post">
+                <form action="{{ route('admin.categories.update', $category->cat_id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group"><label>Название</label>
@@ -40,6 +40,16 @@
                                     @endforeach
                                 @endif
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="input_file">Изображение</label>
+                            <div class="input-group">
+                                <label class="btn bg-purple input-file" for="cat_image">
+                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
+                                    <input type="file" class="custom-file-input hidden" name="cat_image" id="cat_image">
+                                </label>
+                            </div>
                         </div>
 
                         <div class="form-group"><label>Статус</label>

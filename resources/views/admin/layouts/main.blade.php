@@ -25,6 +25,7 @@
 @section('js')
     @if(Request::is('admin'))
         <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
-        <script src="{{ asset('dist/js/chart.js') }}"></script>
+        <script src="{{ asset('js/admin/chart.js') }}"></script>
     @endif
+    <script src="{{ asset('js/admin/main.js') }}"></script>
 @stop

@@ -8,10 +8,13 @@ use App\Models\Category;
 use App\Helpers\Helper;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\App;
+use File;
+use Illuminate\Support\Facades\Storage;
+
 class CategoriesController extends Controller {
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+    /*
+     * list categories
      */
     public function index() {
         $categories = Category::all();
@@ -21,6 +24,9 @@ class CategoriesController extends Controller {
         ]);
     }
 
+    /*
+     * View add category
+     */
     public function add() {
         $categories = Category::all();
 
@@ -30,6 +36,9 @@ class CategoriesController extends Controller {
         ]);
     }
 
+    /*
+     * View edit category
+     */
     public function edit($id) {
         $category = Category::find($id);
         $categories = Category::all();
@@ -44,47 +53,63 @@ class CategoriesController extends Controller {
         ]);
     }
 
-    /**
-     * @param CategoriesRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+    /*
+     * Create category
      */
     public function store(CategoriesRequest $request) {
         $category = new Category();
-        $request['cat_image'] = '';
-        if (!$request['cat_alias']) {
-            $request['cat_alias'] = Str::slug($request['cat_title']);
+        $data = $request->all();
+
+        if ($request->hasFile('cat_image')) {
+            $image = $request->file('cat_image');
+            $category->cat_image = md5(uniqid()).'.'.$image->getClientOriginalExtension();
+            $image->storeAs('images/categories', $category->cat_image);
         }
-        $category->fill($request->all())->save();
+
+        if (!$data['cat_alias']) {
+            $data['cat_alias'] = Str::slug($data['cat_title']);
+        }
+        $category->fill($data)->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
 
-    /**
-     * @param $id
-     * @param CategoriesRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+    /*
+     * Update category
      */
     public function update($id, CategoriesRequest $request) {
         $category = Category::findOrFail($id);
-        $request['cat_image'] = '';
-        if (!$request['cat_alias']) {
-            $request['cat_alias'] = Str::slug($request['cat_title']);
+        $data = $request->all();
+
+        if ($request->hasFile('cat_image')) {
+            if ($category->cat_image) {
+                Storage::disk()->delete("images/categories/{$category->cat_image}");
+            }
+
+            $image = $request->file('cat_image');
+            $category->cat_image = md5(uniqid()).'.'.$image->getClientOriginalExtension();
+            $image->storeAs('images/categories', $category->cat_image);
         }
-        $category->fill($request->all())->save();
-        $category->save();
+
+        if (!$data['cat_alias']) {
+            $data['cat_alias'] = Str::slug($data['cat_title']);
+        }
+        $category->fill($data)->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
 
-    /**
-     * @param $id
-     * @param CategoriesRequest $request
-     * @return \Illuminate\Http\RedirectResponse
+    /*
+     * Delete category
      */
     public function delete($id) {
         $category = Category::find($id);
         if (is_null($category)) {
             return view('admin.errors.404');
+        }
+
+        if ($category->cat_image) {
+            Storage::disk()->delete("images/categories/{$category->cat_image}");
         }
         $category->delete();
 
