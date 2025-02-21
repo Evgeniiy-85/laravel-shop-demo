@@ -39,7 +39,7 @@
                                     <tr>
                                         <td width="160">
                                             <div class="card_cover">
-                                                <img src="{{ asset($category->cat_image ? "/images/categories/{$category['cat_image']}" : '/images/no-img.png') }}"/>
+                                                <img src="{{ $category->cat_image ? Storage::disk('categories')->url($category->cat_image) : asset('/images/no-img.png') }}"/>
                                             </div>
                                         </td>
 

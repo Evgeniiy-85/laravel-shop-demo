@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoriesRequest;
 use App\Models\Category;
 use App\Helpers\Helper;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\App;
 use File;
@@ -62,8 +63,7 @@ class CategoriesController extends Controller {
 
         if ($request->hasFile('cat_image')) {
             $image = $request->file('cat_image');
-            $category->cat_image = md5(uniqid()).'.'.$image->getClientOriginalExtension();
-            $image->storeAs('images/categories', $category->cat_image);
+            $category->cat_image = $image->store('', 'categories');
         }
 
         if (!$data['cat_alias']) {
@@ -77,18 +77,20 @@ class CategoriesController extends Controller {
     /*
      * Update category
      */
+    /**
+     * @throws FileNotFoundException
+     */
     public function update($id, CategoriesRequest $request) {
         $category = Category::findOrFail($id);
         $data = $request->all();
 
         if ($request->hasFile('cat_image')) {
             if ($category->cat_image) {
-                Storage::disk()->delete("images/categories/{$category->cat_image}");
+               Storage::disk('categories')->delete($category->cat_image);
             }
 
             $image = $request->file('cat_image');
-            $category->cat_image = md5(uniqid()).'.'.$image->getClientOriginalExtension();
-            $image->storeAs('images/categories', $category->cat_image);
+            $category->cat_image = $image->store('', 'categories');
         }
 
         if (!$data['cat_alias']) {
