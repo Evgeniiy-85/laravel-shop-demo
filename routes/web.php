@@ -39,6 +39,15 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
 });
 
+Route::group(['prefix' => '/catalog'], function () {
+    Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
+    Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
+});
+Route::group(['prefix' => '/catalog/{alias}'], function () {
+    Route::get('/', [App\Http\Controllers\CatalogController::class, 'category'])->name('category');
+    Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
+});
+
 Route::group(['prefix' => '/categories'], function () {
     Route::get('/', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('categories');
     Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
