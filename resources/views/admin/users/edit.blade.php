@@ -37,7 +37,7 @@
                                     <input type="text" class="form-control" name="user_patronymic" value="{{ $user->user_patronimic }}" placeholder="Введите отчество пользователя">
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <div class="user-info">
