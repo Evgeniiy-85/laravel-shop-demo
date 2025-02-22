@@ -3,10 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Model
@@ -20,6 +22,9 @@ class User extends Model
     const ROLE_MANAGER = 2;
     const ROLE_ADMIN = 3;
 
+    const USER_SEX_MAN = 1;
+    const USER_SEX_WOMAN = 2;
+
     public const STATUSES = [
         self::STATUS_ACTIVE => 'Активен',
         self::STATUS_DISABLED => 'Отключен',
@@ -29,6 +34,11 @@ class User extends Model
         self::ROLE_USER => 'Пользователь',
         self::ROLE_MANAGER => 'Менеджер ',
         self::ROLE_ADMIN => 'Администратор',
+    ];
+
+    public const SEXES = [
+        self::USER_SEX_MAN => 'Мужчина',
+        self::USER_SEX_WOMAN => 'Женщина ',
     ];
 
 
@@ -50,5 +60,20 @@ class User extends Model
         return $role !== null ? self::ROLES[$role] : self::ROLES;
     }
 
-    protected $fillable = ['user_email', 'user_name', 'user_surname', 'user_patronymic', 'user_phone', 'user_status', 'user_role'];
+    /**
+     * @param int|null $role
+     * @return int|array
+     */
+    public static function getSexes(int|null $sex = null) :string|array {
+        return $sex !== null ? self::SEXES[$sex] : self::SEXES;
+    }
+
+
+    protected function UserPhotoUrl(): Attribute {
+        return Attribute::make(
+            get: fn () =>  $this->user_photo ? Storage::disk('users')->url($this->user_photo) : asset('/images/'.($this->user_sex == self::USER_SEX_WOMAN ? 'woman.png' : 'man.png')),
+        );
+    }
+
+    protected $fillable = ['user_email', 'user_name', 'user_surname', 'user_patronymic', 'user_phone', 'user_status', 'user_role', 'user_sex'];
 }

@@ -23,8 +23,9 @@ return new class extends Migration
             $table->string('user_password_hash');
             $table->tinyInteger('user_status')->default(0);
             $table->tinyInteger('user_role')->default(1);
+            $table->tinyInteger('user_sex')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('user_last_visit_date')->nullable();
+            $table->timestamp('user_last_visit_date')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

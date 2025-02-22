@@ -79,6 +79,14 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'users' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/users'),
+            'url' => '/storage/users',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
     ],
 
     /*

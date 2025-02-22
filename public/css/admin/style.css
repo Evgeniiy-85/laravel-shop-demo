@@ -23,19 +23,18 @@ table td {
     overflow-x: auto !important;
     overflow-y: hidden;
 }
+.card_cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
 .card_cover img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     max-width: 100%;
     display: block;
-}
-.card_cover {
-    max-width: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
 }
 a.add-new-item, .add-new-item {
     font-size: 19px;
@@ -227,4 +226,26 @@ table.table tbody tr td {
     background-color: #dd4b39;
     top: 0;
     right: 0;
+}
+
+/*Users*/
+.user-info {
+    background-color: #f4f6f9;
+    padding: 15px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.user-photo {
+    display: flex;
+    height: 158px;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f6f9;
+    margin-bottom: 20px;
+}
+.user-photo img {
+    max-height: 100%;
+    object-fit: contain;
+    max-width: 100%;
+    display: block;
 }

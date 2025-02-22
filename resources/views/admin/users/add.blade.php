@@ -47,6 +47,14 @@
                             <input type="text" class="form-control" name="user_password" placeholder="Введите пароль, если нужно его обновить">
                         </div>
 
+                        <div class="form-group"><label>Пол</label>
+                            <select class="form-control" name="user_sex">
+                                @foreach ($sexes as $sex => $title)
+                                    <option value="{{ $sex }}">{{ $title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="form-group"><label>Роль</label>
                             <select class="form-control" name="user_role">
                                 @foreach ($roles as $role => $title)

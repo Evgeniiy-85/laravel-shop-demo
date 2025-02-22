@@ -23,6 +23,7 @@ class UsersController extends Controller {
         return view('admin.users.add', [
             'statuses' => User::getStatuses(),
             'roles' => User::getRoles(),
+            'sexes' => User::getSexes(),
         ]);
     }
 
@@ -37,6 +38,7 @@ class UsersController extends Controller {
             'user' => $user,
             'statuses' => User::getStatuses(),
             'roles' => User::getRoles(),
+            'sexes' => User::getSexes(),
         ]);
     }
 
