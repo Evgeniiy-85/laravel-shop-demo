@@ -12,7 +12,7 @@
             @foreach ($categories as $category)
                 <a class="category" href="/catalog/{{ $category->cat_alias }}">
                     <div class="category-cover">
-                        <img src="/load/categories/{{ $category->cat_image }}">
+                        <img src="{{ $category->cat_image_url }}">
                     </div>
 
                     <div class="category-title">{{ $category->cat_title }}</div>
