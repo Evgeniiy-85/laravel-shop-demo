@@ -69,15 +69,22 @@ Route::group(['prefix' => '/products'], function () {
 });
 
 Route::group(['prefix' => '/cart'], function () {
-    Route::post('/', [\App\Http\Controllers\API\CartController::class, 'index'])->name('cart');
-    Route::post('/actions', [\App\Http\Controllers\API\CartController::class, 'actions'])->name('actions');
-    Route::get('/actions', [\App\Http\Controllers\API\CartController::class, 'actions'])->name('actions');
+    Route::get('/', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
+    Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
 });
 
-Route::group(['prefix' => '/favorites'], function () {
-    Route::post('/', [\App\Http\Controllers\API\FavoritesController::class, 'index'])->name('cart');
-    Route::post('/actions', [\App\Http\Controllers\API\FavoritesController::class, 'actions'])->name('actions');
+Route::group(['prefix' => '/api'], function () {
+    Route::group(['prefix' => '/cart'], function () {
+        Route::post('/actions', [\App\Http\Controllers\API\CartController::class, 'actions'])->name('cart.actions');
+    });
+
+    Route::group(['prefix' => '/favorites'], function () {
+        Route::post('/', [\App\Http\Controllers\API\FavoritesController::class, 'index'])->name('favorites');
+        Route::post('/actions', [\App\Http\Controllers\API\FavoritesController::class, 'actions'])->name('favorites.actions');
+    });
 });
+
+
 
 
 Route::get('/contacts', function () {

@@ -1,5 +1,5 @@
 class Favorites {
-    static URL_ACTIONS = '/favorites';
+    static URL_ACTIONS = '/api/favorites';
 
     init() {
         this.updElements();

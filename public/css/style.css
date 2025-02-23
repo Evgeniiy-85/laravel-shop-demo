@@ -13,12 +13,6 @@ input:-webkit-autofill:focus {
   transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
-html body {
-  background-color: #f6f6f6;
-  padding-right: 0 !important;
-  font-family: PT Sans, Helvetica, Arial, sans-serif;
-}
-
 .modal {
   display: none;
   padding: 0;
@@ -51,20 +45,28 @@ h1, .h1 {
   border: none;
 }
 
-body .container a {
+.container a {
   color: #333;
   text-decoration: none;
 }
-body .container a:hover {
+.container a:hover {
   color: #fc5808;
   text-decoration: none;
 }
-body .container a.button:hover {
+.container a.button:hover {
   text-decoration: none;
 }
 
-/*Блоки*/
-.c-card {
+html body {
+  background-color: #f6f6f6;
+  padding-right: 0 !important;
+  font-family: PT Sans, Helvetica, Arial, sans-serif;
+  /*Блоки*/
+  /*Кнопки*/
+  /*Хлебные крошки*/
+  /*Выбранные продукты*/
+}
+html body .c-card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -75,14 +77,14 @@ body .container a.button:hover {
   padding: 20px;
   word-wrap: break-word;
 }
-.c-card .c-card-body .c-card-cover {
+html body .c-card .c-card-body .c-card-cover {
   display: inline-block;
   height: 120px;
   line-height: 150px;
   text-align: center;
   width: 100%;
 }
-.c-card .c-card-body .c-card-cover img {
+html body .c-card .c-card-body .c-card-cover img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -90,7 +92,7 @@ body .container a.button:hover {
   max-width: 100%;
   display: block;
 }
-.c-card .c-card-title {
+html body .c-card .c-card-title {
   align-items: center;
   color: #4e4e4e;
   display: flex;
@@ -101,13 +103,11 @@ body .container a.button:hover {
   margin: 12px 0 0;
   text-align: center;
 }
-.c-card .c-card-footer {
+html body .c-card .c-card-footer {
   background-color: #fff;
   border: none;
 }
-
-/*Кнопки*/
-.button-ui {
+html body .button-ui {
   padding: 10px 19px;
   white-space: nowrap;
   align-items: center;
@@ -122,99 +122,89 @@ body .container a.button:hover {
   overflow: hidden;
   transition: opacity 0.3s;
 }
-
-.btn_a-secondary {
+html body .btn_a-secondary {
   color: #333;
   background: #fff;
   border-color: #d9d9d9;
 }
-.btn_a-secondary:hover {
+html body .btn_a-secondary:hover {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.03);
   color: #333;
 }
-
-.btn_a-primary {
+html body .btn_a-primary {
   border: 1px solid #ffa218;
   box-shadow: inset 0 100px 0 hsla(0, 0%, 100%, 0.1);
   background-image: linear-gradient(0deg, #fc8507, #ffa218);
   color: #fff;
 }
-.btn_a-primary:hover {
+html body .btn_a-primary:hover {
   box-shadow: 0 0 0 3px #fff7da;
   background-color: #ffa218;
   border-color: #ffa218;
   color: #fff;
 }
-
-.btn_a-outline-primary {
+html body .btn_a-outline-primary {
   border: 1px solid #d9d9d9;
   color: #333;
 }
-.btn_a-outline-primary:hover {
+html body .btn_a-outline-primary:hover {
   border: 1px solid #ffa218;
   box-shadow: inset 0 100px 0 hsla(0, 0%, 100%, 0.1);
   background-image: linear-gradient(0deg, #fc8507, #ffa218);
   color: #fff;
 }
-.btn_a-outline-primary.active {
+html body .btn_a-outline-primary.active {
   color: #fc8507;
   background: #fff;
   border-color: #fc8507;
 }
-
-.btn_a-grey {
+html body .btn_a-grey {
   box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.04);
   background: #f7f7f7;
 }
-
-.button-small {
+html body .button-small {
   padding: 5px 10px;
   font-size: 14px;
 }
-
-/*Хлебные крошки*/
-.breadcrumb {
+html body .breadcrumb {
   padding: 0;
   background: none;
   font-size: 13px;
 }
-.breadcrumb .breadcrumb-item a {
+html body .breadcrumb .breadcrumb-item a {
   color: #333;
 }
-.breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+html body .breadcrumb .breadcrumb-item + .breadcrumb-item::before {
   color: #333;
   content: ">";
   padding-right: 5px;
 }
-
-.payments-list .c-card-cover {
+html body .payments-list .c-card-cover {
   height: 80px;
 }
-
-/*Выбранные продукты*/
-.selected-products {
+html body .selected-products {
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
 }
-.selected-products .block-header {
+html body .selected-products .block-header {
   display: flex;
   align-items: center;
   font-size: 16px;
   margin: 0 0 16px;
 }
-.selected-products .block-title {
+html body .selected-products .block-title {
   font-size: 18px;
   font-weight: 700;
 }
-.selected-products .product {
+html body .selected-products .product {
   display: flex;
   width: 100%;
 }
-.selected-products .product + .product {
+html body .selected-products .product + .product {
   margin-top: 10px;
 }
-.selected-products .product-cover {
+html body .selected-products .product-cover {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,7 +213,7 @@ body .container a.button:hover {
   height: 60px;
   margin-right: 8px;
 }
-.selected-products .product-cover img {
+html body .selected-products .product-cover img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -231,30 +221,30 @@ body .container a.button:hover {
   max-width: 100%;
   display: block;
 }
-.selected-products .product-info {
+html body .selected-products .product-info {
   display: flex;
   width: 100%;
   font-size: 14px;
 }
-.selected-products .product-title {
+html body .selected-products .product-title {
   min-width: 196px;
   margin-right: auto;
 }
-.selected-products .product-price {
+html body .selected-products .product-price {
   margin-left: 30px;
   font-size: 18px;
   line-height: 20px;
   font-weight: 700;
 }
-.selected-products .block-footer {
+html body .selected-products .block-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.selected-products .block-footer_left {
+html body .selected-products .block-footer_left {
   font-size: 18px;
 }
-.selected-products .empty-result {
+html body .selected-products .empty-result {
   width: 100%;
   height: 300px;
   display: flex;
@@ -265,21 +255,19 @@ body .container a.button:hover {
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1019607843);
 }
-
-.rating {
+html body .rating {
   display: flex;
 }
-.rating .rating-item {
+html body .rating .rating-item {
   max-width: 16px;
   display: flex;
   justify-items: center;
   padding: 2px;
 }
-.rating .rating-item img {
+html body .rating .rating-item img {
   max-width: 100%;
 }
-
-footer {
+html body footer {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -287,10 +275,10 @@ footer {
   color: #fff;
   padding: 20px 0 0;
 }
-footer h5 {
+html body footer h5 {
   color: #fc8507;
 }
-footer li a {
+html body footer li a {
   color: #fff !important;
 }
 .categories-list {

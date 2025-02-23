@@ -1,6 +1,6 @@
 class Cart {
 
-    static URL_ACTIONS = '/cart/actions';
+    static URL_ACTIONS = '/api/cart/actions';
 
     constructor() {}
 
