@@ -821,6 +821,7 @@ header .header-bottom .container .header-right .header-buttons #cart_modal .moda
   border: 1px solid #ffa218;
   border-radius: 6px;
   background-color: #fff;
+  color: #fff;
 }
 #cart_modal .modal-dialog .cart-product .cart-product-quantity {
   font-weight: 700;

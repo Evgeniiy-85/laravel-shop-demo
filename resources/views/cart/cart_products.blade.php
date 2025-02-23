@@ -1,35 +1,33 @@
-<?php use yii\helpers\Html;
-use app\components\Helpers;
-use yii\helpers\Url;?>
-
 <div class="cart">
     <div class="cart-header">
         <div class="cart-title">Список товаров</div>
         <a class="cart-products_remove" href="javascript:void(0);" data-action_type="cart_remove">Очистить список</a>
     </div>
 
-    <div class="cart-body cart-products" data-count_products="<?=$cart->count_products;?>">
-        <?foreach($cart->products as $prod_id => $product):
-            $quantity = $cart->quantity[$prod_id];?>
+    <div class="cart-body cart-products" data-count_products="{{ $cart->count_products }}">
+        @foreach($cart->products as $prod_id => $product)
+            @php
+                $quantity = $cart->quantity[$prod_id]
+            @endphp
 
-            <div class="cart-product" data-prod_id="<?=$product->prod_id;?>">
+            <div class="cart-product" data-prod_id="{{ $product->prod_id }}">
                 <div class="cart-product-cover">
-                    <img src="/load/products/<?=$product->prod_image;?>">
+                    <img src="{{ $product->prod_image_url }}">
                 </div>
 
                 <div class="cart-product_info">
-                    <div class="cart-product_title"><?=Html::encode($product->prod_title);?></div>
-                    <div class="cart-product_price"><?=Helpers::formatPrice($product->prod_price * $quantity);?> ₽</div>
+                    <div class="cart-product_title">{{ $product->prod_title }}</div>
+                    <div class="cart-product_price">{{ $product->prod_price * $quantity}} ₽</div>
                     <div class="cart-product-quantity_pickers">
-                        <a href="javascript:void(0);" class="cart-product-quantity_picker btn_a-primary" data-prod_id="<?=$prod_id;?>" data-action_type="reduce">
+                        <a href="javascript:void(0);" class="cart-product-quantity_picker btn_a-primary" data-prod_id="{{ $prod_id }}" data-action_type="reduce">
                             <i class="fa fa-minus"></i>
                         </a>
-                        <div class="cart-product-quantity"><?=$quantity;?></div>
-                        <a href="javascript:void(0);" class="cart-product-quantity_picker btn_a-primary" data-prod_id="<?=$prod_id;?>" data-action_type="append">
+                        <div class="cart-product-quantity">{{ $quantity }}</div>
+                        <a href="javascript:void(0);" class="cart-product-quantity_picker btn_a-primary" data-prod_id="{{ $prod_id }}" data-action_type="append">
                             <i class="fa fa-plus"></i>
                         </a>
                     </div>
-                    <a href="javascript:void(0);" class="cart-product_remove" data-prod_id="<?=$prod_id;?>"  data-action_type="product_remove">
+                    <a href="javascript:void(0);" class="cart-product_remove" data-prod_id="{{ $prod_id }}"  data-action_type="product_remove">
                         <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                             <path d="M12.1663 3.125C12.5115 3.125 12.7913 2.84518 12.7913 2.5C12.7913 2.15482 12.5115 1.875 12.1663 1.875H8.83301C8.48783 1.875 8.20801 2.15482 8.20801 2.5C8.20801 2.84518 8.48783 3.125 8.83301 3.125L12.1663 3.125Z" fill="#AFAFAF"></path>
                             <path d="M17.7913 5C17.7913 5.34518 17.5115 5.625 17.1663 5.625L3.83301 5.625C3.48783 5.625 3.20801 5.34518 3.20801 5C3.20801 4.65482 3.48783 4.375 3.83301 4.375L17.1663 4.375C17.5115 4.375 17.7913 4.65482 17.7913 5Z" fill="#AFAFAF"></path>
@@ -40,13 +38,13 @@ use yii\helpers\Url;?>
                     </a>
                 </div>
             </div><hr>
-        <?endforeach;?>
+        @endforeach
     </div>
 
     <div class="cart-footer">
         <div class="cart-footer_left">
             <span>Итого: </span>
-            <span class="cart-sum"><?=Helpers::formatPrice($cart->total);?> ₽</span>
+            <span class="cart-sum">{{ $cart->total }} ₽</span>
         </div>
 
         <div class="cart-footer_right">
