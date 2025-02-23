@@ -1,1 +1,6 @@
-{}
+{
+    "/js/cart.js": "/js/cart.js",
+    "/js/favorites.js": "/js/favorites.js",
+    "/js/main.js": "/js/main.js",
+    "/css/style.css": "/css/style.css"
+}

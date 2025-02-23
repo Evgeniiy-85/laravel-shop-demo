@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use Illuminate\Support\Facades\Route;
+
+
+/*AdminPanel*/
 
 Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
@@ -39,6 +41,14 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
 });
 
+
+/*FrontEnd*/
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::group(['prefix' => '/catalog'], function () {
     Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
     Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
@@ -58,11 +68,16 @@ Route::group(['prefix' => '/products'], function () {
     Route::get('/product', [App\Http\Controllers\Admin\ProductsController::class, 'category'])->name('products.product');
 });
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::group(['prefix' => '/cart'], function () {
+    Route::post('/', [\App\Http\Controllers\API\CartController::class, 'index'])->name('cart');
+    Route::post('/actions', [\App\Http\Controllers\API\CartController::class, 'actions'])->name('actions');
+    Route::get('/actions', [\App\Http\Controllers\API\CartController::class, 'actions'])->name('actions');
+});
 
-
+Route::group(['prefix' => '/favorites'], function () {
+    Route::post('/', [\App\Http\Controllers\API\FavoritesController::class, 'index'])->name('cart');
+    Route::post('/actions', [\App\Http\Controllers\API\FavoritesController::class, 'actions'])->name('actions');
+});
 
 
 Route::get('/contacts', function () {
@@ -80,5 +95,5 @@ Route::get('/contacts/messages/{id}', [ContactController::class, 'message'])->na
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 

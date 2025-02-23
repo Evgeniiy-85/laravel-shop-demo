@@ -59,7 +59,7 @@ header {
             mask-position: center;
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
-            mask-image: url(../images/icons/catalog-icon.svg);
+            mask-image: url(/images/icons/catalog-icon.svg);
           }
         }
       }
@@ -111,7 +111,7 @@ header {
                 left: 20px;
                 width: 24px;
                 height: 24px;
-                background: url(../images/icons/search-icon.svg) no-repeat center;
+                background: url(/images/icons/search-icon.svg) no-repeat center;
                 background-size: cover;
               }
             }
@@ -173,7 +173,7 @@ header {
               .btn-icon:before {
                 width: 22px;
                 height: 22px;
-                mask-image: url(../images/icons/favourites-icon.svg);
+                mask-image: url(/images/icons/favourites-icon.svg);
               }
             }
 
@@ -182,7 +182,7 @@ header {
                 width: 20px;
                 height: 20px;
                 margin-bottom: 2px;
-                mask-image: url(../images/icons/login-icon.svg);
+                mask-image: url(/images/icons/login-icon.svg);
               }
             }
 
@@ -195,7 +195,7 @@ header {
               .btn-icon:before {
                 width: 24px;
                 height: 24px;
-                mask-image: url(../images/icons/cart-icon.svg);
+                mask-image: url(/images/icons/cart-icon.svg);
               }
 
               .count-products-icon {

@@ -1,0 +1,101 @@
+class Cart {
+
+    static URL_ACTIONS = '/cart/actions';
+
+    constructor() {}
+
+    init() {
+        this.updElements();
+        this.Events();
+    }
+
+    Events() {
+        let cart = this;
+        $(document).on('click', '.cart [data-action_type], .product-by [data-action_type]', function() {
+            if ($(this).data('action_type') == 'show') {
+                $('#cart_modal').addClass('show');
+                return false;
+            }
+
+            let prod_id = typeof($(this).data('prod_id')) !== 'undefined' ? $(this).data('prod_id') : null;
+            cart.runAction($(this).data(), (html) => {
+                cart.updCart(html);
+                cart.updProdButtons(prod_id);
+            });
+        });
+
+        $(".btn-cart, #cart_modal").hover(function(){}, function(){
+            $('#cart_modal').removeClass('show');
+        });
+        $("body").click(function(){
+            $('#cart_modal').removeClass('show');
+        });
+    }
+
+    updCart(html) {
+        let cart_title = '<span>Корзина</span>';
+        let count_products = '';
+
+        if (html) {
+            let price = $(html).find('.cart-sum').text();
+            cart_title = `<span class="cart-sum">${price}</span>`;
+            $('#cart_modal').addClass('has-products').find('.modal-body').html(html);
+            count_products = $(html).find('.cart-products').data('count_products');
+            $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
+        } else {
+            $('#cart_modal').removeClass('has-products').find('.modal-body').html(html);
+            $('.btn-cart .count-products-icon').html(count_products).addClass('hidden');
+        }
+
+        $('.btn-cart .btn-title').html(cart_title);
+    }
+
+    updProdButton($el, has_product) {
+        if ($el.parent('.product-by').length > 0) {
+            if (has_product) {
+                $el.html('В корзине');
+                $el.addClass('active');
+                $el.data('action_type', 'show');
+            } else {
+                $el.html('Купить');
+                $el.removeClass('active');
+                $el.data('action_type', 'append');
+            }
+        }
+    }
+
+    updProdButtons(prod_id) {
+        let buttons = prod_id ? $(`.product-by button[data-prod_id="${prod_id}"]`) : $('.product-by button');
+        if (buttons.length > 0) {
+            let cart = this;
+            buttons.each(function() {
+                prod_id = $(this).data('prod_id');
+                let prod_exists = $(`#cart_modal .cart-product[data-prod_id="${prod_id}"]`).length;
+                cart.updProdButton($(this), prod_exists);
+            });
+        }
+    }
+
+    updElements() {
+        let cart = this;
+        this.runAction({action_type:'get'}, (html) => {
+            cart.updCart(html);
+            cart.updProdButtons();
+        });
+    }
+
+
+    runAction(data, callback) {
+        $.ajax({
+            url: Cart.URL_ACTIONS,
+            type: 'post',
+            dataType: 'html',
+            data: data,
+            success: function (html) {
+                callback(html);
+            }, error: function () {
+                alert('Произошла ошибка при обновлении корзины');
+            }
+        });
+    }
+}

@@ -1,7 +1,5 @@
-main {
-    & > .container {
-        padding: 146px 15px 20px;
-    }
+header + .container {
+    padding: 146px 15px 20px;
 }
 *, :after, :before {
     box-sizing: border-box;
@@ -41,17 +39,22 @@ h1, .h1 {
 .without-border {
     border: none;
 }
-a {
-    color: #333;
-
-    &:hover {
-        color: #fc5808;
-        text-decoration: none;
-    }
-
-    &.button {
-        &:hover {
+body {
+    .container {
+        a {
+            color: #333;
             text-decoration: none;
+
+            &:hover {
+                color: #fc5808;
+                text-decoration: none;
+            }
+
+            &.button {
+                &:hover {
+                    text-decoration: none;
+                }
+            }
         }
     }
 }
@@ -284,6 +287,25 @@ a {
 
         img {
             max-width: 100%;
+        }
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    color: #fff;
+    padding: 20px 0 0;
+
+    h5 {
+        color: #fc8507;
+    }
+
+    li {
+        a {
+            color: #fff!important;
         }
     }
 }
