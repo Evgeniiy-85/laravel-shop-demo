@@ -18,7 +18,7 @@ class OrderController extends Controller {
         $order_items = OrderItems::where(['order_id' => $order_id])->get();
 
         if (!$order || !$order_items) {
-            exit;
+            abort(404);
         }
 
         return view('order.pay', [

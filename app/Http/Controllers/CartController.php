@@ -40,7 +40,7 @@ class CartController extends Controller {
         $cart = new Cart();
         $cart->loadCart();
         if (!$cart->products) {
-            exit;
+            abort(404);
         }
 
         $order = new Order();

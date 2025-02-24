@@ -21,7 +21,7 @@ class CatalogController extends Controller {
         ->where('cat_alias', $alias)
         ->first();
         if (!$category) {
-            exit;
+            abort(404);
         }
 
         $subcategories = Category::where('cat_status', Category::STATUS_ACTIVE)
