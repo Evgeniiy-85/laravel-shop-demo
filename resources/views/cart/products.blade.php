@@ -57,7 +57,7 @@
                         </a>
                     @else
                         <a href="{{ route('cart.checkout') }}" class="button button-ui btn_a-outline-primary button-small">
-                            Оформить заказ
+                            Перейти к оформлению заказа
                         </a>
                     @endif
                 @endif

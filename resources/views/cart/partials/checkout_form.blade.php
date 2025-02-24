@@ -1,5 +1,5 @@
 <div class="c-card checkout-form">
-    <form action="{{ route('cart.checkout') }}" method="post">
+    <form action="{{ route('cart.confirm') }}" method="post">
         @csrf
 
         <div class="c-card-body column-2">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="c-card-footer text-right">
-            <button type="submit" class="button button-ui btn_a-primary button-small" name="next">Продолжить</button>
+            <button type="submit" class="button button-ui btn_a-primary button-small" name="confirm">Подтвердить заказ</button>
         </div>
     </form>
 </div>

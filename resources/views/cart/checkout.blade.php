@@ -15,12 +15,12 @@
         <div class="site-cart">
             <div class="row">
                 <div class="col-md-9 mb-5">
-                    @include('cart.checkout_products')
+                    @include('cart.partials.checkout_products')
                 </div>
 
                 <div class="col-md-9">
                     @if($cart->products)
-                        @include('order.checkout_form')
+                        @include('cart.partials.checkout_form')
                     @endif
                 </div>
             </div>

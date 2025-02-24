@@ -69,6 +69,7 @@ Route::group(['prefix' => '/products'], function () {
 Route::group(['prefix' => '/cart'], function () {
     Route::get('/', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+    Route::post('/confirm', [\App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
 });
 
 Route::group(['prefix' => '/api'], function () {

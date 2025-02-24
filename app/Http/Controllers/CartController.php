@@ -28,4 +28,9 @@ class CartController extends Controller {
             'order' => $order,
         ]);
     }
+
+    public function confirmOrder() {
+
+    }
+
 }
