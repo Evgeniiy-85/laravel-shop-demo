@@ -50,9 +50,17 @@
             </div>
 
             <div class="cart-footer_right">
-                <a href="/cart" class="button button-ui btn_a-outline-primary button-small">
-                    Оформить заказ
-                </a>
+                @if(1)
+                    @if(isset($page_name) && $page_name != 'cart')
+                        <a href="{{ route('cart') }}" class="button button-ui btn_a-outline-primary button-small">
+                            Перейти в корзину
+                        </a>
+                    @else
+                        <a href="{{ route('cart.checkout') }}" class="button button-ui btn_a-outline-primary button-small">
+                            Оформить заказ
+                        </a>
+                    @endif
+                @endif
             </div>
         </div>
     @else

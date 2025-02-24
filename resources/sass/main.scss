@@ -34,6 +34,9 @@ h1, .h1 {
 .without-border {
     border: none;
 }
+.form-group {
+    margin-bottom: 20px;
+}
 .container {
     max-width: 1140px!important;
 
@@ -292,7 +295,7 @@ html {
         }
 
         footer {
-            position: fixed;
+            //position: fixed;
             bottom: 0;
             width: 100%;
             background: #333;

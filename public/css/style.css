@@ -45,6 +45,10 @@ h1, .h1 {
   border: none;
 }
 
+.form-group {
+  margin-bottom: 20px;
+}
+
 .container {
   max-width: 1140px !important;
 }
@@ -270,7 +274,6 @@ html body .rating .rating-item img {
   max-width: 100%;
 }
 html body footer {
-  position: fixed;
   bottom: 0;
   width: 100%;
   background: #333;

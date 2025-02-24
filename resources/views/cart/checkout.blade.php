@@ -4,19 +4,25 @@
     Оформление заказа
 @endsection
 
+@section('cart_button')
+
+@endsection
+
 @section('content')
     <div class="site-catalog">
         <h1>Оформление заказа</h1>
 
-        <div class="site-catalog">
+        <div class="site-cart">
             <div class="row">
-                <div class="col-xl-7 col-lg-8 mb-5">
-                    @include('cart.partials.cart_products')
+                <div class="col-md-9 mb-5">
+                    @include('cart.checkout_products')
                 </div>
 
-                @if($cart->products)
-                    @include('order.partials.checkout_form')
-                @endif
+                <div class="col-md-9">
+                    @if($cart->products)
+                        @include('order.checkout_form')
+                    @endif
+                </div>
             </div>
         </div>
     </div>
