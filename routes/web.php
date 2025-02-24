@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -83,22 +82,23 @@ Route::group(['prefix' => '/api'], function () {
 });
 
 
+$modules = config('modules.modules');
+$path = config('modules.path');
+$base_namespace = config('modules.base_namespace');
 
+foreach ($modules as $module => $submodules) {
+    if (!$submodules) {
+        $route_path = "$path/$module/Routes/web.php";
+        Route::middleware('web')->group(base_path($route_path));
+    } else {
+        foreach ($submodules as $key => $submodule) {
+            $route_path = "$path/$module/$submodule/Routes/web.php";
+            Route::middleware('web')->group(base_path($route_path));
+        }
+    }
+}
 
-Route::get('/contacts', function () {
-    return view('contacts');
-})->name('contacts');
-
-Route::post('/contacts/submit', [ContactController::class, 'submit'])->name('contact-from');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contacts/messages', [ContactController::class, 'messages'])->name('messages');
-Route::get('/contacts/messages/{id}', [ContactController::class, 'message'])->name('messages');
 
 Auth::routes();
-
 
 
