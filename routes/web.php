@@ -66,11 +66,10 @@ Route::group(['prefix' => '/products'], function () {
     Route::get('/product', [App\Http\Controllers\Admin\ProductsController::class, 'category'])->name('products.product');
 });
 
-Route::group(['prefix' => '/cart'], function () {
-    Route::get('/', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
-    Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
-    Route::post('/confirm', [\App\Http\Controllers\CartController::class, 'confirm'])->name('cart.confirm');
-});
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
+Route::post('/checkout', [\App\Http\Controllers\CartController::class, 'addOrder'])->name('cart.add_order');
+Route::get('/pay/{order_date}', [\App\Http\Controllers\OrderController::class, 'pay'])->name('order.pay');
 
 Route::group(['prefix' => '/api'], function () {
     Route::group(['prefix' => '/cart'], function () {

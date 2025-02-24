@@ -49,6 +49,10 @@ h1, .h1 {
   margin-bottom: 20px;
 }
 
+.text-right {
+  text-align: right !important;
+}
+
 .container {
   max-width: 1140px !important;
 }

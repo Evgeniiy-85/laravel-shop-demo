@@ -9,19 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('order_id');
+            $table->integer('prod_id');
+            $table->integer('prod_price');
+            $table->string('prod_title');
+            $table->tinyInteger('quantity');
         });
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('order_items');
     }
 };
