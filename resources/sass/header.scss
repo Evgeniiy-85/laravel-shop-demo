@@ -226,26 +226,6 @@ header {
               }
             }
           }
-
-          #cart_modal {
-            position: absolute;
-            top: auto;
-            height: auto;
-            right: 0;
-            left: auto;
-            width: auto;
-            box-shadow: 0 0 12px #00000029;
-            animation: showCartModal .15s forwards ease-in;
-            white-space: normal;
-
-            .modal-dialog {
-              margin: 0;
-
-              .modal-content {
-                border: none;
-              }
-            }
-          }
         }
       }
     }

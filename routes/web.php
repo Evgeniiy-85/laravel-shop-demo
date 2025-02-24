@@ -44,10 +44,8 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 /*FrontEnd*/
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
 
 Route::group(['prefix' => '/catalog'], function () {
     Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');

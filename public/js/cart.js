@@ -40,11 +40,18 @@ class Cart {
             let price = $(html).find('.cart-sum').text();
             cart_title = `<span class="cart-sum">${price}</span>`;
             $('#cart_modal').addClass('has-products').find('.modal-body').html(html);
+            if ($('.site-cart').find('.cart').length > 0) {
+                $('.site-cart').find('.cart').replaceWith(html);
+            }
             count_products = $(html).find('.cart-products').data('count_products');
             $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
         } else {
             $('#cart_modal').removeClass('has-products').find('.modal-body').html(html);
             $('.btn-cart .count-products-icon').html(count_products).addClass('hidden');
+
+            if ($('.site-cart').find('.cart').length > 0) {
+                $('.site-cart').find('.cart').html('<div class="empty-result"><h3>Корзина пуста</h3></div>');
+            }
         }
 
         $('.btn-cart .btn-title').html(cart_title);

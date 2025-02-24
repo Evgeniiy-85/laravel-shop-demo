@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Order;
 
 class CartController extends Controller {
 
@@ -18,6 +19,13 @@ class CartController extends Controller {
     }
 
     public function checkout() {
+        $cart = new Cart();
+        $cart->loadCart();
+        $order = new Order();
 
+        return view('cart.checkout', [
+            'cart' => $cart,
+            'order' => $order,
+        ]);
     }
 }

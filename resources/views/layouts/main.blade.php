@@ -16,10 +16,6 @@
     <script src="{{ asset('js/favorites.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     @include('layouts/header')
-
-    @if(Request::is('/'))
-        @include('inc/hero')
-    @endif
 </head>
 
 <body>

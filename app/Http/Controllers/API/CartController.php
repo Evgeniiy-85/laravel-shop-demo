@@ -35,8 +35,8 @@ class CartController extends Controller {
                 break;
         }
 
-        if ($cart->total) {
-            return view('cart.cart_products', [
+        if ($cart->products) {
+            return view('cart.products', [
                 'cart' => $cart,
             ]);
         }
