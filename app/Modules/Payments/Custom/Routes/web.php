@@ -1,4 +1,4 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Route::get('/payments/custom', [\App\Modules\Payments\Custom\Controllers\PaymentController::class, 'pay'])->name('pay.custom');
+Route::post('/payments/custom/pay/{order_id}', [\App\Modules\Payments\Custom\Controllers\PaymentController::class, 'pay'])->name('payments.custom.pay');

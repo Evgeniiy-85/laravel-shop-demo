@@ -87,6 +87,14 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'payments' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/payments'),
+            'url' => '/storage/payments',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
     ],
 
     /*

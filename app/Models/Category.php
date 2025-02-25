@@ -45,7 +45,7 @@ class Category extends Model {
 
 
     /**
-     * @var string[]
+     * @return Attribute
      */
     protected $fillable = ['cat_title', 'cat_parent', 'cat_alias', 'cat_status'];
 }

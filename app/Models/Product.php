@@ -35,7 +35,7 @@ class Product extends Model {
     }
 
     /**
-     * Get the user's first name.
+     * @return Attribute
      */
     protected function prodImageUrl(): Attribute {
         return Attribute::make(

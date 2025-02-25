@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-md-9">
-
+                    @include('order.partials.payments')
                 </div>
             </div>
         </div>

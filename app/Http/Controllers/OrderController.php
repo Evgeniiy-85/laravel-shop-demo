@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Cart;
+use App\Models\Payment;
 use App\Models\Order;
 use App\Models\OrderItems;
-use Carbon\Carbon;
 
 class OrderController extends Controller {
 
@@ -21,9 +18,12 @@ class OrderController extends Controller {
             abort(404);
         }
 
+        $payments = Payment::where('pay_status', 1)->get();
+
         return view('order.pay', [
             'order' => $order,
             'order_items' => $order_items,
+            'payments' => $payments,
         ]);
     }
 
