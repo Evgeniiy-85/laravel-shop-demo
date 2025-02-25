@@ -249,3 +249,13 @@ table.table tbody tr td {
     max-width: 100%;
     display: block;
 }
+
+.order-status {
+    color: #fff;
+}
+.order-status.status-0 {
+    background-color: #dc3545;
+}
+.order-status.status-1 {
+    background-color: #28a745;
+}
