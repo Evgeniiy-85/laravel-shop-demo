@@ -20,4 +20,10 @@ class Payment extends Model {
             get: fn () =>  $this->pay_image ? Storage::disk('payments')->url($this->pay_image) : asset("images/payments/{$this->pay_name}.png"),
         );
     }
+
+
+    /**
+     * @return Attribute
+     */
+    protected $fillable = ['pay_title', 'pay_desc',];
 }

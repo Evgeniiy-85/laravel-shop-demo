@@ -10,6 +10,9 @@ table td {
     white-space: normal;
     vertical-align: middle;
 }
+textarea {
+    width: 100%;
+}
 .sidebar .user-panel {
     border-bottom: none;
 }

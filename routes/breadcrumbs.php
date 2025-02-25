@@ -40,6 +40,11 @@ Breadcrumbs::for('admin.settings.payments', function (BreadcrumbTrail $trail) {
     $trail->push('Платежные модули', route('admin.settings.payments'));
 });
 
+Breadcrumbs::for('admin.settings.payments.custom', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.settings.payments');
+    $trail->push('Ручной способ', route('admin.settings.payments.custom'));
+});
+
 
 /* Продукты*/
 Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
