@@ -17,6 +17,13 @@ input:-webkit-autofill:focus {
 .modal {
     display: none;
     padding: 0;
+
+    .close {
+        border: none;
+        background: none;
+        font-size: 28px;
+        line-height: 1;
+    }
 }
 .modal.show {
     display: block;
@@ -24,6 +31,7 @@ input:-webkit-autofill:focus {
 .modal-open {
     overflow: auto;
 }
+
 .hidden {
     display: none!important;
 }

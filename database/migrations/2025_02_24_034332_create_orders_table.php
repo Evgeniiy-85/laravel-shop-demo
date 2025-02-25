@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('client_name');
             $table->string('client_surname');
             $table->string('client_phone');
+            $table->text('order_params')->nullable();
             $table->integer('order_sum');
             $table->tinyInteger('order_status')->default(0);
             $table->timestamp('order_date');

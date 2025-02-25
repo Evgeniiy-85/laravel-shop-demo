@@ -23,6 +23,12 @@ input:-webkit-autofill:focus {
   display: none;
   padding: 0;
 }
+.modal .close {
+  border: none;
+  background: none;
+  font-size: 28px;
+  line-height: 1;
+}
 
 .modal.show {
   display: block;

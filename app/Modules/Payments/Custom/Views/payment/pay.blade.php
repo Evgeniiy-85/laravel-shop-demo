@@ -1,4 +1,4 @@
-<div class="modal fade " id="modalPay_{{ $payment->pay_name }}" style="display: none;" aria-hidden="true">
+<div class="modal fade " id="modalPay_{{ $payment->pay_name }}">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
                 </div>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span>×</span>
                 </button>
             </div>
 
@@ -16,23 +16,23 @@
                     @csrf
                     <div class="c-card-body column-2">
                         <div class="form-group"><label class="control-label">Наименование организации</label>
-                            <input type="email" class="form-control" name="organization">
+                            <input type="text" class="form-control" name="organization" required>
                         </div>
 
                         <div class="form-group"><label class="control-label">ИНН/КПП</label>
-                            <input type="text" class="form-control" name="inn">
+                            <input type="text" class="form-control" name="inn" required>
                         </div>
 
                         <div class="form-group"><label class="control-label">БИК</label>
-                            <input type="text" class="form-control" name="bik">
+                            <input type="text" class="form-control" name="bik" required>
                         </div>
 
                         <div class="form-group"><label class="control-label">Р/счёт</label>
-                            <input type="text" class="form-control" name="billing_number">
+                            <input type="text" class="form-control" name="billing_number" required>
                         </div>
 
                         <div class="form-group"><label class="control-label">Адрес для отправки закрывающих документов</label>
-                            <input type="text" class="form-control" name="address">
+                            <input type="text" class="form-control" name="address" required>
                         </div>
                     </div>
 

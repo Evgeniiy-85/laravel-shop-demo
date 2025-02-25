@@ -1,16 +1,11 @@
-<?php
-use yii\helpers\Html;
+@extends('layouts.main')
 
-$this->title = 'Спасибо! Ваш заказ ждёт подтверждения.';?>
+@section('title')
+    Спасибо! Ваш заказ ждёт подтверждения.
+@endsection
 
-<div class="site-catalog">
-    <div class="row">
-        <div class="col-md-9">
-            <div class="card card-default card-payment">
-                <div class="card-body">
-                    <h1><?= Html::encode($this->title) ?></h1>
-                </div>
-            </div>
-        </div>
+@section('content')
+    <div class="site-catalog">
+        <h1>Спасибо! Ваш заказ ждёт подтверждения.</h1>
     </div>
-</div>
+@endsection
