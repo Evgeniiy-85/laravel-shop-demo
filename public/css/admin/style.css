@@ -252,6 +252,7 @@ table.table tbody tr td {
 
 .order-status {
     color: #fff;
+    background-color: #adb5bd;
 }
 .order-status.status-0 {
     background-color: #dc3545;

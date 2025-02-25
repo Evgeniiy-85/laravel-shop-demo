@@ -350,6 +350,10 @@ return [
                     'text' => 'Основные настройки',
                     'url' => 'admin/settings',
                 ],
+                [
+                    'text' => 'Платежные модули',
+                    'url' => 'admin/settings/payments',
+                ],
             ],
         ],
     ],

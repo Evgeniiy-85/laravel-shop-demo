@@ -30,6 +30,17 @@ Breadcrumbs::for('admin.categories.edit', function (BreadcrumbTrail $trail) {
     $trail->push('Редактировать категорию');
 });
 
+Breadcrumbs::for('admin.settings', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.index');
+    $trail->push('Настройки', route('admin.settings'));
+});
+
+Breadcrumbs::for('admin.settings.payments', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.settings');
+    $trail->push('Платежные модули', route('admin.settings.payments'));
+});
+
+
 /* Продукты*/
 Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');

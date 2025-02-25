@@ -37,7 +37,10 @@ Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         Route::get('/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('admin.users.delete');
     });
 
-    Route::get('/settings', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+    Route::group(['prefix' => '/settings'], function () {
+        Route::get('/', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+        Route::get('/payments', [App\Http\Controllers\Admin\PaymentsController::class, 'index'])->name('admin.settings.payments');
+    });
 });
 
 
