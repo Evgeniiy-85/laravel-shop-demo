@@ -137,14 +137,14 @@
 
             width: 16px;
             height: 16px;
-            mask-image: url(../images/icons/favourites-icon.svg);
+            mask-image: url(/images/icons/favourites-icon.svg);
             background-color: #afafaf;
           }
 
           &.active {
             &:after {
               background-color: #ff5c52;
-              mask-image: url(../images/icons/favourites-icon-active.svg);
+              mask-image: url(/images/icons/favourites-icon-active.svg);
             }
           }
 

@@ -6,7 +6,7 @@ use App\Models\Payment;
 use App\Models\Order;
 use App\Models\OrderItems;
 
-class OrderController extends Controller {
+class OrdersController extends Controller {
 
     public function pay($order_id) {
         $order = Order::where('order_status', Order::STATUS_NO_PAID)

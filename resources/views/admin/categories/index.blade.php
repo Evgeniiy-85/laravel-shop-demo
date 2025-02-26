@@ -63,7 +63,7 @@
 
                                         <td class="text-right">
                                             <div class="card-tools" style="width:140px;">
-                                                <a class="btn btn-tool btn-default bg-gradient-primary" href="{{ route('categories', $category->cat_alias) }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+                                                <a class="btn btn-tool btn-default bg-gradient-primary" href="{{ route('catalog.category', $category->cat_alias) }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
                                                 <a class="btn btn-tool btn-default bg-gradient-success" href="{{ route('admin.categories.edit', $category->cat_id) }}"><i class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-tool btn-default bg-gradient-danger" href="{{ route('admin.categories.delete', $category->cat_id) }}" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash"></i></a>
                                             </div>

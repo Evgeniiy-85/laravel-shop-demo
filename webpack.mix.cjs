@@ -10,6 +10,7 @@ mix
     .sass('resources/sass/main.scss', 'css/style.css')
     .sass('resources/sass/categories.scss', 'css/style.css')
     .sass('resources/sass/products.scss', 'css/style.css')
+    .sass('resources/sass/product-card.scss', 'css/style.css')
     .sass('resources/sass/header.scss', 'css/style.css')
     .sass('resources/sass/cart.scss', 'css/style.css')
     .sass('resources/sass/cart-modal.scss', 'css/style.css');

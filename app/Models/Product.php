@@ -37,7 +37,7 @@ class Product extends Model {
     /**
      * @return Attribute
      */
-    protected function prodImageUrl(): Attribute {
+    protected function imageUrl(): Attribute {
         return Attribute::make(
             get: fn () =>  $this->prod_image ? Storage::disk('products')->url($this->prod_image) : asset('/images/no-img.png'),
         );

@@ -105,3 +105,10 @@ Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
         }
     }
 });
+
+Breadcrumbs::for('product', function (BreadcrumbTrail $trail, $product, $category) {
+    if ($category) {
+        $trail->parent('category', $category);
+    }
+    $trail->push($product->prod_title);
+});

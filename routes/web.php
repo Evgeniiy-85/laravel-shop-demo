@@ -55,20 +55,19 @@ Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name(
 
 Route::group(['prefix' => '/catalog'], function () {
     Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
-    Route::get('/category', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
-    Route::get('/{alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
-    Route::get('/{alias}/{subcategory_alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
+    Route::get('/{alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('catalog.category');
+    Route::get('/{alias}/{subcategory_alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.subcategory');
 });
 
 Route::group(['prefix' => '/products'], function () {
-    Route::get('/', [App\Http\Controllers\Admin\ProductsController::class, 'index'])->name('products');
-    Route::get('/product', [App\Http\Controllers\Admin\ProductsController::class, 'category'])->name('products.product');
+    Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
+    Route::get('/{alias}', [App\Http\Controllers\ProductsController::class, 'product'])->name('products.product');
 });
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/checkout', [\App\Http\Controllers\CartController::class, 'addOrder'])->name('cart.add_order');
-Route::get('/pay/{order_date}', [\App\Http\Controllers\OrderController::class, 'pay'])->name('order.pay');
+Route::get('/pay/{order_date}', [\App\Http\Controllers\OrdersController::class, 'pay'])->name('order.pay');
 
 Route::group(['prefix' => '/api'], function () {
     Route::group(['prefix' => '/cart'], function () {
