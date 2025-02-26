@@ -1,11 +1,11 @@
 <div class="categories-list">
-    @foreach ($subcategories as $category)
-        <a class="category" href="/catalog/{{ $category->cat_alias }}">
+    @foreach ($subcategories as $subcategory)
+        <a class="category" href="/catalog/{{ $category->cat_alias }}/{{ $subcategory->cat_alias }}">
             <div class="category-cover">
-                <img src="/load/categories/{{ $category->cat_image }}">
+                <img src="/load/categories/{{ $subcategory->cat_image }}">
             </div>
 
-            <div class="category-title">{{ $category->cat_title }}</div>
+            <div class="category-title">{{ $subcategory->cat_title }}</div>
         </a>
     @endforeach
 </div>
