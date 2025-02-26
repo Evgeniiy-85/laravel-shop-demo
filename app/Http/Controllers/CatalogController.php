@@ -9,7 +9,7 @@ use App\Models\ProductFilter;
 class CatalogController extends Controller {
 
     public function index() {
-        $categories = Category::where('cat_status', Category::STATUS_ACTIVE)->get();
+        $categories = Category::where('cat_status', Category::STATUS_ACTIVE)->where('cat_parent', 0)->get();
 
         return view('catalog.index', [
             'categories' => $categories

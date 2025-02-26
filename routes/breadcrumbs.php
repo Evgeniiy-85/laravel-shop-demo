@@ -79,8 +79,29 @@ Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail) {
     $trail->push('Редактировать пользователя');
 });
 
-// Home > Blog > [Category]
+
+/*FrontEnd*/
+Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail) {
+    $trail->push('Каталог', route('catalog'));
+});
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category));
+    $trail->parent('catalog');
+
+    $data = [];
+    while($category->cat_parent) {
+        $parent = \App\Models\Category::find($category->cat_parent);
+        array_unshift($data, [
+            'title' => $category->cat_title,
+            'url' => "/catalog/{$parent->cat_alias}/{$category->cat_alias}"
+        ]);
+
+        $category = $parent;
+    }
+    array_unshift($data, ['title' => $category->cat_title, 'url' => "/catalog/{$category->cat_alias}"]);
+
+    if ($data) {
+        foreach ($data as $item) {
+            $trail->push($item['title'], $item['url']);
+        }
+    }
 });

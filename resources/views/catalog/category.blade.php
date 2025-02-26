@@ -4,6 +4,10 @@
     {{ $category->cat_title }}
 @endsection
 
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('category', $category) }}
+@endsection
+
 @section('content')
     <h1>{{ $category->cat_title }}</h1>
 

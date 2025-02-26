@@ -25,6 +25,7 @@
 
 <body>
     <div class="container">
+        @yield('breadcrumbs')
         @yield('content')
     </div>
     @include('layouts/footer')
