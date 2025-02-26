@@ -253,6 +253,16 @@ table.table tbody tr td {
     display: block;
 }
 
+.info-box.order-info .info-box-text {
+    white-space: normal;
+    line-height: 1.2;
+}
+.info-box.order-info .info-box-text + .info-box-text {
+    margin-top: 10px;
+}
+.info-box.order-info .info-box-value  {
+    font-weight: 600;
+}
 .order-status {
     color: #fff;
     background-color: #adb5bd;

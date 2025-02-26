@@ -16,6 +16,11 @@ Breadcrumbs::for('admin.orders', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
     $trail->push('Список заказов', route('admin.orders'));
 });
+Breadcrumbs::for('admin.orders.edit', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.orders');
+    $trail->push('Редактировать заказ');
+});
+
 /* Категории*/
 Breadcrumbs::for('admin.categories', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');

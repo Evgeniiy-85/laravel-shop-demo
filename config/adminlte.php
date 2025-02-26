@@ -345,6 +345,7 @@ return [
         [
             'text' => 'Настройки',
             'icon' => 'fas fa-fw fa-share',
+            'active' => ['regex:@^admin/settings@'],
             'submenu' => [
                 [
                     'text' => 'Основные настройки',
@@ -353,6 +354,7 @@ return [
                 [
                     'text' => 'Платежные модули',
                     'url' => 'admin/settings/payments',
+                    'active' => ['regex:@^admin/settings/payments/custom@'],
                 ],
             ],
         ],

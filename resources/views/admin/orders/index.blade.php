@@ -27,7 +27,7 @@
                             @if($orders->count())
                                 @foreach($orders as $order)
                                     <tr>
-                                        <td>{{ $order->order_id }}</td>
+                                        <td><a href="{{ route('admin.orders.edit', $order->order_id) }}">{{ $order->order_id }}</a></td>
                                         <td>{{ $order->order_date }}</td>
                                         <td>{{ $order->client_name }}</td>
                                         <td>{{ $order->client_surname }}</td>

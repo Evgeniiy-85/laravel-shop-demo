@@ -5,10 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 /*AdminPanel*/
 
-Route::group( ['namespace' => 'Admin', 'prefix' => 'admin'], function() {
+Route::group( ['namespace' => 'Admin', 'prefix' => '/admin'], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
     Route::get('/404', [App\Http\Controllers\Admin\AdminController::class, 'error404'])->name('admin.errors.404');
-    Route::get('/orders', [App\Http\Controllers\Admin\OrdersController::class, 'index'])->name('admin.orders');
+    Route::group(['prefix' => '/orders'], function () {
+        Route::get('/', [App\Http\Controllers\Admin\OrdersController::class, 'index'])->name('admin.orders');
+        Route::get('/edit/{id}', [App\Http\Controllers\Admin\OrdersController::class, 'edit'])->name('admin.orders.edit');
+        Route::post('/update/{id}', [App\Http\Controllers\Admin\OrdersController::class, 'update'])->name('admin.orders.update');
+    });
 
     Route::group(['prefix' => '/categories'], function () {
         Route::get('/', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('admin.categories');

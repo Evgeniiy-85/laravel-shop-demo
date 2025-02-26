@@ -23,6 +23,16 @@ class Payment extends Model {
 
 
     /**
+     * @return false|mixed
+     */
+    public function payment() {
+        $payment = ucfirst($this->pay_name);
+        $class = "\App\Modules\Payments\\$payment\\Models\Payment";
+        return class_exists($class) ? new $class() : false;
+    }
+
+
+    /**
      * @return Attribute
      */
     protected $fillable = ['pay_title', 'pay_desc',];

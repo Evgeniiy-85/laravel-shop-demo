@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id('order_id');
-            $table->string('client_email');
-            $table->string('client_name');
-            $table->string('client_surname');
-            $table->string('client_phone');
+            $table->string('client_email', 128);
+            $table->string('client_name', 128);
+            $table->string('client_surname', 128);
+            $table->string('client_patronymic', 128);
+            $table->string('client_phone', 32);
             $table->text('order_params')->nullable();
             $table->integer('order_sum');
             $table->tinyInteger('order_status')->default(0);
             $table->timestamp('order_date');
             $table->timestamp('payment_date')->nullable();
+            $table->integer('payment_id')->nullable();
         });
     }
 

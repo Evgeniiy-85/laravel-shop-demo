@@ -19,8 +19,7 @@
                             <input type="text" class="form-control" name="pay_title"  value="{{ $payment->pay_title }}" placeholder="Введите название">
                         </div>
 
-                        <div class="form-group">
-                            <label for="input_file">Изображение</label>
+                        <div class="form-group"><label for="input_file">Изображение</label>
                             <div class="input-group">
                                 <label class="btn bg-purple input-file" for="pay_image">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
@@ -29,7 +28,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group"><label for="input_file">Описание</label>
                             <textarea name="pay_desc">{{ $payment->pay_desc }}</textarea>
                         </div>
                     </div>
