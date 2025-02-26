@@ -63,6 +63,7 @@ Route::group(['prefix' => '/products'], function () {
     Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
     Route::get('/{alias}', [App\Http\Controllers\ProductsController::class, 'product'])->name('products.product');
 });
+Route::get('/search', [App\Http\Controllers\ProductsController::class, 'search'])->name('search');
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');

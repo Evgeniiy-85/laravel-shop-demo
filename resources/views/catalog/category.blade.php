@@ -17,17 +17,11 @@
         @else
             <div class="products">
                 <div class="products-filter_wrap">
-                    @include('catalog.partials.product_filter')
+                    @include('products.partials.product_filter')
                 </div>
 
                 <div class="products-list">
-                    @if($products->count())
-                        @include('catalog.partials.product_list')
-                    @else
-                        <div class="empty-result">
-                            <h3>Ничего не найдено</h3>
-                        </div>
-                    @endif
+                    @include('products.partials.product_list')
                 </div>
             </div>
         @endif

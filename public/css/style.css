@@ -534,12 +534,12 @@ html body footer li a {
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1019607843);
   margin-bottom: 20px;
+  height: 400px;
 }
 .product-card .product-images-slider {
   display: flex;
   justify-content: center;
   width: 540px;
-  height: 100%;
   max-height: 100%;
   max-width: 100%;
   padding-right: 20px;

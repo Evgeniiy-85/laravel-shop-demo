@@ -20,7 +20,7 @@
                             <div data-img_src="{{ $product->getImageUrl($prod_image) }}" class="image-thumb{{ $key == 0 ? ' active' : '' }}">
                                 <img src="{{ $product->getImageUrl($prod_image) }}">
                             </div>
-                        @endforeach;
+                        @endforeach
                     @endif
                 </div>
 

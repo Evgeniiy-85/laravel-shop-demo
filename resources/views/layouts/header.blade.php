@@ -38,7 +38,7 @@
                         <div class="search-wrap">
                             <form id="form-search" action="/search" method="get">
                                 <div class="input-group">
-                                    <input type="text" name="q" value="" placeholder="Поиск по сайту">
+                                    <input type="text" name="q" placeholder="Поиск по сайту" value="{{ request()->input('q') }}">
                                     <button type="submit" class="btn-search"></button>
                                 </div>
                             </form>
