@@ -14,15 +14,15 @@
 
         <div class="product-card">
             <div class="product-images-slider">
-                <div class="images-thumbs">
-                    @if($product->prod_images)
-                        @foreach($product->getImages() as $key => $prod_image)
+                @if($images = $product->getImages())
+                    <div class="images-thumbs">
+                        @foreach($images as $key => $prod_image)
                             <div data-img_src="{{ $product->getImageUrl($prod_image) }}" class="image-thumb{{ $key == 0 ? ' active' : '' }}">
                                 <img src="{{ $product->getImageUrl($prod_image) }}">
                             </div>
                         @endforeach
-                    @endif
-                </div>
+                    </div>
+                @endif
 
                 <div class="images-main">
                     <img src="{{ $product->prod_image_url }}">
