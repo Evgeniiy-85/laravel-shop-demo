@@ -55,17 +55,9 @@ Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name(
 
 Route::group(['prefix' => '/catalog'], function () {
     Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
-    //Route::get('/category', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
+    Route::get('/category', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
     Route::get('/{alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
-    Route::get('/{category_alias}/{subcategory_alias}', [App\Http\Controllers\CatalogController::class, 'subcategory'])->name('categories.subcategory');
-
-
-});
-
-
-Route::group(['prefix' => '/categories'], function () {
-    Route::get('/', [App\Http\Controllers\Admin\CategoriesController::class, 'index'])->name('categories');
-    //Route::get('/category', [App\Http\Controllers\Admin\CategoriesController::class, 'category'])->name('categories.category');
+    Route::get('/{alias}/{subcategory_alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('categories.category');
 });
 
 Route::group(['prefix' => '/products'], function () {

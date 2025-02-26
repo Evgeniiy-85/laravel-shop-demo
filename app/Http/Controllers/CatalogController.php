@@ -16,9 +16,9 @@ class CatalogController extends Controller {
         ]);
     }
 
-    public function category($alias) {
+    public function category($alias, $subcategory_alias = '') {
         $category = Category::where('cat_status', Category::STATUS_ACTIVE)
-        ->where('cat_alias', $alias)
+        ->where('cat_alias', $subcategory_alias ?: $alias)
         ->first();
         if (!$category) {
             abort(404);
@@ -43,39 +43,4 @@ class CatalogController extends Controller {
             'filter' => $filter,
         ]);
     }
-
-
-    public function subcategory($category_alias, $subcategory_alias) {
-        $category = Category::where('cat_status', Category::STATUS_ACTIVE)
-            ->where('cat_alias', $category_alias)
-            ->first();
-        $subcategory = Category::where('cat_status', Category::STATUS_ACTIVE)
-            ->where('cat_alias', $subcategory_alias)
-            ->first();
-        if (!$category || !$subcategory) {
-            abort(404);
-        }
-
-        $subcategories = Category::where('cat_status', Category::STATUS_ACTIVE)
-            ->where('cat_parent', $subcategory->cat_id)
-            ->get();
-
-        $products = $filter = [];
-        if (!$subcategories->count()) {
-            $products = Product::where('prod_status', Product::STATUS_ACTIVE)
-                ->where('prod_category', $subcategory->cat_id)
-                ->get();
-            $filter = new ProductFilter();
-        }
-
-        return view('catalog.subcategory', [
-            'category' => $category,
-            'subcategory' => $subcategory,
-            'subcategories' => $subcategories,
-            'products' => $products,
-            'filter' => $filter,
-        ]);
-    }
-
-
 }
