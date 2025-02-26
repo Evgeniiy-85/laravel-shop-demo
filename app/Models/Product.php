@@ -22,10 +22,6 @@ class Product extends Model {
     public $timestamps = false;
     public $primaryKey = 'prod_id';
 
-    protected $attributes = [
-        'prod_image' => '',
-    ];
-
     /**
      * @param int|null $status
      * @return int|array
@@ -37,11 +33,31 @@ class Product extends Model {
     /**
      * @return Attribute
      */
-    protected function imageUrl(): Attribute {
+    protected function prodImageUrl(): Attribute {
         return Attribute::make(
-            get: fn () =>  $this->prod_image ? Storage::disk('products')->url($this->prod_image) : asset('/images/no-img.png'),
+            get: function() {
+                $prod_images = $this->getImages();
+                return $prod_images ? Storage::disk('products')->url($prod_images[0]) : asset('/images/no-img.png');
+            },
         );
     }
+
+
+    /**
+     * @return false|mixed
+     */
+    public function getImages() {
+        return $this->prod_images ? json_decode($this->prod_images, 1) : false;
+    }
+
+    /**
+     * @param $image
+     * @return string
+     */
+    public function getImageUrl($image) {
+        return Storage::disk('products')->url($image);
+    }
+
 
     /**
      * @var string[]
