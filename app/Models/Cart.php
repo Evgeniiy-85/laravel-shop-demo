@@ -73,8 +73,7 @@ class Cart extends Model {
      * @return true
      */
     public function remove() {
-        //Yii::$app->session->set($this->save_key, $this->attributes);
-
+        Session::remove($this->save_key);
         return true;
     }
 

@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="text-right">
-                        <button type="submit" class="button button-ui btn_a-primary button-small" name="send">Выписать счет</button>
+                        <button type="submit" class="button button-ui btn_a-primary button-small" name="send">Отправить</button>
                     </div>
                 </form>
             </div>
