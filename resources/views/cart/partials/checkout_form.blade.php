@@ -15,6 +15,10 @@
                 <input type="text" class="form-control" name="client_surname">
             </div>
 
+            <div class="form-group"><label class="control-label">Отчество</label>
+                <input type="text" class="form-control" name="client_patronymic">
+            </div>
+
             <div class="form-group"><label class="control-label">Телефон</label>
                 <input type="text" class="form-control" name="client_phone">
             </div>

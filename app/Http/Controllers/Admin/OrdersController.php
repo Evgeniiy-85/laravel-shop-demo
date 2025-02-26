@@ -24,13 +24,13 @@ class OrdersController extends Controller {
             return view('admin.errors.404');
         }
 
-        $payment = Payment::find($order->payment_id);
+        $payment = $order->payment_id ? Payment::find($order->payment_id) : null;
         $order->order_params = $order->order_params ? json_decode($order->order_params, 1) : null;
 
         return view('admin.orders.edit', [
             'order' => $order,
             'statuses' => Order::getStatuses(),
-            'payment' => $payment->payment(),
+            'payment' => $payment ? $payment->payment() : null,
         ]);
     }
 

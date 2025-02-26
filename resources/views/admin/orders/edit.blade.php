@@ -26,11 +26,11 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group"><label>Имя клиента</label>
-                                    <input type="text" class="form-control" name="client_name" value="{{ $order->client_name }}">
+                                    <input type="text" class="form-control" name="client_name" value="{{ $order->client_name }}" required>
                                 </div>
 
                                 <div class="form-group"><label>Фамилия</label>
-                                    <input type="text" class="form-control" name="client_surname" value="{{ $order->client_surname }}">
+                                    <input type="text" class="form-control" name="client_surname" value="{{ $order->client_surname }}" required>
                                 </div>
 
                                 <div class="form-group"><label>Отчество клиента</label>
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div class="form-group"><label>Телефон клиента</label>
-                                    <input type="email" class="form-control" name="client_phone" value="{{ $order->client_phone }}">
+                                    <input type="text" class="form-control" name="client_phone" value="{{ $order->client_phone }}">
                                 </div>
 
                                 <div class="form-group"><label>Статус</label>
@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
 
-                                @if($order->order_params['pay_info'])
+                                @if(isset($order->order_params['pay_info']))
                                     <div class="info-box bg-light mt-2 order-info">
                                         <div class="info-box-content">
                                             <strong class="mt-2 mb-1 info-box-title">Платеж</strong>

@@ -56,53 +56,7 @@ class Order extends Model {
      * @var string[]
      */
     protected $fillable = [
-        'order_sum', 'client_name', 'client_surname', 'client_email',
-        'client_phone', 'order_date', 'order_status', 'payment_id'
+        'order_sum', 'client_name', 'client_surname', 'client_email', 'client_phone',
+        'order_date', 'order_status', 'payment_id', 'client_patronymic'
     ];
-
-
-    public function getOrderInfo() {
-        if ($this->order_params) {
-            $params = json_decode($this->order_params, true);
-            if (isset($params['pay_info'])) {
-                $payment = Payment::find($this->payment_id);
-                $pay_name = ucfirst($payment->pay_name);
-                $class = "\App\Modules\Payments\\{$pay_name}\\Models\Payment";
-                $payment_obj = new $class();
-                $labels = $payment_obj->attributeLabels();
-
-
-
-                print_r($params['pay_info']);exit;
-$text = array_combine (array_keys($params['pay_info']), array_values($labels));
-
-                print_r($params['pay_info']);exit;
-
-
-                print_r($obj);exit;
-
-
-            }
-
-        }
-
-
-        print_r($this->order_params);exit;
-
-        $keys = [
-            'inn' => 'ИНН/КПП',
-            'bik' => 'БИК',
-            'billing_number' => 'Р/счёт',
-            'address' => 'Адрес для отправки закрывающих документов',
-
-        ];
-
-        if (1) {
-
-        }
-
-
-
-        return $keys[$key] ?? $key;
-    }
 }

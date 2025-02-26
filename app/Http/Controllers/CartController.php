@@ -48,6 +48,7 @@ class CartController extends Controller {
             'order_sum' => $cart->total,
             'client_name' => $request->input('client_name'),
             'client_surname' => $request->input('client_surname'),
+            'client_patronymic' => $request->input('client_patronymic'),
             'client_email' => $request->input('client_email'),
             'client_phone' => $request->input('client_phone'),
             'order_date' => Carbon::now(),
