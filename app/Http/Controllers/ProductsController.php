@@ -74,7 +74,7 @@ class ProductsController extends Controller {
 
         $products = $f_products ? Product
             ::where('prod_status', Product::STATUS_ACTIVE)
-            ->where('prod_id', array_keys($f_products))
+            ->whereIn('prod_id', array_keys($f_products))
             ->get() : [];
 
         return view('products.favorites', [
