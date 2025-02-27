@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Favorites;
 use App\Models\Product;
 use App\Models\ProductFilter;
+use App\models\ProductReview;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller {
@@ -22,15 +23,23 @@ class ProductsController extends Controller {
         $product = Product::where('prod_status', Product::STATUS_ACTIVE)
         ->where('prod_alias', $alias)
         ->first();
+
         if (!$product) {
             abort(404);
         }
 
         $category = $product->prod_category ? Category::find($product->prod_category) : false;
 
+        $reviews = ProductReview::where('review_status', ProductReview::STATUS_ACTIVE)
+            ->where('prod_id', $product->prod_id);
+        $count_reviews = $reviews->count();
+        $product_rating = $count_reviews ? number_format($reviews->sum('review_rating') / $count_reviews, 1) : 0;
+
         return view('products.product', [
             'product' => $product,
             'category' => $category,
+            'count_reviews' => $count_reviews,
+            'product_rating' => $product_rating,
         ]);
     }
 

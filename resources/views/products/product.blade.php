@@ -34,10 +34,11 @@
 
                 <div class="product-stat">
                     <a class="product-rating" href="#product_reviews">
-                        @if(1)
-
+                        @if($count_reviews)
+                            {{ App\Helpers\UI::rating($product_rating) }}&nbsp;
+                            {{ "{$count_reviews} ".App\Helpers\Helper::addTermination($count_reviews, 'отзыв[TRMNT]') }}
                         @else
-
+                            <div class="rating-item"><img class="sale" src="/images/icons/rating-star-empty.svg"></div>&nbsp;нет отзывов
                         @endif
                     </a>
                 </div>
@@ -57,6 +58,10 @@
                 </div>
                 <div class="product-bottom">Наличите: в наличии</div>
             </div>
+        </div>
+
+        <div class="products-reviews_wrap" id="product_reviews">
+            {{ Widget::ProductReviews(['prod_id' => $product->prod_id]) }}
         </div>
     </div>
 @endsection
