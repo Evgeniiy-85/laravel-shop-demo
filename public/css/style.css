@@ -807,32 +807,32 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #
   font-weight: 700;
   line-height: 20px;
 }
-.product-card .product-by-one_line {
+.product-card .product-buttons-one_line {
   display: flex;
   flex-direction: row;
   margin-bottom: 16px;
   min-height: 64px;
 }
-.product-card .product-by-one_line .product-price {
+.product-card .product-buttons-one_line .product-price {
   margin-right: 10px;
 }
-.product-card .product-by-one_line .product-buttons {
+.product-card .product-buttons-one_line .product-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 64px;
 }
-.product-card .product-by-one_line .product-buttons .product-favorites {
+.product-card .product-buttons-one_line .product-buttons .product-favorites {
   margin-right: 10px;
   height: 100%;
 }
-.product-card .product-by-one_line .product-buttons .product-favorites .button {
+.product-card .product-buttons-one_line .product-buttons .product-favorites .button {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 64px;
 }
-.product-card .product-by-one_line .product-buttons .product-favorites .button:after {
+.product-card .product-buttons-one_line .product-buttons .product-favorites .button:after {
   display: block;
   content: "";
   -webkit-mask-size: contain;
@@ -847,15 +847,18 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #
           mask-image: url(/images/icons/favourites-icon.svg);
   background-color: #afafaf;
 }
-.product-card .product-by-one_line .product-buttons .product-favorites .button.active:after {
+.product-card .product-buttons-one_line .product-buttons .product-favorites .button.active:after {
   background-color: #ff5c52;
   -webkit-mask-image: url(/images/icons/favourites-icon-active.svg);
           mask-image: url(/images/icons/favourites-icon-active.svg);
 }
-.product-card .product-by-one_line .product-buttons .product-favorites .button:hover:after {
+.product-card .product-buttons-one_line .product-buttons .product-favorites .button:hover:after {
   background-color: #ff5c52;
 }
-.product-card .product-by-one_line .product-buttons .button {
+.product-card .product-buttons-one_line .product-buttons .product-by {
+  height: 100%;
+}
+.product-card .product-buttons-one_line .product-buttons .button {
   height: 100%;
 }
 .product-card .product-title {

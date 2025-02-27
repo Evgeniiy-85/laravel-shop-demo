@@ -47,7 +47,7 @@ class Favorites extends Model {
      */
     public function removeProduct($prod_id) {
         $this->loadProducts();
-        if ($this->products && isset($this->products[$prod_id])) {
+        if (isset($this->products[$prod_id])) {
             unset($this->products[$prod_id]);
         }
 
@@ -58,6 +58,10 @@ class Favorites extends Model {
      * @return true
      */
     private function saveProducts() {
+        file_put_contents('test.txt', "4444444444444444444", FILE_APPEND);
+        file_put_contents('test.txt', json_encode($this->products)."\n", FILE_APPEND);
+
+
         Session::put($this->save_key, $this->products);
         Session::save();
 

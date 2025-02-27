@@ -99,7 +99,7 @@
     line-height: 20px;
   }
 
-  .product-by-one_line {
+  .product-buttons-one_line {
     display: flex;
     flex-direction: row;
     margin-bottom: 16px;
@@ -156,6 +156,9 @@
         }
       }
 
+      .product-by {
+        height: 100%;
+      }
       .button {
         height: 100%;
       }

@@ -38,24 +38,29 @@
                             {{ App\Helpers\UI::rating($product_rating) }}&nbsp;
                             {{ "{$count_reviews} ".App\Helpers\Helper::addTermination($count_reviews, 'отзыв[TRMNT]') }}
                         @else
-                            <div class="rating-item"><img class="sale" src="/images/icons/rating-star-empty.svg"></div>&nbsp;нет отзывов
+                            <div class="rating-item">
+                                <img class="sale" src="/images/icons/rating-star-empty.svg">&nbsp;нет отзывов
+                            </div>
                         @endif
                     </a>
                 </div>
 
-                <div class="product-by product-by-one_line">
+                <div class="product-buttons-one_line">
                     <div class="product-price">
                         {{ $product->prod_price }} ₽
                     </div>
 
                     <div class="product-buttons">
                         <div class="product-favorites">
-
+                            <button type="button" class="button button-ui btn_a-grey" data-prod_id="{{ $product->prod_id }}" data-action_type="add"></button>
                         </div>
 
-                        <a class="button button-ui btn_a-outline-primary" href="/buy/{{ $product->prod_alias }}">Купить</a>
+                        <div class="product-by">
+                            <a class="button button-ui btn_a-outline-primary" href="/buy/{{ $product->prod_alias }}">Купить</a>
+                        </div>
                     </div>
                 </div>
+
                 <div class="product-bottom">Наличите: в наличии</div>
             </div>
         </div>

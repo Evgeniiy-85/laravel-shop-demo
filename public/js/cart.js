@@ -12,6 +12,8 @@ class Cart {
     Events() {
         let cart = this;
         $(document).on('click', '.cart [data-action_type], .product-by [data-action_type]', function() {
+            console.log('!!!!');
+            console.log($(this).closest('.cart'));
             let action_type = $(this).data('action_type');
             if (action_type == 'show') {
                 $('#cart_modal').addClass('show');
