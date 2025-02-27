@@ -35,11 +35,19 @@ class ProductsController extends Controller {
 
 
     public function search(Request $request) {
-        $products = Product::where('prod_status', Product::STATUS_ACTIVE);
-        $filter = new ProductFilter();
+        $search = $request->input('q');
+        $products = Product
+            ::where('prod_status', Product::STATUS_ACTIVE)
+            ->leftJoin('categories', 'categories.cat_id', '=', 'products.prod_category');
 
-        if ($request->input('q')) {
-            $products->where('prod_title', 'like', "%{$request->input('q')}%");
+        if ($search) {
+            $products->where('prod_title', 'like', "%{$search}%")
+            ->orWhere('cat_title', 'like', "%{$search}%");
+        }
+
+        $filter = new ProductFilter();
+        if ($filter->loadFilter($request->input('filter'))) {
+            $filter->add($products);
         }
 
         return view('products.search', [

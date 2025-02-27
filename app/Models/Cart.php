@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 
 class Cart extends Model {
-    public $total = 0;
-    public $count_products = 0;
-    public $products = [];
-    public $quantity = [];
-    private $save_key = 'cart';
+    public int $total = 0;
+    public int $count_products = 0;
+    public array $products = [];
+    public array $quantity = [];
+    private string $save_key = 'cart';
 
 
+    /**
+     * @return void
+     */
     public function loadCart() {
         $data = Session::get($this->save_key);
         if ($data) {
@@ -26,6 +29,9 @@ class Cart extends Model {
         }
     }
 
+    /**
+     * @return void
+     */
     private function saveCart() {
         $data = [
             'total' => $this->total,
