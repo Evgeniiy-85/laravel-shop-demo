@@ -1,7 +1,21 @@
-<div class="site-catalog">
-    <h1>Ttttt</h1>
+@extends('layouts.main')
 
-    <div class="products">
-        @include('products.partials.product_list')
+@section('title')
+    Избранное
+@endsection
+
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('favorites') }}
+@endsection
+
+@section('content')
+    <div class="site-catalog">
+        <h1>Избранное</h1>
+
+        <div class="products">
+            <div class="products-list">
+                @include('products.partials.product_list')
+            </div>
+        </div>
     </div>
-</div>
+@endsection

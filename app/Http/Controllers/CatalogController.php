@@ -17,7 +17,7 @@ class CatalogController extends Controller {
         ]);
     }
 
-    public function category($alias, $subcategory_alias = '', Request $request) {
+    public function category(Request $request, $alias, $subcategory_alias = '') {
         $category = Category::where('cat_status', Category::STATUS_ACTIVE)
         ->where('cat_alias', $subcategory_alias ?: $alias)
         ->first();
@@ -29,12 +29,13 @@ class CatalogController extends Controller {
             ->where('cat_parent', $category->cat_id)
             ->get();
 
-        $products = $filter = [];
+        $filter = new ProductFilter();
+        $products = new Product();
+
         if (!$subcategories->count()) {
             $products = Product::where('prod_status', Product::STATUS_ACTIVE)
                 ->where('prod_category', $category->cat_id);
 
-            $filter = new ProductFilter();
             if ($filter->loadFilter($request->input('filter'))) {
                 $filter->add($products);
             }

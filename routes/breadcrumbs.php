@@ -112,3 +112,7 @@ Breadcrumbs::for('product', function (BreadcrumbTrail $trail, $product, $categor
     }
     $trail->push($product->prod_title);
 });
+Breadcrumbs::for('favorites', function (BreadcrumbTrail $trail) {
+    $trail->parent('catalog');
+    $trail->push('Избранное');
+});

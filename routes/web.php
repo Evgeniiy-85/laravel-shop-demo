@@ -64,6 +64,7 @@ Route::group(['prefix' => '/products'], function () {
     Route::get('/{alias}', [App\Http\Controllers\ProductsController::class, 'product'])->name('products.product');
 });
 Route::get('/search', [App\Http\Controllers\ProductsController::class, 'search'])->name('search');
+Route::get('/favorites', [App\Http\Controllers\ProductsController::class, 'favorites'])->name('favorites');
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
@@ -77,7 +78,6 @@ Route::group(['prefix' => '/api'], function () {
 
     Route::group(['prefix' => '/favorites'], function () {
         Route::post('/', [\App\Http\Controllers\API\FavoritesController::class, 'index'])->name('favorites');
-        Route::post('/actions', [\App\Http\Controllers\API\FavoritesController::class, 'actions'])->name('favorites.actions');
     });
 });
 

@@ -1,4 +1,4 @@
-@if($products->count())
+@if($products && $products->count())
     @foreach($products as $product)
         <div class="product">
             <div class="product-cover">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Favorites;
 use App\Models\Product;
 use App\Models\ProductFilter;
 use Illuminate\Http\Request;
@@ -54,6 +55,21 @@ class ProductsController extends Controller {
             'products' => $products->get(),
             'products_count' => $products->count(),
             'filter' => $filter,
+        ]);
+    }
+
+
+    public function favorites() {
+        $favorites = new Favorites();
+        $f_products = $favorites->getProducts();
+
+        $products = $f_products ? Product
+            ::where('prod_status', Product::STATUS_ACTIVE)
+            ->where('prod_id', array_keys($f_products))
+            ->get() : [];
+
+        return view('products.favorites', [
+            'products' => $products
         ]);
     }
 }

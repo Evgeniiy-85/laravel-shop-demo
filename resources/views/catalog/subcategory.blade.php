@@ -9,9 +9,9 @@
 @endsection
 
 @section('content')
-    <h1>{{ $subcategory->cat_title }}</h1>
-
     <div class="site-catalog">
+        <h1>{{ $subcategory->cat_title }}</h1>
+
         @if($subcategories->count())
             @include('catalog.partials.subcategory_list')
         @else
