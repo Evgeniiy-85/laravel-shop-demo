@@ -3,6 +3,7 @@ body {
   display: grid;
   height: 100vh;
   grid-template-rows: auto 1fr auto;
+  font-family: PT Sans, Helvetica, Arial, sans-serif;
 }
 
 header + .container {

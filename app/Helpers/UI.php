@@ -34,6 +34,6 @@ class UI {
             $html .= str_repeat($item, $count_empty_stars);
         }
 
-        echo "<div class=\"rating\" data-rating=\"$rating\">$html</div>";
+        return "<div class=\"rating\" data-rating=\"$rating\">$html</div>";
     }
 }

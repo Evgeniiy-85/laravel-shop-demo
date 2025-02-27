@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="review-rating">
-                            {{ App\Helpers\UI::rating($review->review_rating) }}
+                            {!! App\Helpers\UI::rating($review->review_rating) !!}
                         </div>
                     </div>
 
