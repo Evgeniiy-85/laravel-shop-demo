@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('prod_id');
             $table->text('review_advantage');
+            $table->text('review_disadvantage');
             $table->text('review_comment');
             $table->tinyInteger('review_rating');
             $table->tinyInteger('review_status')->default(0);

@@ -1,6 +1,6 @@
 <div class="product-reviews">
     <div class="reviews-header">
-        <a href="">Отзывы {{ $count ? '('.$count.')' : '' }}</a>
+        <a href="#">Отзывы {{ $count ? '('.$count.')' : '' }}</a>
     </div>
 
     @if($reviews->count())
