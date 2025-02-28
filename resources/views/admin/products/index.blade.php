@@ -7,7 +7,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-3">
-            <a href="{{ route('admin.products.add') }}" class="btn btn-block btn-outline-info btn-lg">
+            <a href="{{ route('admin.products.add') }}" class="btn btn-outline-primary btn-lg">
                 <span>
                     <span class="fa fa-plus"></span> Добавить продукт
                 </span>
@@ -18,8 +18,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover">
+                <div class="card-header">
+                    <h3 class="card-title">Список продуктов</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Изображение</th>
@@ -36,7 +40,7 @@
                                     @php
                                         $category = $product->prod_category ? App\Models\Category::find($product->prod_category) : false;
                                     @endphp
-                                    <tr>
+                                    <tr class="align-middle">
                                         <td width="160">
                                             <div class="card_cover">
                                                 <img src="{{ $product->prod_image_url }}"/>
@@ -56,7 +60,7 @@
                                         </td>
 
                                         <td>
-                                            <small class="badge {{ $product->prod_status == App\Models\Product::STATUS_ACTIVE ? 'badge-success' : 'badge-danger' }}">
+                                            <small class="badge {{ $product->prod_status == App\Models\Product::STATUS_ACTIVE ? 'text-bg-success' : 'text-bg-danger' }}">
                                                 {{ App\Models\Product::getStatuses($product->prod_status) }}
                                             </small>
                                         </td>
@@ -75,11 +79,11 @@
                     </table>
                 </div>
 
-                <div class="card-footer clearfix">
-                    @if(!$products->count())
-                        Ничего не найден
-                    @endif
-                </div>
+                @if(!$products->count())
+                    <div class="card-footer clearfix">
+                        Ничего не найдено
+                    </div>
+                @endif
             </div>
         </div>
     </div>

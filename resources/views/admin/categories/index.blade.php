@@ -7,7 +7,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-3">
-            <a href="{{ route('admin.categories.add') }}" class="btn btn-block btn-outline-info btn-lg">
+            <a href="{{ route('admin.categories.add') }}" class="btn btn-outline-primary btn-lg">
                 <span>
                     <span class="fa fa-plus"></span> Добавить категорию
                 </span>
@@ -18,8 +18,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover">
+                <div class="card-header">
+                    <h3 class="card-title">Список категорий</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>Изображение</th>
@@ -36,7 +40,7 @@
                                     @php
                                         $parent_category = $category->cat_parent ? App\Models\Category::find($category->cat_parent) : false;
                                     @endphp
-                                    <tr>
+                                    <tr class="align-middle">
                                         <td width="160">
                                             <div class="card_cover">
                                                 <img src="{{ $category->cat_image_url }}"/>
@@ -56,7 +60,7 @@
                                         </td>
 
                                         <td>
-                                            <small class="badge {{ $category->cat_status == App\Models\Category::STATUS_ACTIVE ? 'badge-success' : 'badge-danger' }}">
+                                            <small class="badge {{ $category->cat_status == App\Models\Category::STATUS_ACTIVE ? 'text-bg-success' : 'text-bg-danger' }}">
                                                 {{ App\Models\Category::getStatuses($category->cat_status) }}
                                             </small>
                                         </td>
@@ -75,11 +79,11 @@
                     </table>
                 </div>
 
-                <div class="card-footer clearfix">
-                    @if(!$categories->count())
-                        Ничего не найден
-                    @endif
-                </div>
+                @if(!$categories->count())
+                    <div class="card-footer clearfix">
+                        Ничего не найдено
+                    </div>
+                @endif
             </div>
         </div>
     </div>

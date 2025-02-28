@@ -15,7 +15,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-md-6">
-            <div class="card card-primary">
+            <div class="card card-primary card-outline">
                 <div class="card-header">
                     <h3 class="card-title">Заказ {{ $order->order_id }}</h3>
                 </div>
@@ -25,27 +25,27 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <div class="form-group"><label>Имя клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">Имя клиента</label>
                                     <input type="text" class="form-control" name="client_name" value="{{ $order->client_name }}" required>
                                 </div>
 
-                                <div class="form-group"><label>Фамилия</label>
+                                <div class="form-group mb-3"><label class="form-label">Фамилия</label>
                                     <input type="text" class="form-control" name="client_surname" value="{{ $order->client_surname }}" required>
                                 </div>
 
-                                <div class="form-group"><label>Отчество клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">Отчество клиента</label>
                                     <input type="text" class="form-control" name="client_patronymic" value="{{ $order->client_patronymic }}">
                                 </div>
 
-                                <div class="form-group"><label>E-mail клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">E-mail клиента</label>
                                     <input type="email" class="form-control" name="client_email" value="{{ $order->client_email }}">
                                 </div>
 
-                                <div class="form-group"><label>Телефон клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">Телефон клиента</label>
                                     <input type="text" class="form-control" name="client_phone" value="{{ $order->client_phone }}">
                                 </div>
 
-                                <div class="form-group"><label>Статус</label>
+                                <div class="form-group mb-3"><label class="form-label">Статус</label>
                                     <select class="form-control" name="order_status">
                                         @foreach ($statuses as $status => $title)
                                             <option value="{{ $status }}" @if($order->order_status == $status) selected @endif">{{ $title }}</option>
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                        <button type="submit" class="btn btn-primary float-end">Сохранить</button>
                     </div>
                 </form>
             </div>

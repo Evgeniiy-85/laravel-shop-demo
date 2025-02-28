@@ -99,6 +99,3 @@ foreach ($modules as $module => $submodules) {
 }
 
 
-Auth::routes();
-
-

@@ -7,7 +7,7 @@
 @section('content')
     <div class="row mb-3">
         <div class="col-3">
-            <a href="{{ route('admin.users.add') }}" class="btn btn-block btn-outline-info btn-lg">
+            <a href="{{ route('admin.users.add') }}" class="btn btn-outline-primary btn-lg">
                 <span>
                     <span class="fa fa-plus"></span> Добавить пользователя
                 </span>
@@ -18,8 +18,12 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover">
+                <div class="card-header">
+                    <h3 class="card-title">Список пользователей</h3>
+                </div>
+
+                <div class="card-body p-0">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -39,7 +43,7 @@
                                     @php
                                         $category = $user->user_category ? App\Models\Category::find($user->user_category) : false;
                                     @endphp
-                                    <tr>
+                                    <tr class="align-middle">
                                         <td width="32">
                                             <a href="/admin/users/edit/{{ $user->user_id }}">{{ $user->user_id }}</a>
                                         </td>
@@ -64,11 +68,11 @@
                     </table>
                 </div>
 
-                <div class="card-footer clearfix">
-                    @if(!$users->count())
-                        Ничего не найден
-                    @endif
-                </div>
+                @if(!$users->count())
+                    <div class="card-footer clearfix">
+                        Ничего не найдено
+                    </div>
+                @endif
             </div>
         </div>
     </div>

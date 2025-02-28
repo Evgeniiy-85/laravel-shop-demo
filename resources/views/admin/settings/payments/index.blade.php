@@ -12,7 +12,7 @@
                     <div class="row payments-list">
                         @if($payments)
                             @foreach ($payments as $payment)
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-3">
                                     <div class="card card-default card-payment">
                                         <div class="card-body">
                                             <div class="row">
