@@ -14,6 +14,7 @@ return [
         'submenu' => [
             [
                 'text' => 'Список категорий',
+                'icon' => 'bi bi-list',
                 'url' => 'admin.categories',
                 'active' => ['admin.categories', 'admin.categories.*'],
             ],
@@ -21,12 +22,13 @@ return [
     ],
     [
         'text' => 'Продукты',
-        'icon' => 'bi briefcase',
+        'icon' => 'bi bi-briefcase',
         'label_color' => 'success',
         'active' => ['admin.products', 'admin.products.*'],
         'submenu' => [
             [
                 'text' => 'Список продуктов',
+                'icon' => 'bi bi-list',
                 'url' => 'admin.products',
                 'active' => ['admin.products', 'admin.products.*'],
             ],
@@ -40,9 +42,9 @@ return [
         'submenu' => [
             [
                 'text' => 'Список пользователей',
+                'icon' => 'bi bi-list',
                 'url' => 'admin.users',
                 'active' => ['admin.users', 'admin.users.*'],
-                'icon' => 'bi bi-people-fill',
             ],
         ],
     ],
@@ -53,13 +55,14 @@ return [
         'submenu' => [
             [
                 'text' => 'Основные настройки',
+                'icon' => 'bi bi-wrench-adjustable',
                 'url' => 'admin.settings',
                 'active' => ['admin.settings'],
-                'icon' => 'bi bi-wrench-adjustable',
             ],
             [
                 'text' => 'Платежные модули',
                 'url' => 'admin.settings.payments',
+                'icon' => 'bi bi-credit-card',
                 'active' => ['admin.settings.payments', 'admin.settings.payments.*'],
             ],
         ],

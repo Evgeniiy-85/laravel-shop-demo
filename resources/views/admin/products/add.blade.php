@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="input_file">Изображение</label>
+                            <label for="input_file" class="mb-2">Изображение</label>
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info" for="prod_image">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>

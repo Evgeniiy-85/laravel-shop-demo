@@ -6,8 +6,6 @@
                     <i class="bi bi-list"></i>
                 </a>
             </li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Home</a></li>
-            <li class="nav-item d-none d-md-block"><a href="#" class="nav-link">Contact</a></li>
         </ul>
 
         <ul class="navbar-nav ms-auto">
@@ -56,8 +54,8 @@
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
                 <div class="nav-link">
-                    <img src="/images/admin/user8-128x128.jpg" class="user-image rounded-circle shadow" alt="User Image"/>
-                    <span class="d-none d-md-inline">Alexander Pierce</span>
+                    <img src="{{ Auth::user()->user_photo_url }}" class="user-image rounded-circle shadow" alt="User Image"/>
+                    <span class="d-none d-md-inline">{{ Auth::user()->user_name.' '.Auth::user()->user_surname }}</span>
                 </div>
             </li>
             <!--end::User Menu Dropdown-->
