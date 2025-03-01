@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoriesRequest;
 use App\Models\Category;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
-class CategoriesController extends Controller {
+class CategoriesController extends AdminController {
 
     /*
      * list categories

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller {
 
+    protected function guard()
+    {exit;
+        return Auth::guard('admin');
+    }
+
     public function login() {
         return view('admin.auth.login');
     }
@@ -25,6 +30,9 @@ class LoginController extends Controller {
             'user_status' => User::STATUS_ACTIVE,
             'user_role' => User::ROLE_ADMIN,
         ])) {
+
+            return redirect()->intended(route('admin.index'));
+
             return redirect()->route('admin.index');
         }
 

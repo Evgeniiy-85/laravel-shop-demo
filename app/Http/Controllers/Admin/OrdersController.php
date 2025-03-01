@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Order;
 
-class OrdersController extends Controller {
+class OrdersController extends AdminController {
 
     public function index() {
         $orders = Order::orderBy('order_id', 'desc')->get();

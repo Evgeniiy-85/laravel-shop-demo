@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\Helper;
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UsersRequest;
 use App\Models\User;
-use App\Models\Category;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash;
 
-class UsersController extends Controller {
+class UsersController extends AdminController {
 
     public function index() {
         return view('admin.users.index', [

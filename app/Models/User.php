@@ -85,4 +85,9 @@ class User extends Authenticatable {
     public function getAuthPassword() {
         return $this->user_password;
     }
+
+
+    public function isAdministrator() {
+        return $this->user_role == self::ROLE_ADMIN;
+    }
 }
