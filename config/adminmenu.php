@@ -9,12 +9,12 @@ return [
     ],
     [
         'text' => 'Категории',
-        'icon' => 'bi bi-table',
+        'icon' => 'bi bi-grid-3x3-gap',
         'active' => ['admin.categories', 'admin.categories.*'],
         'submenu' => [
             [
                 'text' => 'Список категорий',
-                'icon' => 'bi bi-list',
+                'icon' => 'bi bi-card-list',
                 'url' => 'admin.categories',
                 'active' => ['admin.categories', 'admin.categories.*'],
             ],
@@ -28,7 +28,7 @@ return [
         'submenu' => [
             [
                 'text' => 'Список продуктов',
-                'icon' => 'bi bi-list',
+                'icon' => 'bi bi-card-list',
                 'url' => 'admin.products',
                 'active' => ['admin.products', 'admin.products.*'],
             ],
@@ -42,7 +42,7 @@ return [
         'submenu' => [
             [
                 'text' => 'Список пользователей',
-                'icon' => 'bi bi-list',
+                'icon' => 'bi bi-card-list',
                 'url' => 'admin.users',
                 'active' => ['admin.users', 'admin.users.*'],
             ],

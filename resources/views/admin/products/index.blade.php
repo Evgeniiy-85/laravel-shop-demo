@@ -67,9 +67,9 @@
 
                                         <td class="text-right">
                                             <div class="card-tools" style="width:140px;">
-                                                <a class="btn btn-tool btn-default bg-gradient-primary" href="{{ route('products.product', $product->prod_alias) }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
-                                                <a class="btn btn-tool btn-default bg-gradient-success" href="{{ route('admin.products.edit', $product->prod_id) }}"><i class="fa fa-pencil-alt"></i></a>
-                                                <a class="btn btn-tool btn-default bg-gradient-danger" href="{{ route('admin.products.delete', $product->prod_id) }}" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-tool text-bg-primary" href="{{ route('products.product', $product->prod_alias) }}" target="_blank"><i class="fa fa-external-link-alt"></i></a>
+                                                <a class="btn btn-tool text-bg-success" href="{{ route('admin.products.edit', $product->prod_id) }}"><i class="fa fa-pencil-alt"></i></a>
+                                                <a class="btn btn-tool text-bg-danger" href="{{ route('admin.products.delete', $product->prod_id) }}" onclick="return confirm('Вы уверены?')"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

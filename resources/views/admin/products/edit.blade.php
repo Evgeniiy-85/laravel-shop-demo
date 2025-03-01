@@ -60,6 +60,10 @@
                             </div>
                         </div>
 
+                        <div class="form-group mb-3"><label class="form-label">Описание</label>
+                            <textarea class="form-control" name="prod_desc">{{ $product->prod_desc }}</textarea>
+                        </div>
+
                         <div class="form-group mb-3"><label class="form-label">Статус</label>
                             <select class="form-control" name="prod_status">
                                 @foreach ($statuses as $status => $title)

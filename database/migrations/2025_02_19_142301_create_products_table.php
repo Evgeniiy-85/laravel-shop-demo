@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('prod_category')->default(0);
             $table->integer('prod_price');
             $table->integer('prod_quantity');
+            $table->text('prod_desc')->nullable();
             $table->boolean('prod_status')->default(1);
         });
     }

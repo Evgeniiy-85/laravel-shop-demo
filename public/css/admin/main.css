@@ -6,6 +6,25 @@
 .hidden {
     display: none;
 }
+.btn-tool {
+    color: #fff;
+}
+.btn-tool:hover {
+    background-color: #fff;
+}
+.btn-tool.text-bg-primary:hover {
+    background: #007bff linear-gradient(180deg, #267ad4, #0062cc) repeat-x !important;
+    border-color: #005cbf;
+}
+.btn-tool.text-bg-success:hover {
+    background: #28a745 linear-gradient(180deg, #409152, #1e7e34) repeat-x !important;
+    border-color: #1c7430;
+}
+.btn-tool.text-bg-danger:hover {
+    background: #dc3545 linear-gradient(180deg, #c7424f, #bd2130) repeat-x !important;
+    border-color: #b21f2d;
+}
+
 table td {
     white-space: normal;
     vertical-align: middle;
