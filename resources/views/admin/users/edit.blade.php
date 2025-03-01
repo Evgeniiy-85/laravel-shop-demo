@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="form-group mb-3"><label class="form-label">Пароль</label>
-                                    <input type="text" class="form-control" name="user_password" value="{{ $user->user_password }}" placeholder="Введите пароль, если нужно его обновить">
+                                    <input type="text" class="form-control" name="user_password" value="" placeholder="Введите пароль, если нужно его обновить">
                                 </div>
 
                                 <div class="form-group mb-3"><label class="form-label">Пол</label>

@@ -18,7 +18,7 @@
 
                     <li class="nav-item{{ $is_active && isset($menu_item['submenu']) ? ' menu-open' : ''}}">
                         <a href="{{ isset($menu_item['url']) ? route($menu_item['url']) : '#' }}" class="nav-link{{$is_active  ? ' active' : '' }}">
-                            <i class="nav-icon bi {{ $icon }}"></i>
+                            <i class="nav-icon {{ $icon }}"></i>
                             <p>
                                 {{ $menu_item['text'] }}
                                 @if(isset($menu_item['submenu']))
@@ -32,12 +32,12 @@
                                 @foreach($menu_item['submenu'] as $submenu_item)
                                     @php
                                         $is_active = isset($submenu_item['active']) && \Illuminate\Support\Facades\Route::is($submenu_item['active']);
-                                        $icon = $submenu_item['icon'] ?? 'bi-circle';
+                                        $icon = $submenu_item['icon'] ?? 'far fa-circle';
                                         @endphp
 
                                     <li class="nav-item">
                                         <a href="{{ isset($submenu_item['url']) ? route($submenu_item['url']) : '#' }}" class="nav-link{{ $is_active ? ' active' : '' }}">
-                                            <i class="nav-icon bi {{ $icon }}"></i>
+                                            <i class="nav-icon {{ $icon }}"></i>
                                             <p>{{ $submenu_item['text'] }}</p>
                                         </a>
                                     </li>

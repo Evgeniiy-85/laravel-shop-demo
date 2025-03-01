@@ -45,6 +45,9 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin'], function() {
         Route::get('/', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
         Route::get('/payments', [App\Http\Controllers\Admin\PaymentsController::class, 'index'])->name('admin.settings.payments');
     });
+
+    Route::get('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('admin.login');
+    Route::post('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'auth'])->name('admin.auth');
 });
 
 
@@ -97,5 +100,3 @@ foreach ($modules as $module => $submodules) {
         }
     }
 }
-
-

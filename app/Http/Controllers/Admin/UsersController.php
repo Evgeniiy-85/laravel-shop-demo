@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller {
 
@@ -49,7 +50,7 @@ class UsersController extends Controller {
     public function store(UsersRequest $request) {
         $user = new User();
         $user->fill($request->all());
-        $user->user_password_hash = md5('123456');
+        $user->user_password = Hash::make($request->input('password'));
 
         $user->save();
 
@@ -64,7 +65,7 @@ class UsersController extends Controller {
     public function update($id, UsersRequest $request) {
         $user = User::findOrFail($id);
         $user->fill($request->all());
-        $user->user_password_hash = md5('123456');
+        $user->user_password = Hash::make($request->input('user_password'));
         $user->save();
 
         return redirect()->route('admin.users')->with('success', 'Успешно');

@@ -18,4 +18,11 @@ class AdminController extends Controller {
 
         return view('admin.errors.404', []);
     }
+
+
+    public function login() {
+
+
+    }
+
 }

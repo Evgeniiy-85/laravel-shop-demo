@@ -4,12 +4,12 @@ return [
     [
         'text' => 'Заказы',
         'url' => 'admin.orders',
-        'icon' => 'bi-table',
+        'icon' => 'bi bi-cash-coin',
         'active' => ['admin.orders', 'admin.orders.*'],
     ],
     [
         'text' => 'Категории',
-        'icon' => 'bi-table',
+        'icon' => 'bi bi-table',
         'active' => ['admin.categories', 'admin.categories.*'],
         'submenu' => [
             [
@@ -21,7 +21,7 @@ return [
     ],
     [
         'text' => 'Продукты',
-        'icon' => 'bi-table',
+        'icon' => 'bi briefcase',
         'label_color' => 'success',
         'active' => ['admin.products', 'admin.products.*'],
         'submenu' => [
@@ -34,7 +34,7 @@ return [
     ],
     [
         'text' => 'Пользователи',
-        'icon' => 'bi-table',
+        'icon' => 'bi bi-people-fill',
         'label_color' => 'success',
         'active' => ['admin.users', 'admin.users.*'],
         'submenu' => [
@@ -42,18 +42,20 @@ return [
                 'text' => 'Список пользователей',
                 'url' => 'admin.users',
                 'active' => ['admin.users', 'admin.users.*'],
+                'icon' => 'bi bi-people-fill',
             ],
         ],
     ],
     [
         'text' => 'Настройки',
-        'icon' => 'bi-table',
+        'icon' => 'bi bi-wrench-adjustable',
         'active' => ['admin.settings', 'admin.settings.*'],
         'submenu' => [
             [
                 'text' => 'Основные настройки',
                 'url' => 'admin.settings',
                 'active' => ['admin.settings'],
+                'icon' => 'bi bi-wrench-adjustable',
             ],
             [
                 'text' => 'Платежные модули',
