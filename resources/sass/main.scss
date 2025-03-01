@@ -5,7 +5,10 @@ body {
     font-family: PT Sans, Helvetica, Arial, sans-serif;
 }
 header + .container {
-    padding: 146px 15px 20px;
+    padding: 20px 15px;
+}
+.width-50 {
+    width: 50%!important;
 }
 *, :after, :before {
     box-sizing: border-box;

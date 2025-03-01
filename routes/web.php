@@ -67,6 +67,7 @@ Route::group(['prefix' => '/products'], function () {
     Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
     Route::get('/{alias}', [App\Http\Controllers\ProductsController::class, 'product'])->name('products.product');
     Route::get('/{alias}/reviews/add', [App\Http\Controllers\ProductsReviewsController::class, 'add'])->name('products.reviews.add');
+    Route::post('/{alias}/reviews/add', [App\Http\Controllers\ProductsReviewsController::class, 'store'])->name('products.reviews.store');
 });
 Route::get('/search', [App\Http\Controllers\ProductsController::class, 'search'])->name('search');
 Route::get('/favorites', [App\Http\Controllers\ProductsController::class, 'favorites'])->name('favorites');
