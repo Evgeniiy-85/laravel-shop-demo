@@ -165,9 +165,10 @@
     }
   }
 
-  .product-title {
+  .short_desc {
     height: 84px;
     padding-right: 100px;
+    overflow-y: auto;
   }
 
   .product-stat {
@@ -191,5 +192,18 @@
   .product-bottom {
     margin-top: auto;
   }
+}
+
+.product-card.product-desc {
+    height: auto;
+    flex-direction: column;
+
+    .product-desc-header {
+        color: #333;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
 }
 

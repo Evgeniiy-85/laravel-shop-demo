@@ -60,6 +60,10 @@
                             </div>
                         </div>
 
+                        <div class="form-group mb-3"><label class="form-label">Краткое описание</label>
+                            <textarea class="form-control" name="prod_short_desc">{{ $product->prod_short_desc }}</textarea>
+                        </div>
+
                         <div class="form-group mb-3"><label class="form-label">Описание</label>
                             <textarea class="form-control" name="prod_desc">{{ $product->prod_desc }}</textarea>
                         </div>

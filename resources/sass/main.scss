@@ -10,6 +10,12 @@ header + .container {
 *, :after, :before {
     box-sizing: border-box;
 }
+.ui-link {
+    color: #0d61af!important;
+}
+.ui-link:hover {
+    color: #fc5808!important;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {

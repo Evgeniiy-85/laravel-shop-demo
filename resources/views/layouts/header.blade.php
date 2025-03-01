@@ -1,6 +1,6 @@
 <header>
     <div class="header-top">
-        <nav id="w0" class="navbar navbar-expand-md navbar-white bg-white fixed-top">
+        <nav id="w0" class="navbar navbar-expand-md navbar-white bg-white">
             <div class="container">
                 <div class="header-center">
                     <div id="w0-collapse" class="collapse navbar-collapse">

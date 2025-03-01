@@ -14,6 +14,14 @@ header + .container {
   box-sizing: border-box;
 }
 
+.ui-link {
+  color: #0d61af !important;
+}
+
+.ui-link:hover {
+  color: #fc5808 !important;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   -webkit-transition: background-color 0s 600000s, color 0s 600000s !important;
@@ -303,15 +311,14 @@ html body footer h5 {
 html body footer li a {
   color: #fff !important;
 }
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
 header .navbar {
   padding: 16px 0;
-}
-header .header-bottom {
-  position: fixed;
-  top: 56px;
-  right: 0;
-  left: 0;
-  z-index: 1030;
 }
 header .header-bottom .container {
   display: flex;
@@ -862,9 +869,10 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #
 .product-card .product-buttons-one_line .product-buttons .button {
   height: 100%;
 }
-.product-card .product-title {
+.product-card .short_desc {
   height: 84px;
   padding-right: 100px;
+  overflow-y: auto;
 }
 .product-card .product-stat {
   display: flex;
@@ -884,6 +892,18 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #
 }
 .product-card .product-bottom {
   margin-top: auto;
+}
+
+.product-card.product-desc {
+  height: auto;
+  flex-direction: column;
+}
+.product-card.product-desc .product-desc-header {
+  color: #333;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 20px;
 }
 .products-reviews_wrap {
   margin-top: 20px;

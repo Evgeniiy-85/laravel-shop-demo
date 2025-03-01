@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="site-catalog">
+    <div class="site-product">
         <h1>{{ $product->prod_title }}</h1>
 
         <div class="product-card">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="product-center">
-                <div class="product-title">{{ $product->prod_title }}</div>
+                <div class="short_desc">{{ $product->prod_short_desc }} <a class="ui-link" href="#product_desc">Подробнее</a></div>
 
                 <div class="product-stat">
                     <a class="product-rating" href="#product_reviews">
@@ -62,6 +62,14 @@
                 </div>
 
                 <div class="product-bottom">Наличите: в наличии</div>
+            </div>
+        </div>
+
+        <div class="product-card product-desc" id="product_desc">
+            <div class="product-desc-header">Описание</div>
+
+            <div class="product-desc-text">
+                {{ $product->prod_desc }}
             </div>
         </div>
 

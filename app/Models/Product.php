@@ -62,5 +62,5 @@ class Product extends Model {
     /**
      * @var string[]
      */
-    protected $fillable = ['prod_title', 'prod_category', 'prod_alias', 'prod_price', 'prod_quantity', 'prod_status', 'prod_desc'];
+    protected $fillable = ['prod_title', 'prod_category', 'prod_alias', 'prod_price', 'prod_quantity', 'prod_status', 'prod_short_desc', 'prod_desc'];
 }
