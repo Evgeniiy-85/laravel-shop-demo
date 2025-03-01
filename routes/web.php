@@ -48,6 +48,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin'], function() {
 
     Route::get('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('admin.login');
     Route::post('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'auth'])->name('admin.auth');
+    Route::get('/logout', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
 })->middleware('can:Admin');
 
 

@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LoginController extends Controller {
 
-    protected function guard()
-    {exit;
-        return Auth::guard('admin');
-    }
-
     public function login() {
+        if (Gate::allows('Admin')) {
+            return redirect()->route('admin.index');
+        }
+
         return view('admin.auth.login');
     }
 
@@ -30,12 +30,21 @@ class LoginController extends Controller {
             'user_status' => User::STATUS_ACTIVE,
             'user_role' => User::ROLE_ADMIN,
         ])) {
-
-            return redirect()->intended(route('admin.index'));
-
             return redirect()->route('admin.index');
         }
 
         return back();
+    }
+
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout() {
+        if (Gate::allows('Admin')) {
+            Auth::logout();
+        }
+
+        return redirect()->route('admin.login');
     }
 }
