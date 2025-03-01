@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 /*AdminPanel*/
 
 Route::group( ['namespace' => 'Admin', 'prefix' => '/admin'], function() {
-    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
     Route::get('/404', [App\Http\Controllers\Admin\AdminController::class, 'error404'])->name('admin.errors.404');
     Route::group(['prefix' => '/orders'], function () {
         Route::get('/', [App\Http\Controllers\Admin\OrdersController::class, 'index'])->name('admin.orders');
@@ -66,6 +66,7 @@ Route::group(['prefix' => '/catalog'], function () {
 Route::group(['prefix' => '/products'], function () {
     Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
     Route::get('/{alias}', [App\Http\Controllers\ProductsController::class, 'product'])->name('products.product');
+    Route::get('/{alias}/reviews/add', [App\Http\Controllers\ProductsReviewsController::class, 'add'])->name('products.reviews.add');
 });
 Route::get('/search', [App\Http\Controllers\ProductsController::class, 'search'])->name('search');
 Route::get('/favorites', [App\Http\Controllers\ProductsController::class, 'favorites'])->name('favorites');

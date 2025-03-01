@@ -12,7 +12,7 @@ class LoginController extends Controller {
 
     public function login() {
         if (Gate::allows('Admin')) {
-            return redirect()->route('admin.index');
+            return redirect()->route('admin');
         }
 
         return view('admin.auth.login');
@@ -30,7 +30,7 @@ class LoginController extends Controller {
             'user_status' => User::STATUS_ACTIVE,
             'user_role' => User::ROLE_ADMIN,
         ])) {
-            return redirect()->route('admin.index');
+            return redirect()->route('admin');
         }
 
         return back();

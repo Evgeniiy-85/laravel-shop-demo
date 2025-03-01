@@ -916,13 +916,20 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #
 .products-reviews_wrap .product-reviews {
   width: 100%;
 }
-.products-reviews_wrap .product-reviews .reviews-header {
+.products-reviews_wrap .product-reviews .reviews-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.products-reviews_wrap .product-reviews .reviews-top .reviews-header {
   text-decoration: none;
   color: #333;
   font-size: 22px;
   font-weight: 700;
   line-height: 24px;
-  margin-bottom: 20px;
+}
+.products-reviews_wrap .product-reviews .reviews-top .button {
+  margin-left: auto;
 }
 .products-reviews_wrap .product-reviews .reviews-list {
   display: flex;
@@ -933,6 +940,7 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #
   display: flex;
   width: 100%;
   flex-direction: column;
+  padding-bottom: 15px;
 }
 .products-reviews_wrap .product-reviews .reviews-list .review .review-top {
   display: flex;

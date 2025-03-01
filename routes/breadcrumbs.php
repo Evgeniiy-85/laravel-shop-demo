@@ -10,7 +10,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 
 Breadcrumbs::for('admin.index', function (BreadcrumbTrail $trail) {
-    $trail->push('Главная панель', route('admin.index'));
+    $trail->push('Главная панель', route('admin'));
 });
 Breadcrumbs::for('admin.orders', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');

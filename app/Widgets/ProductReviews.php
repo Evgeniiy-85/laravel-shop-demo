@@ -25,7 +25,8 @@ class ProductReviews extends AbstractWidget {
 
         return view('widgets.product_reviews', [
             'reviews' => $reviews->get(),
-            'count' => $reviews->count()
+            'count' => $reviews->count(),
+            'prod_alias' => $this->config['prod_alias']
         ]);
     }
 }

@@ -74,7 +74,7 @@
         </div>
 
         <div class="products-reviews_wrap" id="product_reviews">
-            {{ Widget::ProductReviews(['prod_id' => $product->prod_id]) }}
+            {{ Widget::ProductReviews(['prod_id' => $product->prod_id, 'prod_alias' => $product->prod_alias]) }}
         </div>
     </div>
 @endsection
