@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 /*AdminPanel*/
 
-Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => ['admin']], function() {
+Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => 'admin'], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
     Route::get('/404', [App\Http\Controllers\Admin\AdminController::class, 'error404'])->name('admin.errors.404');
     Route::group(['prefix' => '/orders'], function () {
@@ -54,7 +54,7 @@ Route::post('/admin/login', [\App\Http\Controllers\Admin\Auth\LoginController::c
 
 /*FrontEnd*/
 
-Route::group( ['namespace' => 'web', 'middleware' => 'auth:user'], function() {
+Route::group( ['namespace' => 'web'], function() {
     Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
 });
 Route::group(['prefix' => '/catalog'], function () {
@@ -66,8 +66,11 @@ Route::group(['prefix' => '/catalog'], function () {
 Route::group(['prefix' => '/products'], function () {
     Route::get('/', [App\Http\Controllers\ProductsController::class, 'index'])->name('products');
     Route::get('/{alias}', [App\Http\Controllers\ProductsController::class, 'product'])->name('products.product');
-    Route::get('/{alias}/reviews/add', [App\Http\Controllers\ProductsReviewsController::class, 'add'])->name('products.reviews.add');
-    Route::post('/{alias}/reviews/add', [App\Http\Controllers\ProductsReviewsController::class, 'store'])->name('products.reviews.store');
+
+    Route::group( ['prefix' => '/{alias}/reviews', 'middleware' => 'auth'], function() {
+        Route::get('/add', [App\Http\Controllers\ProductsReviewsController::class, 'add'])->name('products.reviews.add');
+        Route::post('/add', [App\Http\Controllers\ProductsReviewsController::class, 'store'])->name('products.reviews.store');
+    });
 });
 Route::get('/search', [App\Http\Controllers\ProductsController::class, 'search'])->name('search');
 Route::get('/favorites', [App\Http\Controllers\ProductsController::class, 'favorites'])->name('favorites');
@@ -76,6 +79,7 @@ Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->nam
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/checkout', [\App\Http\Controllers\CartController::class, 'addOrder'])->name('cart.add_order');
 Route::get('/pay/{order_date}', [\App\Http\Controllers\OrdersController::class, 'pay'])->name('order.pay');
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
 
 Route::group(['prefix' => '/api'], function () {
     Route::group(['prefix' => '/cart'], function () {

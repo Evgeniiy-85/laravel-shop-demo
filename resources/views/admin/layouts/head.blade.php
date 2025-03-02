@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/admin/source-sans-3.css') }}" />
     <link rel="stylesheet"  href="{{ asset('css/admin/overlayscrollbars.min.css') }}/"/>
-    <link rel="stylesheet"  href="{{ asset('css/admin/bootstrap-icons.min.css') }}/"/>
+    <link rel="stylesheet"  href="{{ asset('css/bootstrap-icons.min.css') }}/"/>
     <link rel="stylesheet"  href="{{ asset('css/v4-shims.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/admin/adminlte.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admin/main.css') }}" />

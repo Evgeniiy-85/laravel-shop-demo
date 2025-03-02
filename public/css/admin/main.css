@@ -78,6 +78,9 @@ a.add-new-item, .add-new-item {
 /**
  *  Хлебные крошки
 */
+.breadcrumb {
+    background-color: inherit!important;
+}
 .breadcrumb li .fa {
     margin: 0 5px 0 0;
 }
