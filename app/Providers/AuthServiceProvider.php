@@ -25,17 +25,17 @@ class AuthServiceProvider extends ServiceProvider
 
         /* define a admin user role */
         Gate::define('Admin', function($user) {
-            return $user->user_role == User::ROLE_ADMIN;
+            return $user->user_role == User::ROLE_ADMIN && $user->user_status == User::STATUS_ACTIVE;
         });
 
         /* define a manager user role */
         Gate::define('Manager', function($user) {
-            return $user->user_role == User::ROLE_MANAGER;
+            return $user->user_role == User::ROLE_MANAGER && $user->user_status == User::STATUS_ACTIVE;
         });
 
         /* define a user role */
         Gate::define('User', function($user) {
-            return $user->user_role == User::ROLE_USER;
+            return $user->user_role == User::ROLE_USER && $user->user_status == User::STATUS_ACTIVE;
         });
     }
 }

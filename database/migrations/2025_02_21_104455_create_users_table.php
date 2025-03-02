@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('user_phone')->nullable();
             $table->string('user_photo')->nullable();
             $table->string('user_auth_key')->nullable();
-            $table->string('user_password_hash');
+            $table->string('user_password');
             $table->tinyInteger('user_status')->default(0);
             $table->tinyInteger('user_role')->default(1);
             $table->tinyInteger('user_sex')->nullable();

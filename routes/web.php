@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 /*AdminPanel*/
 
-Route::group( ['namespace' => 'Admin', 'prefix' => '/admin'], function() {
+Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => ['admin']], function() {
     Route::get('/', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
     Route::get('/404', [App\Http\Controllers\Admin\AdminController::class, 'error404'])->name('admin.errors.404');
     Route::group(['prefix' => '/orders'], function () {
@@ -46,17 +46,17 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin'], function() {
         Route::get('/payments', [App\Http\Controllers\Admin\PaymentsController::class, 'index'])->name('admin.settings.payments');
     });
 
-    Route::get('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('admin.login');
-    Route::post('/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'auth'])->name('admin.auth');
     Route::get('/logout', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
-})->middleware('can:Admin');
+});
 
+Route::get('/admin/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('admin.login');
+Route::post('/admin/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'auth'])->name('admin.auth');
 
 /*FrontEnd*/
 
-
-Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
-
+Route::group( ['namespace' => 'web', 'middleware' => 'auth:user'], function() {
+    Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
+});
 Route::group(['prefix' => '/catalog'], function () {
     Route::get('/', [App\Http\Controllers\CatalogController::class, 'index'])->name('catalog');
     Route::get('/{alias}', [App\Http\Controllers\CatalogController::class, 'category'])->name('catalog.category');
