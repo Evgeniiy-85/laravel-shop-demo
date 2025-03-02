@@ -128,7 +128,7 @@ header {
             position: relative;
             max-height: 60px;
 
-            .btn-favourites, .btn-cart, .btn-login {
+            .btn-favourites, .btn-cart, .btn-login, .btn-logout  {
               position: relative;
               display: flex ;
               align-items: center;
@@ -223,6 +223,18 @@ header {
                   display: block !important;
                 }
               }
+            }
+          }
+
+          .user-profile__level {
+            width: 24px;
+            height: 24px;
+
+            .user-profile__avatar {
+              object-fit: cover;
+              height: 38px;
+              width: 38px;
+              border-radius: 50%;
             }
           }
         }

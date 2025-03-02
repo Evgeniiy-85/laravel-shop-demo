@@ -79,7 +79,10 @@ Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->nam
 Route::get('/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('cart.checkout');
 Route::post('/checkout', [\App\Http\Controllers\CartController::class, 'addOrder'])->name('cart.add_order');
 Route::get('/pay/{order_date}', [\App\Http\Controllers\OrdersController::class, 'pay'])->name('order.pay');
+
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login'])->name('login');
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'auth'])->name('auth');
+Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => '/api'], function () {
     Route::group(['prefix' => '/cart'], function () {

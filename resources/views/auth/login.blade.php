@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-body login-card-body p-4">
                             <h3 class="login-box-msg">Авторизация</h3>
-                            <form action="{{ route('admin.login') }}" method="post">
+                            <form action="{{ route('login') }}" method="post">
                                 @csrf
                                 <div class="input-group mb-4">
                                     <input type="email" class="form-control" placeholder="Email" name="email"/>
