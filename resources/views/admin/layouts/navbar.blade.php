@@ -54,8 +54,8 @@
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
                 <div class="nav-link">
-                    <img src="{{ Auth::user()->user_photo_url }}" class="user-image rounded-circle shadow" alt="User Image"/>
-                    <span class="d-none d-md-inline">{{ Auth::user()->user_name.' '.Auth::user()->user_surname }}</span>
+                    <img src="{{ Auth::guard('admin')->user()->user_photo_url }}" class="user-image rounded-circle shadow" alt="User Image"/>
+                    <span class="d-none d-md-inline">{{ Auth::guard('admin')->user()->user_name.' '.Auth::guard('admin')->user()->user_surname }}</span>
                 </div>
             </li>
             <!--end::User Menu Dropdown-->

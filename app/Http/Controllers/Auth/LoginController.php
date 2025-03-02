@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class LoginController extends Controller {
 
     public function login() {
-        if (Gate::allows('User')) {
+        if (Auth::check()) {
             return redirect()->route('catalog');
         }
 
@@ -38,9 +39,7 @@ class LoginController extends Controller {
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout() {
-        if (Gate::allows('User')) {
-            Auth::logout();
-        }
+        Auth::logout();
 
         return back();
     }

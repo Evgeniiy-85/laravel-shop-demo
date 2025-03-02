@@ -58,10 +58,6 @@ class Favorites extends Model {
      * @return true
      */
     private function saveProducts() {
-        file_put_contents('test.txt', "4444444444444444444", FILE_APPEND);
-        file_put_contents('test.txt', json_encode($this->products)."\n", FILE_APPEND);
-
-
         Session::put($this->save_key, $this->products);
         Session::save();
 

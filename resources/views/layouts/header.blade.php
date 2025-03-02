@@ -69,7 +69,7 @@
                         </div>
                     @endif
 
-                    @if(!Gate::allows('User'))
+                    @if(!Auth::check())
                         <div class="btn-wrap">
                             <a href="{{ route('login') }}" class="btn-login">
                                 <i class="btn-icon"></i>

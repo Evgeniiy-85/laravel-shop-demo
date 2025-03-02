@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Storage;
 
-class AdminController extends Controller {
+class AdminController extends \App\Http\Controllers\Admin\AdminController {
 
     public function edit() {
         $payment = Payment::where(['pay_name' => 'custom'])->first();

@@ -81,13 +81,12 @@ class User extends Authenticatable {
         'user_password',
     ];
 
-
-    public function getAuthPassword() {
+    public function getAuthPassword(): String {
         return $this->user_password;
     }
 
 
-    public function isAdministrator() {
-        return $this->user_role == self::ROLE_ADMIN;
+    public function isActive(): Bool {
+        return $this->user_status == self::STATUS_ACTIVE;
     }
 }

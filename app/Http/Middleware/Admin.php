@@ -10,13 +10,16 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
 class Admin extends Middleware {
-    public function handle($request, Closure $next, ...$guards) {
-        if (!$this->auth->user()) {
-            return redirect()->route('admin.login');
-        }
 
-        if (!Gate::allows('Admin')) {
-            return redirect()->route('admin.login')->with('Ошибка', 'У вас нет разрешений на доступ к этой странице');
+    /**
+     * @param $request
+     * @param Closure $next
+     * @param ...$guards
+     * @return \Illuminate\Http\RedirectResponse|mixed
+     */
+    public function handle($request, Closure $next, ...$guards) {
+        if (!$this->auth->guard('admin')->check()) {
+            return redirect()->route('admin.login');
         }
 
         return $next($request);

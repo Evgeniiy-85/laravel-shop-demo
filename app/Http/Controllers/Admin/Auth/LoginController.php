@@ -10,21 +10,33 @@ use Illuminate\Support\Facades\Gate;
 
 class LoginController extends Controller {
 
+    /**
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard() {
+        return Auth::guard('admin');
+    }
+
+
     public function login() {
-        if (Gate::allows('Admin')) {
+        if (Auth::guard('admin')->check()) {
             return redirect()->route('admin');
         }
 
         return view('admin.auth.login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function auth(Request $request) {
         $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attemptWhen([
+        if (Auth::guard('admin')->attempt([
             'user_email' => $request->email,
             'password' => $request->password,
             'user_status' => User::STATUS_ACTIVE,
@@ -38,12 +50,10 @@ class LoginController extends Controller {
 
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
+     * @return void
      */
     public function logout() {
-        if (Gate::allows('Admin')) {
-            Auth::logout();
-        }
+        Auth::guard('admin')->logout();
 
         return redirect()->route('admin.login');
     }
