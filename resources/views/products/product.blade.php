@@ -34,8 +34,9 @@
 
                 <div class="product-stat">
                     <a class="product-rating" href="#product_reviews">
+
                         @if($count_reviews)
-                            {!! App\Helpers\UI::rating($product_rating) !!}&nbsp;
+                            {{ Widget::Rating(['rating' => $product_rating]) }}&nbsp;
                             {{ "{$count_reviews} ".App\Helpers\Helper::addTermination($count_reviews, 'отзыв[TRMNT]') }}
                         @else
                             <div class="rating-item">

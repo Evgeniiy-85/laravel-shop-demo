@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="review-rating">
-                            {!! App\Helpers\UI::rating($review->review_rating) !!}
+                            {{ Widget::Rating(['rating' => $review->review_rating]) }}
                         </div>
                     </div>
 
