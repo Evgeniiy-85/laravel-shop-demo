@@ -46,11 +46,7 @@ class ProductsController extends AdminController {
     public function store(ProductsRequest $request) {
         $product = new Product();
         $product->fill($request->all());
-
-        if ($request->hasFile('prod_image')) {
-            $image = $request->file('prod_image');
-            $product->prod_image = $image->store('', 'products');
-        }
+        $product->prod_images = $request->input('prod_images') ? collect($product->prod_images)->toJson() : null;
 
         if (!$product->prod_alias) {
             $product->prod_alias = Str::slug($product->prod_title);
@@ -73,7 +69,7 @@ class ProductsController extends AdminController {
         if (!$product->prod_alias) {
             $product->prod_alias = Str::slug($product->prod_title);
         }
-
+        $product->prod_images = $request->input('prod_images') ? collect($product->prod_images)->toJson() : null;
         $product->save();
 
         return redirect()->route('admin.products')->with('success', 'Успешно');
@@ -94,6 +90,6 @@ class ProductsController extends AdminController {
         }
         $product->delete();
 
-        return redirect()->route('admin.categories')->with('success', 'Успешно');
+        return redirect()->route('admin.products')->with('success', 'Успешно');
     }
 }

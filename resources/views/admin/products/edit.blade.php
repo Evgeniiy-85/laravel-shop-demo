@@ -57,7 +57,7 @@
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображения</text>
                                     <input type="file" class="custom-file-input hidden" name="prod_image" multiple>
                                 </label>
-                                {{ Widget::AdminAttachments(['field_name' => 'prod_images', 'storage' => 'products', 'images' => $product->prodImages()]) }}
+                                {{ Widget::AdminAttachments(['field_name' => 'prod_images', 'storage' => 'products', 'images' => $product->prod_images_data]) }}
                             </div>
                         </div>
 

@@ -36,7 +36,7 @@ class Product extends Model {
     protected function prodImageUrl(): Attribute {
         return Attribute::make(
             get: function() {
-                $prod_images = $this->prodImages();
+                $prod_images = $this->prod_images_data;
                 return $prod_images ? Storage::disk('products')->url($prod_images[0]) : asset('/images/no-img.png');
             },
         );
@@ -44,17 +44,21 @@ class Product extends Model {
 
 
     /**
-     * @return false|mixed
+     * @return Attribute
      */
-    public function prodImages() {
-        return $this->prod_images ? json_decode($this->prod_images, 1) : false;
+    protected function prodImagesData(): Attribute {
+        return Attribute::make(
+            get: function() {
+                return $this->prod_images ? json_decode($this->prod_images, 1) : false;
+            },
+        );
     }
 
     /**
      * @param $image
      * @return string
      */
-    public static function getImageUrl($image) {
+    public function getImageUrl($image) {
         return Storage::disk('products')->url($image);
     }
 
@@ -63,8 +67,6 @@ class Product extends Model {
      * @return bool
      */
     public function save(array $options = []) {
-        $this->prod_images = !empty($this->prod_images) ? collect($this->prod_images)->toJson() : null;
-
         return parent::save($options);
     }
 

@@ -55,8 +55,9 @@
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info" for="prod_image">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                    <input type="file" class="custom-file-input hidden" name="prod_image" id="prod_image">
+                                    <input type="file" class="custom-file-input hidden" name="prod_image" id="prod_image" multiple>
                                 </label>
+                                {{ Widget::AdminAttachments(['field_name' => 'prod_images', 'storage' => 'products', 'images' => null]) }}
                             </div>
                         </div>
 
