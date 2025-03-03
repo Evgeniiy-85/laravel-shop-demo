@@ -50,6 +50,7 @@
                                     <input type="file" class="custom-file-input hidden" name="cat_image" id="cat_image">
                                 </label>
                             </div>
+                            {{ Widget::AdminAttachments(['field_name' => 'cat_image', 'image' => $category->cat_image_url]) }}
                         </div>
 
                         <div class="form-group mb-3"><label class="form-label">Статус</label>
