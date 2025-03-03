@@ -41,6 +41,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => 'ad
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\UsersController::class, 'edit'])->name('admin.users.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Admin\UsersController::class, 'update'])->name('admin.users.update');
         Route::get('/delete/{id}', [App\Http\Controllers\Admin\UsersController::class, 'delete'])->name('admin.users.delete');
+        Route::get('/auth/{id}', [App\Http\Controllers\Admin\UsersController::class, 'auth'])->name('admin.users.auth');
     });
 
     Route::group(['prefix' => '/settings'], function () {

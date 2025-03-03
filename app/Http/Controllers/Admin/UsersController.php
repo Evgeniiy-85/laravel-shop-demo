@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\UsersRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UsersController extends AdminController {
@@ -78,5 +79,19 @@ class UsersController extends AdminController {
         $user->delete();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
+    }
+
+
+    /*
+     * Log in as a different user to frontend
+     */
+    public function auth($id) {
+        $user = User::find($id);
+        if (is_null($user)) {
+            return view('admin.errors.404');
+        }
+
+        Auth::guard('web')->login($user);
+        return redirect()->route('home');
     }
 }

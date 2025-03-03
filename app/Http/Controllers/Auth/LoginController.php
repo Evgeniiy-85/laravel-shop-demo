@@ -29,7 +29,7 @@ class LoginController extends Controller {
             'password' => $request->password,
             'user_status' => User::STATUS_ACTIVE,
         ])) {
-            return redirect()->route('catalog');
+            return redirect()->route('home');
         }
 
         return back();

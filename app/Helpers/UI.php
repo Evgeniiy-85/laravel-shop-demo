@@ -36,4 +36,11 @@ class UI {
 
         return "<div class=\"rating\" data-rating=\"$rating\">$html</div>";
     }
+
+
+    public static function adminContextMenu($menu = null, $params = null) {
+        return view('admin.ui.context_menu.menu', [
+            'menu' => $menu
+        ]);
+    }
 }
