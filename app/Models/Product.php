@@ -36,7 +36,7 @@ class Product extends Model {
     protected function prodImageUrl(): Attribute {
         return Attribute::make(
             get: function() {
-                $prod_images = $this->getImages();
+                $prod_images = $this->prodImages();
                 return $prod_images ? Storage::disk('products')->url($prod_images[0]) : asset('/images/no-img.png');
             },
         );
@@ -46,7 +46,7 @@ class Product extends Model {
     /**
      * @return false|mixed
      */
-    public function getImages() {
+    public function prodImages() {
         return $this->prod_images ? json_decode($this->prod_images, 1) : false;
     }
 
@@ -54,13 +54,26 @@ class Product extends Model {
      * @param $image
      * @return string
      */
-    public function getImageUrl($image) {
+    public static function getImageUrl($image) {
         return Storage::disk('products')->url($image);
+    }
+
+    /**
+     * @param array $options
+     * @return bool
+     */
+    public function save(array $options = []) {
+        $this->prod_images = !empty($this->prod_images) ? collect($this->prod_images)->toJson() : null;
+
+        return parent::save($options);
     }
 
 
     /**
      * @var string[]
      */
-    protected $fillable = ['prod_title', 'prod_category', 'prod_alias', 'prod_price', 'prod_quantity', 'prod_status', 'prod_short_desc', 'prod_desc'];
+    protected $fillable = [
+        'prod_title', 'prod_category', 'prod_alias', 'prod_price', 'prod_quantity',
+        'prod_status', 'prod_short_desc', 'prod_desc', 'prod_images'
+    ];
 }

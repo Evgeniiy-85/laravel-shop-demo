@@ -70,15 +70,6 @@ class ProductsController extends AdminController {
         $product = Product::findOrFail($id);
         $product->fill($request->all());
 
-        if ($request->hasFile('prod_image')) {
-            if ($product->prod_image) {
-                Storage::disk('images')->delete($product->prod_image);
-            }
-
-            $image = $request->file('prod_image');
-            $product->prod_image = $image->store('', 'products');
-        }
-
         if (!$product->prod_alias) {
             $product->prod_alias = Str::slug($product->prod_title);
         }

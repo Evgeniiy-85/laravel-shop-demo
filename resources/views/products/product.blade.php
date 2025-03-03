@@ -14,7 +14,7 @@
 
         <div class="product-card">
             <div class="product-images-slider">
-                @if($images = $product->getImages())
+                @if($images = $product->prodImages())
                     <div class="images-thumbs">
                         @foreach($images as $key => $prod_image)
                             <div data-img_src="{{ $product->getImageUrl($prod_image) }}" class="image-thumb{{ $key == 0 ? ' active' : '' }}">

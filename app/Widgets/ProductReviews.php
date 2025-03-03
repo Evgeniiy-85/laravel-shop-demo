@@ -23,7 +23,7 @@ class ProductReviews extends AbstractWidget {
             ->where('prod_id', $this->config['prod_id'])
             ->join('users', 'product_reviews.user_id', '=', 'users.user_id');
 
-        return view('widgets.product_reviews', [
+        return view('widgets.product_reviews.reviews', [
             'reviews' => $reviews->get(),
             'count' => $reviews->count(),
             'prod_alias' => $this->config['prod_alias']

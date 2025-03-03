@@ -1,9 +1,11 @@
 <script src="{{ asset('js/admin/overlayscrollbars.browser.es6.min.js') }}"></script>
 <script src="{{ asset('js/admin/popper.min.js') }}"></script>
 <script src="{{ asset('js/admin/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/admin/adminlte.js') }}"></script>
 <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('js/jquery-ui-1.12.1.min.js') }}"></script>
+<script src="{{ asset('js/admin/adminlte.js') }}"></script>
 <script src="{{ asset('js/admin/main.js') }}"></script>
+<script src="{{ asset('js/admin/attachments.js') }}"></script>
 
 <script>
     const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
