@@ -212,7 +212,7 @@ table.table tbody tr td {
     width: 45px;
     height: 45px;
 }
-.attach-wrap:hover {
+.attach-wrap.handle:hover {
     cursor: move;
 }
 .attach {

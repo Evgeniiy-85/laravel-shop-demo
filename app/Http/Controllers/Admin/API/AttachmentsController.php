@@ -15,6 +15,7 @@ class AttachmentsController extends Controller {
         $request->validate([
             'storage' => 'required|string',
             'field_name' => 'required|string',
+            'multiple' => 'nullable|string',
         ]);
 
         if ($request->hasFile('attachments')) {
@@ -24,11 +25,17 @@ class AttachmentsController extends Controller {
                 $added_images[] = $image->store('', $request->input('storage'));
             }
 
-            return view('admin.attachments.images', [
-                'field_name' => $request->input('field_name'),
+            $data = [
+                'field' => $request->input('field_name'),
                 'images' => $added_images,
-                'storage' => $request->input('storage')
-            ]);
+                'storage' => $request->input('storage'),
+            ];
+
+            if ($request->input('multiple')) {
+                return view('admin.attachments.images', $data);
+            } else {
+                return view('admin.attachments.image', $data);
+            }
         }
     }
 }

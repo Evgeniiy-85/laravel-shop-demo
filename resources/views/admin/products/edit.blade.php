@@ -1,7 +1,7 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Добавить продукт
+    Редактировать продукт
 @endsection
 
 @section('breadcrumbs')
@@ -55,9 +55,9 @@
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображения</text>
-                                    <input type="file" class="custom-file-input hidden" name="prod_image" multiple>
+                                    <input type="file" class="custom-file-input hidden" name="prod_image" data-ajax_upload="" multiple>
                                 </label>
-                                {{ Widget::AdminAttachments(['field_name' => 'prod_images', 'storage' => 'products', 'images' => $product->prod_images_data]) }}
+                                {{ Widget::AdminAttachments(['field' => 'prod_images', 'storage' => 'products', 'images' => $product->prod_images_data]) }}
                             </div>
                         </div>
 

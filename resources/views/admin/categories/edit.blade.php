@@ -36,7 +36,7 @@
                                 <option value="0">-</option>
                                 @if($categories)
                                     @foreach ($categories as $cat)
-                                        <option value="{{ $cat->cat_id }}" @if($category->cat_id == $cat->cat_id) selected @endif>{{ $cat->cat_title }}</option>
+                                        <option value="{{ $cat->cat_id }}" @if($category->cat_parent == $cat->cat_id) selected @endif>{{ $cat->cat_title }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -47,10 +47,10 @@
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info" for="cat_image">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                    <input type="file" class="custom-file-input hidden" name="cat_image" id="cat_image">
+                                    <input type="file" class="custom-file-input hidden" name="cat_image" id="cat_image" data-ajax_upload="">
                                 </label>
+                                {{ Widget::AdminAttachments(['field' => 'cat_image', 'storage' => 'categories', 'image' => $category->cat_image]) }}
                             </div>
-                            {{ Widget::AdminAttachments(['field_name' => 'cat_image', 'image' => $category->cat_image_url]) }}
                         </div>
 
                         <div class="form-group mb-3"><label class="form-label">Статус</label>

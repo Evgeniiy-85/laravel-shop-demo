@@ -20,17 +20,9 @@ class AdminAttachments extends AbstractWidget {
      */
     public function run() {
         if (array_key_exists('images', $this->config)) {
-            return view('admin.widgets.attachments.images', [
-                'images' => $this->config['images'],
-                'storage' => $this->config['storage'],
-                'field_name' => $this->config['field_name'],
-                'without_container' => $this->config['without_container'] ?? false,
-            ]);
+            return view('admin.widgets.attachments.images', $this->config);
         } else {
-            return view('admin.widgets.attachments.image', [
-                'image' => $this->config['image'],
-                'field_name' => $this->config['field_name'],
-            ]);
+            return view('admin.widgets.attachments.image', $this->config);
         }
     }
 }

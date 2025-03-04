@@ -1,5 +1,5 @@
 $(function(){
-    $(document).on("change", 'input[type="file"][multiple]', function(){
+    $(document).on("change", 'input[type="file"][data-ajax_upload]', function(){
         uploadFiles(this);
     });
 
@@ -16,6 +16,7 @@ $(function(){
         }
         formData.append('field_name',  $container.data('field_name'));
         formData.append('storage',  $container.data('storage'));
+        formData.append('multiple',  $container.data('multiple'));
 
         $.ajax({
             url: '/admin/api/attachments/add',
@@ -25,6 +26,9 @@ $(function(){
             processData: false,
             success: function(html){
                 if (html) {
+                    if (!$container.data('multiple')) {
+                        $container.find('.attach-wrap').remove();
+                    }
                     $container.append(html);
                 }
             }, error: function(err){
@@ -47,9 +51,9 @@ $(function(){
         });
     }
 
-    $('input[type="file"]:not([multiple])').closest('label').each(function(){
+    $('input[type="file"]:not([data-ajax_upload])').closest('label').each(function(){
         let $input_file = $(this).find('[type="file"]'),
-            $label = $(this).css({'overflow':'hidden'});
+        $label = $(this).css({'overflow':'hidden'});
         $label.data('placeholder', $label.find('text').html());
 
         $input_file.on('change', function(){

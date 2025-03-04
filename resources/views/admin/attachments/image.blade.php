@@ -1,6 +1,6 @@
 {{ Widget::AdminAttachments([
     'field' => $field,
     'storage' => $storage,
-    'images' => $images,
+    'image' => $images[0] ?? false,
     'without_container' => true,
 ]) }}

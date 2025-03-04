@@ -1,15 +1,7 @@
-@if(!$without_container)
-    <div class="attachments ui-sortable" data-storage="{{ $storage }}" data-field_name="{{ $field_name }}">
-        @if($images)
-            @foreach($images as $image)
-                @include('admin.widgets.attachments.partials.image')
-            @endforeach
-        @endif
+@if(!isset($without_container))
+    <div class="attachments ui-sortable" data-storage="{{ $storage }}" data-field_name="{{ $field }}" data-multiple="1">
+        @include('admin.widgets.attachments.partials.images')
     </div>
 @else
-    @if($images)
-        @foreach($images as $image)
-            @include('admin.widgets.attachments.partials.image')
-        @endforeach
-    @endif
+    @include('admin.widgets.attachments.partials.images')
 @endif

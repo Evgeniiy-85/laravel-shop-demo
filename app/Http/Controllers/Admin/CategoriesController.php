@@ -41,7 +41,7 @@ class CategoriesController extends AdminController {
         return view('admin.categories.edit', [
             'statuses' => Category::getStatuses(),
             'category' => $category,
-            'categories' => Category::all(),
+            'categories' => Category::where('cat_id', '<>', $id)->get(),
         ]);
     }
 
@@ -52,15 +52,11 @@ class CategoriesController extends AdminController {
         $category = new Category();
         $category->fill($request->all());
 
-        if ($request->hasFile('cat_image')) {
-            $image = $request->file('cat_image');
-            $category->cat_image = $image->store('', 'categories');
-        }
-
         if (!$category->cat_alias) {
             $category->cat_alias = Str::slug($category->cat_title);
         }
 
+        $category->cat_image = $request->input('cat_image') ? $request->input('cat_image') : '';
         $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
@@ -76,19 +72,11 @@ class CategoriesController extends AdminController {
         $category = Category::findOrFail($id);
         $category->fill($request->all());
 
-        if ($request->hasFile('cat_image')) {
-            if ($category->cat_image) {
-               Storage::disk('categories')->delete($category->cat_image);
-            }
-
-            $image = $request->file('cat_image');
-            $category->cat_image = $image->store('', 'categories');
-        }
-
         if (!$category->cat_alias) {
             $category->cat_alias = Str::slug($category->cat_title);
         }
 
+        $category->cat_image = $request->input('cat_image') ? $request->input('cat_image') : '';
         $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');

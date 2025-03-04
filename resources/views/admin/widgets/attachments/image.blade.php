@@ -1,12 +1,7 @@
-@if($image)
-    <div class="attachments">
-        <div class="attach-wrap">
-            <div class="attach-action attach-delete">
-                <span class="fa fa-remove"></span>
-            </div>
-            <div class="attach">
-                <img src="{{ $image }}">
-            </div>
-        </div>
+@if(!isset($without_container))
+    <div class="attachments" data-storage="{{ $storage }}" data-field_name="{{ $field }}" data-multiple="">
+        @include('admin.widgets.attachments.partials.image')
     </div>
+@else
+    @include('admin.widgets.attachments.partials.image')
 @endif
