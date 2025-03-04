@@ -15,3 +15,22 @@ $(function(){
         let $parent = $(this).closest('.context-menu').removeClass('show-dmenu');
     });
 });
+
+var errorMessages = function(messages) {
+    let html = '';
+    messages.forEach((msg, i) => {
+        html += `<div><strong>${msg}</strong></div>`;
+    });
+    html =
+    '<div id="error_messages" class="alert alert-warning alert-dismissible">' +
+        html +
+       '<script>window.setTimeout(function(){$("#error_messages").hide();}, 3000);</script>' +
+    '</div>';
+
+
+    if ($('#main_content').children('#error_messages').length > 0) {
+        $('#main_content').children('#error_messages').replaceWith(html);
+    } else {
+        $('#main_content').prepend(html)
+    }
+}

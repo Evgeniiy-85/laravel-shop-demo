@@ -36,9 +36,9 @@ class AttachmentsRequest extends FormRequest
 
     public function messages() {
         return [
-            'attachments.required' => 'Файл обязателен к отправке',
-            'attachments.mimes' => 'Тип файла должен быть jpg, jpeg, png, gif',
-            'attachments.max' => 'Поле Название содержать макс. 255 символов',
+            'attachments.required' => 'Не выбрал файл',
+            'attachments.*.mimes' => 'Тип файла должен соответствовать списку: jpg, jpeg, png, gif, webp',
+            'attachments.*.max' => 'Макс. размер файла не должен превышать 4096 кб',
         ];
     }
 }

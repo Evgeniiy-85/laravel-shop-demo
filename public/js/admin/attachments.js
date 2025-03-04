@@ -35,7 +35,14 @@ $(function(){
                     $container.append(html);
                 }
             }, error: function(err){
-                console.error(err);
+                let errors = err.responseJSON.errors;
+                let messages = [];
+                for (let key in errors) {
+                    messages.push(errors[key][1]);
+                }
+
+                errorMessages(messages);
+                console.error(err.responseJSON.errors);
             }
         });
     }
