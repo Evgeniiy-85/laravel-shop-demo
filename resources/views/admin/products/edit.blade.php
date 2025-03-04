@@ -17,7 +17,11 @@
         <div class="col-md-5">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">{{ $product->prod_title }}</h3>
+                    <h3 class="card-title">{{ $product->prod_title }}
+                        <a href="{{ route('products.product', $product->prod_alias) }}" target="_blank">
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                    </h3>
                 </div>
 
                 <form action="{{ route('admin.products.update', $product->prod_id) }}" method="post" enctype="multipart/form-data">
@@ -55,7 +59,7 @@
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображения</text>
-                                    <input type="file" class="custom-file-input hidden" name="prod_image" data-ajax_upload="" multiple>
+                                    <input type="file" class="custom-file-input hidden" name="files[prod_image]" data-ajax_upload="" multiple>
                                 </label>
                                 {{ Widget::AdminAttachments(['field' => 'prod_images', 'storage' => 'products', 'images' => $product->prod_images_data]) }}
                             </div>

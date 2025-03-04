@@ -24,11 +24,7 @@ class CategoriesRequest extends FormRequest
         return [
             'cat_title' => 'required|min:1|max:255',
             'cat_status' => 'required',
-           'cat_image' => [
-                'nullable',
-                'image',
-                'mimes:jpg,png,webp',
-            ],
+            'cat_image' => 'nullable|string'
 //            required|image|max:1024|mimes:jpg,jpeg,png
 //            nullable|image|max:1024|mimes:jpg,jpeg,png
         ];
@@ -45,7 +41,7 @@ class CategoriesRequest extends FormRequest
         return [
             'cat_title.required' => 'Заполните поле Название',
             'cat_title.min' => 'Поле Название содержать мин. 1 символ',
-            'cat_title.min' => 'Поле Название содержать макс. 255 символов',
+            'cat_title.max' => 'Поле Название содержать макс. 255 символов',
         ];
     }
 }

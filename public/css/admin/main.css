@@ -45,6 +45,21 @@ textarea {
     overflow-x: auto !important;
     overflow-y: hidden;
 }
+
+.card-header .card-title {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    line-height: 1;
+}
+.card-header .card-title a {
+    margin-left: 8px;
+    font-size: 16px;
+    padding-top: 2px;
+}
+.card-header .card-title .fa {
+
+}
 .card_cover {
     display: flex;
     justify-content: center;

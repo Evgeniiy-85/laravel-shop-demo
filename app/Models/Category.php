@@ -21,10 +21,6 @@ class Category extends Model {
     public $primaryKey = 'cat_id';
     public $timestamps = false;
 
-    protected $attributes = [
-        'cat_image' => '',
-    ];
-
     /**
      * @param int|null $status
      * @return int|array
@@ -47,5 +43,5 @@ class Category extends Model {
     /**
      * @return Attribute
      */
-    protected $fillable = ['cat_title', 'cat_parent', 'cat_alias', 'cat_status'];
+    protected $fillable = ['cat_title', 'cat_parent', 'cat_alias', 'cat_status', 'cat_image'];
 }

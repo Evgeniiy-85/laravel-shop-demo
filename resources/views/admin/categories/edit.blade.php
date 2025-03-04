@@ -16,8 +16,12 @@
     <div class="row mb-3">
         <div class="col-md-5">
             <div class="card card-primary card-outline">
-                <div class="card-header">
-                    <h3 class="card-title">{{ $category->cat_title }}</h3>
+                <div class="card-header flex">
+                    <h3 class="card-title">{{ $category->cat_title }}
+                        <a href="{{ route('catalog.category', $category->cat_alias) }}" target="_blank">
+                            <i class="fa fa-external-link-alt"></i>
+                        </a>
+                    </h3>
                 </div>
 
                 <form action="{{ route('admin.categories.update', $category->cat_id) }}" method="post" enctype="multipart/form-data">
@@ -47,7 +51,7 @@
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info" for="cat_image">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                    <input type="file" class="custom-file-input hidden" name="cat_image" id="cat_image" data-ajax_upload="">
+                                    <input type="file" class="custom-file-input hidden" name="files[cat_image]" id="cat_image" data-ajax_upload="">
                                 </label>
                                 {{ Widget::AdminAttachments(['field' => 'cat_image', 'storage' => 'categories', 'image' => $category->cat_image]) }}
                             </div>

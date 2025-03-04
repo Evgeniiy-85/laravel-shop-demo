@@ -24,6 +24,7 @@
                                 <th>Телефон клиента</th>
                                 <th>Стоимость, руб.</th>
                                 <th>Статус</th>
+                                <th style="width: 30px"></th>
                             </tr>
                         </thead>
 
@@ -39,6 +40,28 @@
                                         <td>{{ $order->client_phone }}</td>
                                         <td>{{ $order->order_sum }}</td>
                                         <td><span class="badge order-status status-{{ $order->order_status }}">{{ $order->order_status_text }}</span></td>
+                                        <td class="user-action-buttons text-right">
+                                            {{ \App\Helpers\UI::adminContextMenu([
+                                                [
+                                                    'icon' => 'fa fa-pencil',
+                                                    'title' => 'Редактировать',
+                                                    'href' => "/admin/orders/edit/{$order->order_id}",
+                                                    'class' => 'dont-replace-href',
+                                                ],
+                                                [
+                                                    'icon' => 'fa fa-external-link-alt',
+                                                    'title' => 'Перейти на страницу оплаты заказа',
+                                                    'href' => "/pay/{$order->order_id}",
+                                                    'target' => '_blank',
+                                                ],
+                                                [
+                                                    'icon' => 'fa fa-trash',
+                                                    'title' => 'Удалить',
+                                                    'href' => "/admin/orders/delete/{$order->order_id}",
+                                                    'onclick' => 'return confirm(\'Точно удалить?\')',
+                                                ]
+                                            ], ['class' => 'float-right']) }}
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

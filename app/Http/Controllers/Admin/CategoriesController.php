@@ -56,7 +56,7 @@ class CategoriesController extends AdminController {
             $category->cat_alias = Str::slug($category->cat_title);
         }
 
-        $category->cat_image = $request->input('cat_image') ? $request->input('cat_image') : '';
+        $category->cat_image = $request->input('cat_image') ?: '';
         $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
@@ -76,7 +76,7 @@ class CategoriesController extends AdminController {
             $category->cat_alias = Str::slug($category->cat_title);
         }
 
-        $category->cat_image = $request->input('cat_image') ? $request->input('cat_image') : '';
+        $category->cat_image = $request->input('cat_image') ?: '';
         $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');

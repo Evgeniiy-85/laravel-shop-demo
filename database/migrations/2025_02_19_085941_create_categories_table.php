@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('cat_id');
             $table->string('cat_title', 256);
             $table->string('cat_alias', 256)->unique();
-            $table->string('cat_image');
+            $table->string('cat_image')->nullable();
             $table->integer('cat_parent')->default(0);
             $table->boolean('cat_status')->default(1);
         });

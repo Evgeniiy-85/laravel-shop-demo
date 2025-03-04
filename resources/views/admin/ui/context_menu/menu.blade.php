@@ -4,7 +4,10 @@
     <ul class="context-menu-list">
         @foreach ($menu as $item)
             <li>
-                <a class="{{ $item['class'] ?? '' }}" href="{{ $item['href'] }}" @if(isset($item['target'])) target="{{ $item['target'] }}" @endif>
+                <a class="{{ $item['class'] ?? '' }}" href="{{ $item['href'] }}"
+                   @isset($item['target']) target="{{ $item['target'] }}" @endisset
+                   @isset($item['onclick']) onclick="{{ $item['onclick'] }}" @endisset
+                >
                     <span class="{{ $item['icon'] }}"></span> {{ $item['title'] }}
                 </a>
             </li>
