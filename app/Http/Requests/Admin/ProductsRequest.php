@@ -26,7 +26,6 @@ class ProductsRequest extends FormRequest
             'prod_status' => 'required',
             'prod_short_desc' => 'nullable|string|max:256',
             'prod_desc' => 'nullable|string',
-            'prod_images' => 'nullable|array',
         ];
     }
 

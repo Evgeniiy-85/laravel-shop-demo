@@ -59,7 +59,7 @@
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info">
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображения</text>
-                                    <input type="file" class="custom-file-input hidden" name="files[prod_image]" data-ajax_upload="" multiple>
+                                    <input type="file" class="custom-file-input hidden" name="files[prod_image][]" data-ajax_upload="" multiple>
                                 </label>
                                 {{ Widget::AdminAttachments(['field' => 'prod_images', 'storage' => 'products', 'images' => $product->prod_images_data]) }}
                             </div>

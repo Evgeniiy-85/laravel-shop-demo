@@ -3,21 +3,11 @@
 namespace App\Http\Controllers\Admin\API;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\Product;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Arrilot\Widgets;
+use App\Http\Requests\Admin\AttachmentsRequest;
 
 class AttachmentsController extends Controller {
 
-    public function add(Request $request) {
-        $request->validate([
-            'storage' => 'required|string',
-            'field_name' => 'required|string',
-            'multiple' => 'nullable|string',
-        ]);
-
+    public function add(AttachmentsRequest $request) {
         if ($request->hasFile('attachments')) {
             $images = $request->file('attachments');
             $added_images = [];

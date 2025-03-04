@@ -10,13 +10,15 @@ $(function(){
     function uploadFiles(input) {
         let formData = new FormData;
         let $container = $(input).closest('label').next('.attachments');
+        let is_multiple = $container.data('multiple');
 
-        for (let file in $(input)[0].files) {
-            formData.append('attachments[]',  $(input)[0].files[file]);
+        for (let i=0; i < event.target.files.length; i++) {
+            formData.append('attachments[]', event.target.files[i]);
         }
+
         formData.append('field_name',  $container.data('field_name'));
         formData.append('storage',  $container.data('storage'));
-        formData.append('multiple',  $container.data('multiple'));
+        formData.append('multiple',  is_multiple);
 
         $.ajax({
             url: '/admin/api/attachments/add',
@@ -24,9 +26,10 @@ $(function(){
             type: 'POST',
             contentType: false,
             processData: false,
+            enctype: 'multipart/form-data',
             success: function(html){
                 if (html) {
-                    if (!$container.data('multiple')) {
+                    if (!is_multiple) {
                         $container.find('.attach-wrap').remove();
                     }
                     $container.append(html);
