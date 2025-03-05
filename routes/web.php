@@ -50,10 +50,6 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => 'ad
     });
 
     Route::get('/logout', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'logout'])->name('admin.logout');
-
-    Route::group(['prefix' => '/api'], function () {
-        Route::post('/attachments/add', [\App\Http\Controllers\Admin\API\AttachmentsController::class, 'add'])->name('add');
-    });
 });
 
 Route::get('/admin/login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('admin.login');
@@ -94,18 +90,6 @@ Route::group( ['namespace' => 'User'], function() {
 
 Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'auth'])->name('auth');
-
-
-Route::group(['prefix' => '/api'], function () {
-    Route::group(['prefix' => '/cart'], function () {
-        Route::post('/actions', [\App\Http\Controllers\API\CartController::class, 'actions'])->name('cart.actions');
-    });
-
-    Route::group(['prefix' => '/favorites'], function () {
-        Route::post('/', [\App\Http\Controllers\API\FavoritesController::class, 'index'])->name('favorites');
-    });
-});
-
 
 $modules = config('modules.modules');
 $path = config('modules.path');

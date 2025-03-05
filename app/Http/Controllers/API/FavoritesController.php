@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class FavoritesController extends Controller {
 
-    public function index(Request $request) {
+    public function actions(Request $request) {
         $validation = $request->validate([
             'action_type' => 'required',
             'prod_id' => 'nullable|numeric|min:1',

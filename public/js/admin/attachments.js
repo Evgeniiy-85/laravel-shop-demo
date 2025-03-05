@@ -21,7 +21,7 @@ $(function(){
         formData.append('multiple',  is_multiple);
 
         $.ajax({
-            url: '/admin/api/attachments/add',
+            url: $container.data('url'),
             data: formData,
             type: 'POST',
             contentType: false,
