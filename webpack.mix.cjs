@@ -2,10 +2,14 @@
 
 let mix = require('laravel-mix');
 
+// mix.webpackConfig({
+//     resolve: {
+//         extensions: ['.jsx', '.js'],
+//     }
+// });
+
 mix
-    // .js('resources/js/cart.js', 'js/scripts.js')
-    // .js('resources/js/favorites.js', 'js/scripts.js')
-    // .js('resources/js/main.js', 'js/scripts.js')
+    .js('resources/js/main.js', 'js')
 
     .sass('resources/sass/main.scss', 'css/style.css')
     .sass('resources/sass/header.scss', 'css/style.css')

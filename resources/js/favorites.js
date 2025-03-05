@@ -1,5 +1,7 @@
-class Favorites {
-    static URL_ACTIONS = '/favorites';
+import route from './route.js';
+
+export default class Favorites {
+    static URL_ACTIONS = route('api.favorites.actions');
 
     init() {
         this.updElements();

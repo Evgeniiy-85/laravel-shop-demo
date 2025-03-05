@@ -1,6 +1,7 @@
-class Cart {
+import route from './route.js';
 
-    static URL_ACTIONS = '/cart/actions';
+export default class Cart {
+    static URL_ACTIONS = route('api.cart.actions');
 
     constructor() {}
 
@@ -12,14 +13,15 @@ class Cart {
     Events() {
         let cart = this;
         $(document).on('click', '.cart [data-action_type], .product-by [data-action_type]', function() {
-            if ($(this).data('action_type') == 'show') {
+            let action_type = $(this).data('action_type');
+            if (action_type == 'show') {
                 $('#cart_modal').addClass('show');
                 return false;
             }
 
             let prod_id = typeof($(this).data('prod_id')) !== 'undefined' ? $(this).data('prod_id') : null;
             cart.runAction($(this).data(), (html) => {
-                cart.updCart(html);
+                cart.updCart(html, action_type);
                 cart.updProdButtons(prod_id);
             });
         });
@@ -32,19 +34,36 @@ class Cart {
         });
     }
 
-    updCart(html) {
+    updCart(html, action_type) {
         let cart_title = '<span>Корзина</span>';
         let count_products = '';
+        let $cart = $('.site-cart .cart').length > 0 ? $('.site-cart .cart') : $('#cart_modal .cart');
 
         if (html) {
             let price = $(html).find('.cart-sum').text();
             cart_title = `<span class="cart-sum">${price}</span>`;
-            $('#cart_modal').addClass('has-products').find('.modal-body').html(html);
             count_products = $(html).find('.cart-products').data('count_products');
-            $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
-        } else {
+
+            if ($('.site-cart .cart').length > 0) {
+                $('#cart_modal').removeClass('has-products').find('.modal-body').html('');
+                $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
+            } else {
+                $('#cart_modal').addClass('has-products').find('.modal-body').html(html);
+                $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
+            }
+        }
+
+        if (!html) {
             $('#cart_modal').removeClass('has-products').find('.modal-body').html(html);
             $('.btn-cart .count-products-icon').html(count_products).addClass('hidden');
+        }
+
+        if (action_type !== 'get' && $('.site-cart').find('.cart').length > 0) {
+            if (html) {
+                $('.site-cart').find('.cart').replaceWith(html);
+            } else {
+                $('.site-cart').find('.cart').html('<div class="empty-result"><h3>Корзина пуста</h3></div>');
+            }
         }
 
         $('.btn-cart .btn-title').html(cart_title);
@@ -79,11 +98,10 @@ class Cart {
     updElements() {
         let cart = this;
         this.runAction({action_type:'get'}, (html) => {
-            cart.updCart(html);
+            cart.updCart(html, 'get');
             cart.updProdButtons();
         });
     }
-
 
     runAction(data, callback) {
         $.ajax({
