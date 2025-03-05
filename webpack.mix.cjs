@@ -9,7 +9,7 @@ let mix = require('laravel-mix');
 // });
 
 mix
-    .js('resources/js/main.js', 'js')
+    .js('resources/js/main.js', 'js/scripts.js')
 
     .sass('resources/sass/main.scss', 'css/style.css')
     .sass('resources/sass/header.scss', 'css/style.css')
