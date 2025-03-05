@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <div class="form-group mb-3"><label class="form-label">Имя клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">Имя</label>
                                     <input type="text" class="form-control" name="client_name" value="{{ $order->client_name }}" required>
                                 </div>
 
@@ -33,15 +33,15 @@
                                     <input type="text" class="form-control" name="client_surname" value="{{ $order->client_surname }}" required>
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Отчество клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">Отчество</label>
                                     <input type="text" class="form-control" name="client_patronymic" value="{{ $order->client_patronymic }}">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">E-mail клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">E-mail</label>
                                     <input type="email" class="form-control" name="client_email" value="{{ $order->client_email }}">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Телефон клиента</label>
+                                <div class="form-group mb-3"><label class="form-label">Телефон</label>
                                     <input type="text" class="form-control" name="client_phone" value="{{ $order->client_phone }}">
                                 </div>
 

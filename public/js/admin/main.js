@@ -24,13 +24,13 @@ var errorMessages = function(messages) {
     html =
     '<div id="error_messages" class="alert alert-warning alert-dismissible">' +
         html +
-       '<script>window.setTimeout(function(){$("#error_messages").hide();}, 3000);</script>' +
+       '<script>window.setTimeout(function(){$("#error_messages").hide();}, 5000);</script>' +
     '</div>';
 
 
-    if ($('#main_content').children('#error_messages').length > 0) {
-        $('#main_content').children('#error_messages').replaceWith(html);
+    if ($('#admin_notices').children('#error_messages').length > 0) {
+        $('#admin_notices').children('#error_messages').replaceWith(html);
     } else {
-        $('#main_content').prepend(html)
+        $('#admin_notices').prepend(html)
     }
 }

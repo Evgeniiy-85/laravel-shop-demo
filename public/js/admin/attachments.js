@@ -38,13 +38,17 @@ $(function(){
                 let errors = err.responseJSON.errors;
                 let messages = [];
                 for (let key in errors) {
-                    messages.push(errors[key][1]);
+                    let text = typeof(errors[key][1]) !== 'undefined' ? errors[key][1] : errors[key][0];
+                    messages.push(text);
                 }
 
                 errorMessages(messages);
                 console.error(err.responseJSON.errors);
+                console.error(err);
             }
         });
+
+        $(input).val('');
     }
 
     function delete_file(input) {

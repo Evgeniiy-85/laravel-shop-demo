@@ -89,6 +89,13 @@ a.add-new-item, .add-new-item {
     border-radius: 3px;
     background-color: rgba(255, 255, 255, 0.57);
 }
+#admin_notices {
+    width: -webkit-fill-available;
+    position: fixed;
+    top: 0;
+    z-index: 9999999;
+    padding-right: 10px;
+}
 
 /**
  *  Хлебные крошки

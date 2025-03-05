@@ -1,5 +1,7 @@
 <div class="app-content-header">
     <div class="container-fluid">
+        @include('admin.layouts.notices')
+
         <div class="row">
             <div class="col-sm-6">
                 <h1>@yield('h1')</h1>

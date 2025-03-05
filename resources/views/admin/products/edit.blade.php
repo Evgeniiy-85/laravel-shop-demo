@@ -27,7 +27,7 @@
                 <form action="{{ route('admin.products.update', $product->prod_id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group mb-3"><label class="form-label">Название</label>
+                        <div class="form-group mb-3"><label class="form-label">{{ __('prod_title') }}</label>
                             <input type="text" class="form-control" name="prod_title" placeholder="Введите название продукта" value="{{ $product->prod_title }}">
                         </div>
 

@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\OrdersRequest;
 use App\Models\Payment;
-use Illuminate\Http\Request;
-use App\Http\Requests\ContactRequest;
 use App\Models\Order;
 
 class OrdersController extends AdminController {
@@ -34,7 +32,7 @@ class OrdersController extends AdminController {
         ]);
     }
 
-    public function update($order_id, Request $request) {
+    public function update($order_id, OrdersRequest $request) {
         $order = Order::where('order_id', $order_id)->first();
         if (!$order) {
             return view('admin.errors.404');
