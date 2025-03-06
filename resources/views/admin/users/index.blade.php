@@ -61,26 +61,29 @@
                                         <td>{{ $user->user_create_date }}</td>
                                         <td>{{ $user->user_last_visit_date }}</td>
                                         <td class="user-action-buttons text-right">
-                                            {{ \App\Helpers\UI::adminContextMenu([
-                                                [
-                                                    'icon' => 'fa fa-pencil',
-                                                    'title' => 'Редактировать',
-                                                    'href' => "/admin/users/edit/{$user->user_id}",
-                                                    'class' => 'dont-replace-href',
+                                            @component('admin.components.context_menu', [
+                                                'menu' => [
+                                                    [
+                                                        'icon' => 'fa fa-pencil',
+                                                        'title' => 'Редактировать',
+                                                        'href' => "/admin/users/edit/{$user->user_id}",
+                                                        'class' => 'dont-replace-href',
+                                                    ],
+                                                    [
+                                                        'icon' => 'fa fa-sign-in',
+                                                        'title' => 'Войти под пользователем',
+                                                        'href' => "/admin/users/auth/{$user->user_id}",
+                                                        'target' => '_blank',
+                                                    ],
+                                                    [
+                                                        'icon' => 'fa fa-trash',
+                                                        'title' => 'Удалить',
+                                                        'href' => "/admin/users/edit/delete/{$user->user_id}",
+                                                        'onclick' => 'return confirm(\'Точно удалить?\')',
+                                                    ]
                                                 ],
-                                                [
-                                                    'icon' => 'fa fa-sign-in',
-                                                    'title' => 'Войти под пользователем',
-                                                    'href' => "/admin/users/auth/{$user->user_id}",
-                                                    'target' => '_blank',
-                                                ],
-                                                [
-                                                    'icon' => 'fa fa-trash',
-                                                    'title' => 'Удалить',
-                                                    'href' => "/admin/users/edit/delete/{$user->user_id}",
-                                                    'onclick' => 'return confirm(\'Точно удалить?\')',
-                                                ]
-                                            ], ['class' => 'float-right']) }}
+                                                'class' => 'float-right'])
+                                            @endcomponent
                                         </td>
                                     </tr>
                                 @endforeach

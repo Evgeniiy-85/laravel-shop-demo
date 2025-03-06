@@ -57,7 +57,12 @@
                                     <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
                                     <input type="file" class="custom-file-input hidden" name="files[prod_image][]" id="prod_image" data-ajax_upload="" multiple>
                                 </label>
-                                {{ Widget::AdminAttachments(['field' => 'prod_images', 'storage' => 'products', 'images' => null]) }}
+
+                                <x-adminattachments :data="[
+                                    'field' => 'prod_images',
+                                    'storage' => 'products',
+                                    'images' => null
+                                ]" />
                             </div>
                         </div>
 
