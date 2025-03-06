@@ -84,7 +84,7 @@ export default class Cart {
     }
 
     updProdButtons(prod_id) {
-        let buttons = prod_id ? $(`.product-by button[data-prod_id="${prod_id}"]`) : $('.product-by button');
+        let buttons = prod_id ? $(`.product-by .button[data-prod_id="${prod_id}"]`) : $('.product-by .button[data-action_type]');
         if (buttons.length > 0) {
             let cart = this;
             buttons.each(function() {

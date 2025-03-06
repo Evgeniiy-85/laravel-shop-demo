@@ -57,12 +57,12 @@
                         </div>
 
                         <div class="product-by">
-                            <a class="button button-ui btn_a-outline-primary" href="/buy/{{ $product->prod_alias }}">Купить</a>
+                            <a class="button button-ui btn_a-outline-primary" href="/buy/{{ $product->prod_alias }}" data-prod_id="{{ $product->prod_id }}" data-action_type="append">Купить</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-bottom">Наличите: в наличии</div>
+                <div class="product-bottom"></div>
             </div>
         </div>
 

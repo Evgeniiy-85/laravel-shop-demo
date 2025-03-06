@@ -103,7 +103,7 @@ var Cart = /*#__PURE__*/function () {
   }, {
     key: "updProdButtons",
     value: function updProdButtons(prod_id) {
-      var buttons = prod_id ? $(".product-by button[data-prod_id=\"".concat(prod_id, "\"]")) : $('.product-by button');
+      var buttons = prod_id ? $(".product-by .button[data-prod_id=\"".concat(prod_id, "\"]")) : $('.product-by .button[data-action_type]');
       if (buttons.length > 0) {
         var cart = this;
         buttons.each(function () {

@@ -184,16 +184,17 @@ html {
             border: 1px solid #d9d9d9;
             color: #333;
 
+            &.active {
+                color: #fc8507;
+                background: #fff;
+                border-color: #fc8507;
+            }
+
             &:hover {
                 border: 1px solid #ffa218;
                 box-shadow: inset 0 100px 0 hsla(0, 0%, 100%, .1);
                 background-image: linear-gradient(0deg, #fc8507, #ffa218);
                 color: #fff;
-            }
-            &.active {
-                color: #fc8507;
-                background: #fff;
-                border-color: #fc8507;
             }
         }
         .btn_a-grey {

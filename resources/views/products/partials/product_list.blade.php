@@ -7,7 +7,7 @@
 
             <div class="product-center">
                 <a class="product-title" href="/products/{{ $product->prod_alias }}">{{ $product->prod_title }}</a>
-                <div class="card-bottom">Наличие: в наличии</div>
+                <div class="card-bottom"></div>
             </div>
 
             <div class="product-right">

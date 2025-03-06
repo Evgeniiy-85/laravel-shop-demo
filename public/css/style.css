@@ -187,16 +187,16 @@ html body .btn_a-outline-primary {
   border: 1px solid #d9d9d9;
   color: #333;
 }
+html body .btn_a-outline-primary.active {
+  color: #fc8507;
+  background: #fff;
+  border-color: #fc8507;
+}
 html body .btn_a-outline-primary:hover {
   border: 1px solid #ffa218;
   box-shadow: inset 0 100px 0 hsla(0, 0%, 100%, 0.1);
   background-image: linear-gradient(0deg, #fc8507, #ffa218);
   color: #fff;
-}
-html body .btn_a-outline-primary.active {
-  color: #fc8507;
-  background: #fff;
-  border-color: #fc8507;
 }
 html body .btn_a-grey {
   box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.04);
