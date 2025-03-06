@@ -1,5 +1,6 @@
 import Cart from './cart.js';
 import Favorites from './favorites.js';
+import Search from './search.js';
 import route from './route.js';
 
 $(function(){
@@ -14,6 +15,9 @@ $(function(){
 
     let favorites = new Favorites();
     favorites.init();
+
+    let search = new Search();
+    search.init();
 
     $('.image-thumb').click(function() {
         let $container = $(this).closest('.product-images-slider');

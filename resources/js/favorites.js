@@ -5,10 +5,10 @@ export default class Favorites {
 
     init() {
         this.updElements();
-        this.Events();
+        this.events();
     }
 
-    Events() {
+    events() {
         let favorites = this;
         $(document).on('click', '.product-favorites [data-action_type]', function() {
             let prod_id =  $(this).data('prod_id');

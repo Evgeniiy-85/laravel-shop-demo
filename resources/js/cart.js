@@ -7,10 +7,10 @@ export default class Cart {
 
     init() {
         this.updElements();
-        this.Events();
+        this.events();
     }
 
-    Events() {
+    events() {
         let cart = this;
         $(document).on('click', '.cart [data-action_type], .product-by [data-action_type]', function() {
             let action_type = $(this).data('action_type');

@@ -67,8 +67,10 @@ header {
         width: 100%;
         margin-left: 15px;
 
-        .search {
-          .search-wrap {
+        .search-wrap {
+          position: relative;
+
+          .search {
             width: 100%;
             box-shadow: 0 0 0 1px #0000000a, 0 4px 4px #0000000a, 0 20px 40px #00000014;
             border-radius: 8px;
@@ -78,14 +80,23 @@ header {
 
             input {
               width: 100%;
-              padding: 12px 50px 12px 20px;
+              min-width: 200px;
+              padding: 12px 62px 12px 20px;
               border: none;
               height: 48px;
               border-radius: 12px;
               background-color: #f7f7f7;
+              transition: background 0.3s;
 
               &:focus {
                 outline:none;
+
+                + .search__controls {
+                  //.search__icon-clear {
+                  //  display: flex;
+                  //  opacity: 1;
+                  //}
+                }
               }
             }
 
@@ -102,16 +113,64 @@ header {
               background-color: #f7f7f7;
               border: none;
               border-radius: 12px;
+            }
+          }
+
+          .search__controls {
+            .search__icon-clear {
+              content: '';
+              position: absolute;
+              display: none;
+              right: 40px;
+              top: 15px;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              border-radius: 8px;
+              padding: 4px;
+
+              .icon {
+                width: 12px;
+                height: 12px;
+                background: url(/images/icons/search-clear-icon.svg) no-repeat center;
+                background-size: cover;
+              }
 
               &:after {
-                content: '';
-                display: block;
-                top: 20px;
-                left: 20px;
-                width: 24px;
-                height: 24px;
+                content: "";
+                background: #d9d9d9;
+                background-size: cover;
+                height: 22px;
+                width: 1px;
+                position: absolute;
+                top: -1px;
+                right: -2px;
+              }
+            }
+
+            .search__icon-search {
+              content: '';
+              position: absolute;
+              display: flex;
+              right: 10px;
+              top: 9px;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              border-radius: 8px;
+              padding: 4px;
+
+              .icon {
+                width: 22px;
+                height: 22px;
                 background: url(/images/icons/search-icon.svg) no-repeat center;
                 background-size: cover;
+              }
+            }
+
+            &.active {
+              .search__icon-clear {
+                display: flex;
               }
             }
           }

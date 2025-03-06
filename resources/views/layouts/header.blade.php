@@ -34,12 +34,15 @@
 
             @if(1)
                 <div class="header-center">
-                    <div class="search">
-                        <div class="search-wrap">
+                    <div class="search-wrap">
+                        <div class="search">
                             <form id="form-search" action="/search" method="get">
                                 <div class="input-group">
                                     <input type="text" name="q" placeholder="Поиск по сайту" value="{{ request()->input('q') }}">
-                                    <button type="submit" class="btn-search"></button>
+                                    <div class="search__controls">
+                                        <span class="search__icon-clear"><i class="icon"></i></span>
+                                        <span class="search__icon-search"><i class="icon"></i></span>
+                                    </div>
                                 </div>
                             </form>
                         </div>
