@@ -427,12 +427,12 @@ header .header-bottom .container .header-center .search-wrap .search__controls .
   position: absolute;
   display: none;
   right: 40px;
-  top: 15px;
+  top: 13px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   border-radius: 8px;
-  padding: 4px;
+  padding: 6px;
 }
 header .header-bottom .container .header-center .search-wrap .search__controls .search__icon-clear .icon {
   width: 12px;
@@ -447,29 +447,29 @@ header .header-bottom .container .header-center .search-wrap .search__controls .
   height: 22px;
   width: 1px;
   position: absolute;
-  top: -1px;
+  top: 1px;
   right: -2px;
+}
+header .header-bottom .container .header-center .search-wrap .search__controls .search__icon-clear.active {
+  display: flex;
 }
 header .header-bottom .container .header-center .search-wrap .search__controls .search__icon-search {
   content: "";
   position: absolute;
   display: flex;
   right: 10px;
-  top: 9px;
+  top: 11px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   border-radius: 8px;
-  padding: 4px;
+  padding: 2px;
 }
 header .header-bottom .container .header-center .search-wrap .search__controls .search__icon-search .icon {
   width: 22px;
   height: 22px;
   background: url(/images/icons/search-icon.svg) no-repeat center;
   background-size: cover;
-}
-header .header-bottom .container .header-center .search-wrap .search__controls.active .search__icon-clear {
-  display: flex;
 }
 header .header-bottom .container .header-right .header-buttons {
   display: flex;

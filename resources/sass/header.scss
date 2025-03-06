@@ -90,13 +90,6 @@ header {
 
               &:focus {
                 outline:none;
-
-                + .search__controls {
-                  //.search__icon-clear {
-                  //  display: flex;
-                  //  opacity: 1;
-                  //}
-                }
               }
             }
 
@@ -122,12 +115,12 @@ header {
               position: absolute;
               display: none;
               right: 40px;
-              top: 15px;
+              top: 13px;
               justify-content: center;
               align-items: center;
               cursor: pointer;
               border-radius: 8px;
-              padding: 4px;
+              padding: 6px;
 
               .icon {
                 width: 12px;
@@ -143,8 +136,12 @@ header {
                 height: 22px;
                 width: 1px;
                 position: absolute;
-                top: -1px;
+                top: 1px;
                 right: -2px;
+              }
+
+              &.active {
+                display: flex;
               }
             }
 
@@ -153,24 +150,18 @@ header {
               position: absolute;
               display: flex;
               right: 10px;
-              top: 9px;
+              top: 11px;
               justify-content: center;
               align-items: center;
               cursor: pointer;
               border-radius: 8px;
-              padding: 4px;
+              padding: 2px;
 
               .icon {
                 width: 22px;
                 height: 22px;
                 background: url(/images/icons/search-icon.svg) no-repeat center;
                 background-size: cover;
-              }
-            }
-
-            &.active {
-              .search__icon-clear {
-                display: flex;
               }
             }
           }
