@@ -31,4 +31,29 @@ class Helper {
 
         return str_replace('[TRMNT]', $term, $text);
     }
+
+
+    /**
+     * Возвращает название месяца на русском языке
+     * @param int $month_number
+     * @return String
+     */
+    public static function getMonthNameByNum(int $month_number): String {
+        $monthes = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+        return $monthes[$month_number-1];
+    }
+
+    public static function formatPrice($price) {
+        return $price ? number_format($price, 0, ',', ' ') : 0;
+    }
+
+
+    /**
+     * @param $count
+     * @return string
+     */
+    public static function formatQuantity($count) {
+        return $count < 1000 ? $count : number_format($count / 1000, 1).'k';
+    }
 }

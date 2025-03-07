@@ -46,8 +46,7 @@ class ProductsController extends Controller {
 
     public function search(Request $request) {
         $search = $request->input('q');
-        $products = Product
-            ::where('prod_status', Product::STATUS_ACTIVE)
+        $products = Product::where('prod_status', Product::STATUS_ACTIVE)
             ->leftJoin('categories', 'categories.cat_id', '=', 'products.prod_category');
 
         if ($search) {
@@ -72,8 +71,7 @@ class ProductsController extends Controller {
         $favorites = new Favorites();
         $f_products = $favorites->getProducts();
 
-        $products = $f_products ? Product
-            ::where('prod_status', Product::STATUS_ACTIVE)
+        $products = $f_products ? Product::where('prod_status', Product::STATUS_ACTIVE)
             ->whereIn('prod_id', array_keys($f_products))
             ->get() : [];
 
