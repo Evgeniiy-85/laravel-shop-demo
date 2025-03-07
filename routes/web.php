@@ -46,6 +46,7 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => 'ad
 
     Route::group(['prefix' => '/settings'], function () {
         Route::get('/', [App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+        Route::post('/update', [App\Http\Controllers\Admin\SettingsController::class, 'update'])->name('admin.settings.update');
         Route::get('/payments', [App\Http\Controllers\Admin\PaymentsController::class, 'index'])->name('admin.settings.payments');
     });
 

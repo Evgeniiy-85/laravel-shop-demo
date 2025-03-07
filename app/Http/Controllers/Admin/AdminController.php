@@ -33,7 +33,7 @@ class AdminController extends Controller {
             'count' => [],
         ];
 
-        for ($i = 6; $i >= 0; $i--) {
+        for ($i = 12; $i >= -1; $i--) {
             $start_date =  Carbon::create(null, null, 1, 0, 0, 0)->subMonth($i);
             $end_date =  Carbon::create(null, null, 1, 0, 0, 0)->subMonth($i-1);
 
