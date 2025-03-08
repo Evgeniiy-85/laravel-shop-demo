@@ -1,0 +1,6 @@
+.card[class*=card-]:not(.card-outline) > .card-header, .card[class*=text-bg-]:not(.card-outline) > .card-header {
+    background-color: #fff;
+}
+.card-tabs > .card-header, .card-tabs > .card-header a {
+    color: #000!important;
+}

@@ -4,6 +4,10 @@ $(function(){
     });
 
     $(document).on("click", '.attach-delete', function(){
+        if ($(this).closest('.input-group').find('input.current-image').length > 0) {
+            $(this).closest('.input-group').find('input.current-image').val('');
+        }
+
         delete_file(this);
     });
 

@@ -95,6 +95,14 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'main' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/main'),
+            'url' => '/storage/main',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
     ],
 
     /*

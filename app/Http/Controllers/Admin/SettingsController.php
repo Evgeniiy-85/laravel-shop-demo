@@ -8,21 +8,28 @@ use App\Http\Requests\Admin\SettingsRequest;
 class SettingsController extends AdminController {
 
     public function index() {
-        $settings = Setting::find(1);
-        //$settings2 =  $settings ? json_decode($settings->params, 1) : null;
-
+        $setting = Setting::find(1);
 
         return view('admin.settings.index', [
-            'settings' => $settings ? json_decode($settings->params) : null,
+            'settings' => $setting->settings,
         ]);
     }
 
     public function update(SettingsRequest $request) {
         $setting = Setting::find(1) ?: new Setting();
-//        print_r($request->input('settings')['site_name'] === null);exit;
+        $settings = $request->input('settings');
 
-        $params = collect($request->input('settings'))->toJson();
-        $setting->fill(['params' => $params, 'id' => 1]);
+        if ($request->hasFile('files.logo')) {
+            $image = $request->file('files.logo');
+            $settings['logo'] = $image->storeAs('', "logo.{$image->extension()}", 'main');
+        }
+
+        if ($request->hasFile('files.favicon')) {
+            $image = $request->file('files.favicon');
+            $settings['favicon'] = $image->storeAs('', 'favicon.ico', 'main');
+        }
+
+        $setting->fill(['params' => collect($settings)->toJson(), 'id' => 1]);
         $setting->save();
 
         return redirect()->route('admin.settings')->with('success', 'Успешно');

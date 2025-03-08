@@ -13,7 +13,7 @@
         <div class="col-md-5">
             <form id="form-settings" action="{{ route('admin.settings.update') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="card card-primary card-tabs">
+                <div class="card card-primary card-tabs card-outline">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-five-tab" role="tablist">
                             <li class="nav-item">
@@ -124,30 +124,32 @@
                                 <div class="overlay-wrapper">
                                     <div class="form-group"><label for="input_file" class="mb-2">Favicon</label>
                                         <div class="input-group">
-                                            <label class="btn bg-purple input-file form-label btn-info" for="cat_image">
+                                            <label class="btn bg-purple input-file form-label btn-info" for="favicon_image">
                                                 <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                                <input type="file" class="custom-file-input hidden" name="files[cat_image]" id="cat_image" data-ajax_upload="">
+                                                <input type="file" class="custom-file-input hidden" name="files[favicon]" id="favicon_image">
+                                                <input type="hidden" class="current-image" name="settings[favicon]" value="{{ $settings->favicon ?? '' }}">
                                             </label>
 
                                             <x-adminattachments :data="[
-                                                'field' => 'cat_image',
-                                                'storage' => 'categories',
-                                                'image' => null
+                                                'field' => 'favicon',
+                                                'storage' => 'main',
+                                                'image' => $settings->favicon ?? '',
                                             ]" />
                                         </div>
                                     </div>
 
                                     <div class="form-group"><label for="input_file" class="mb-2">Логотип сайта</label>
                                         <div class="input-group">
-                                            <label class="btn bg-purple input-file form-label btn-info" for="cat_image">
+                                            <label class="btn bg-purple input-file form-label btn-info" for="logo_image">
                                                 <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                                <input type="file" class="custom-file-input hidden" name="files[cat_image]" id="cat_image" data-ajax_upload="">
+                                                <input type="file" class="custom-file-input hidden" name="files[logo]" id="logo_image">
+                                                <input type="hidden" class="current-image" name="settings[logo]" value="{{ $settings->logo ?? '' }}">
                                             </label>
 
                                             <x-adminattachments :data="[
-                                                'field' => 'cat_image',
-                                                'storage' => 'categories',
-                                                'image' => null
+                                                'field' => 'favicon',
+                                                'storage' => 'main',
+                                                'image' => $settings->logo ?? '',
                                             ]" />
                                         </div>
                                     </div>

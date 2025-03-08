@@ -18,7 +18,7 @@ class SettingsRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            //'settings.site_name' => 'required|min:1|max:128',
+            'settings.site_name' => 'required|min:1|max:128',
         ];
     }
 
