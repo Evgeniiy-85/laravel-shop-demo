@@ -218,7 +218,11 @@ table.table tbody tr td {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 10px;
+    margin-left: -5px!important;
+    margin-right: -5px!important;
+}
+.input-file + .attachments {
+    /*margin-top: 10px;*/
 }
 .attach-wrap {
     position: relative;
@@ -226,9 +230,9 @@ table.table tbody tr td {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 90px;
-    height: 90px;
-    margin: 5px;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
 }
 .attach-wrap.image-type_favicon {
     width: 45px;
@@ -271,32 +275,30 @@ table.table tbody tr td {
 }
 .attach-delete {
     background-color: #dd4b39;
-    top: 0;
-    right: 0;
+    top: 10px;
+    right: 10px;
 }
 
 /*Users*/
 .user-info {
     background-color: #f4f6f9;
-    padding: 15px;
+    padding: 10px 15px 15px;
     font-size: 14px;
     border-radius: 5px;
 }
-.user-photo {
-    display: flex;
-    height: 158px;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f6f9;
-    margin-bottom: 20px;
+.user-photo .attachments {
+    margin-bottom: 15px;
+    height: 270px;
+    border: 1px dashed #ced4da;
 }
-.user-photo img {
-    max-height: 100%;
-    object-fit: contain;
-    max-width: 100%;
-    display: block;
+.user-photo .attach-wrap {
+    width: 100%;
+    height: 100%;
+    padding: 0;
 }
-
+.user-photo .input-file {
+    width: 100%;
+}
 .info-box.order-info .info-box-text {
     white-space: normal;
     line-height: 1.2;

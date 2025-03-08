@@ -36,13 +36,34 @@
                                 <div class="form-group mb-3"><label class="form-label">Отчество</label>
                                     <input type="text" class="form-control" name="user_patronymic" value="{{ $user->user_patronimic }}" placeholder="Введите отчество пользователя">
                                 </div>
+
+                                <div class="form-group mb-3"><label class="form-label">E-mail</label>
+                                    <input type="text" class="form-control" name="user_email" value="{{ $user->user_email }}" placeholder="Введите e-mail пользователя">
+                                </div>
+
+                                <div class="form-group mb-3"><label class="form-label">Телефон</label>
+                                    <input type="text" class="form-control" name="user_phone" value="{{ $user->user_phone }}" placeholder="Введите телефон пользователя">
+                                </div>
                             </div>
 
                             <div class="col-md-5">
                                 <div class="form-group mb-3">
                                     <div class="user-info">
-                                        <div class="user-photo">
-                                            <img src="{{ $user->user_photo_url }}">
+                                        <div class="form-group user-photo">
+                                            <div class="input-group">
+                                                <x-adminattachments :data="[
+                                                    'field' => 'user_photo',
+                                                    'storage' => 'users',
+                                                    'image' => $user->user_photo,
+                                                    'image_url' => $user->user_photo_url,
+                                                ]" />
+
+                                                <label class="btn bg-purple input-file form-label btn-info" for="logo_image">
+                                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить фото</text>
+                                                    <input type="file" class="custom-file-input hidden" name="files[logo]" id="logo_image">
+                                                    <input type="hidden" class="current-image" name="user_photo" value="{{ $user->user_photo ?? '' }}">
+                                                </label>
+                                            </div>
                                         </div>
 
                                         <div><b>Дата регистрации: </b>{{ Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i') }}</div>
@@ -54,14 +75,6 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group mb-3"><label class="form-label">E-mail</label>
-                                    <input type="text" class="form-control" name="user_email" value="{{ $user->user_email }}" placeholder="Введите e-mail пользователя">
-                                </div>
-
-                                <div class="form-group mb-3"><label class="form-label">Телефон</label>
-                                    <input type="text" class="form-control" name="user_phone" value="{{ $user->user_phone }}" placeholder="Введите телефон пользователя">
-                                </div>
-
                                 <div class="form-group mb-3"><label class="form-label">Пароль</label>
                                     <input type="text" class="form-control" name="user_password" value="" placeholder="Введите пароль, если нужно его обновить">
                                 </div>

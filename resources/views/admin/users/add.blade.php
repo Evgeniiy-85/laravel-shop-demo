@@ -35,6 +35,16 @@
                             <input type="text" class="form-control" name="user_patronymic" placeholder="Введите отчество пользователя">
                         </div>
 
+                        <div class="form-group mb-3"><label class="mb-2">Фото</label>
+                            <div class="input-group">
+                                <label class="btn bg-purple input-file form-label btn-info" for="logo_image">
+                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить фото</text>
+                                    <input type="file" class="custom-file-input hidden" name="files[logo]" id="logo_image">
+                                    <input type="hidden" class="current-image" name="user_photo" value="{{ $user->user_photo ?? '' }}">
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="form-group mb-3"><label class="form-label">E-mail</label>
                             <input type="text" class="form-control" name="user_email" placeholder="Введите e-mail пользователя">
                         </div>

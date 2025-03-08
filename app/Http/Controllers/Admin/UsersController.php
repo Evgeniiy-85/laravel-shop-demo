@@ -45,6 +45,11 @@ class UsersController extends AdminController {
     public function store(UsersRequest $request) {
         $user = new User();
         $user->fill($request->all());
+        if ($request->hasFile('files.logo')) {
+            $image = $request->file('files.logo');
+            $user->user_photo = $image->store('', "users");
+        }
+
         $user->user_password = Hash::make($request->input('password'));
 
         $user->save();
@@ -60,6 +65,11 @@ class UsersController extends AdminController {
     public function update($id, UsersRequest $request) {
         $user = User::findOrFail($id);
         $user->fill($request->all());
+        if ($request->hasFile('files.logo')) {
+            $image = $request->file('files.logo');
+            $user->user_photo = $image->store('', "users");
+        }
+
         $user->user_password = Hash::make($request->input('user_password'));
         $user->save();
 
