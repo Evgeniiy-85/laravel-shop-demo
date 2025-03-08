@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\User;
 use App\Helpers\Helper;
 use Carbon\Carbon;
@@ -12,6 +13,13 @@ class AdminController extends Controller {
 
     public function __construct() {
         $this->middleware('admin');
+
+        $setting = Setting::first();
+
+        \View::share([
+            'setting' => $setting,
+            'settings' => $setting->settings,
+        ]);
     }
 
     public function index() {

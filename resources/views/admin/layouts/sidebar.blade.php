@@ -1,9 +1,9 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <div class="sidebar-brand">
-        <a href="../index.html" class="brand-link">
-            <img src="/images/admin/logo.png" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"/>
+        <a href="{{ route('admin') }}" class="brand-link">
+            <img src="{{ $setting->logo_url }}" alt="AdminLTE Logo" class="brand-image opacity-75 shadow"/>
 
-            <span class="brand-text fw-light">AdminLTE 4</span>
+            <span class="brand-text fw-light">{{ $settings->site_name }}</span>
         </a>
     </div>
 
