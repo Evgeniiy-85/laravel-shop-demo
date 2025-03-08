@@ -49,7 +49,7 @@
                                         </td>
 
                                         <td>
-                                            <img width="32" height="32" class="img-circle img-bordered-sm" src="{{ $user->user_photo ?: '/images/avatars/no-avatar.png' }}"/>
+                                            <img width="32" height="32" class="img-circle img-bordered-sm p-0" src="{{ $user->user_photo_url }}"/>
                                         </td>
 
                                         <td>
