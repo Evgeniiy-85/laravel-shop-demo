@@ -19,7 +19,7 @@
 
                     <div class="cart-product_info">
                         <div class="cart-product_title">{{ $product->prod_title }}</div>
-                        <div class="cart-product_price">{{ $product->prod_price * $quantity}} ₽</div>
+                        <div class="cart-product_price">{{ $product->prod_price * $quantity}} {{ $settings->currency }}</div>
                         <div class="cart-product-quantity_pickers">
                             <a href="javascript:void(0);" class="cart-product-quantity_picker btn_a-primary" data-prod_id="{{ $prod_id }}" data-action_type="reduce">
                                 <i class="fa fa-minus"></i>
@@ -46,7 +46,7 @@
         <div class="cart-footer">
             <div class="cart-footer_left">
                 <span>Итого: </span>
-                <span class="cart-sum">{{ $cart->total }} ₽</span>
+                <span class="cart-sum">{{ $cart->total }} {{ $settings->currency }}</span>
             </div>
 
             <div class="cart-footer_right">

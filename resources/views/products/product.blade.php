@@ -48,7 +48,7 @@
 
                 <div class="product-buttons-one_line">
                     <div class="product-price">
-                        {{ $product->prod_price }} ₽
+                        {{ $product->prod_price }} {{ $settings->currency }}
                     </div>
 
                     <div class="product-buttons">

@@ -15,7 +15,7 @@
 
                 <div class="cart-product_info">
                     <div class="cart-product_title">{{ $order_item->prod_title }}</div>
-                    <div class="cart-product_price">{{ $order_item->prod_price * $order_item->quantity}} ₽</div>
+                    <div class="cart-product_price">{{ $order_item->prod_price * $order_item->quantity}} {{ $settings->currency }}</div>
                 </div>
             </div><hr>
         @endforeach
@@ -24,7 +24,7 @@
     <div class="cart-footer">
         <div class="cart-footer_left">
             <span>Итого: </span>
-            <span class="cart-sum">{{ $order->order_sum }} ₽</span>
+            <span class="cart-sum">{{ $order->order_sum }} {{ $settings->currency }}</span>
         </div>
     </div>
 </div>

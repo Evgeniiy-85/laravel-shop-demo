@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Setting extends Model {
 
@@ -42,6 +43,25 @@ class Setting extends Model {
             get: function() {
                 return $this->params ? json_decode($this->params) : null;
             }
+        );
+    }
+
+
+    /**
+     * Get the user's first name.
+     */
+    protected function logoUrl(): Attribute {
+        return Attribute::make(
+            get: fn () =>  $this->settings->logo ? Storage::disk('main')->url($this->settings->logo) : asset('/images/icons/logo.svg'),
+        );
+    }
+
+    /**
+     * Get the user's first name.
+     */
+    protected function faviconUrl(): Attribute {
+        return Attribute::make(
+            get: fn () =>  $this->settings->favicon ? Storage::disk('main')->url($this->settings->favicon) : asset('/images/icons/favicon.svg'),
         );
     }
 

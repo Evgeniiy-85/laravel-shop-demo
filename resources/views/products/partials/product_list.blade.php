@@ -12,7 +12,7 @@
 
             <div class="product-right">
                 <div class="product-price">
-                    {{ $product->prod_price }} ₽
+                    {{ $product->prod_price }} {{ $settings->currency }}
                 </div>
 
                 <div class="product-buttons">

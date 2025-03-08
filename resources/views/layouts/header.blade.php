@@ -22,7 +22,7 @@
         <div class="container">
             <div class="header-left">
                 <a class="logo-wrap" href="/">
-                    <img src="/images/icons/logo.svg">
+                    <img src="{{ $setting->logo_url }}">
                 </a>
 
                 @if(1)
