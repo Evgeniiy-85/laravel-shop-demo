@@ -14,7 +14,7 @@ Breadcrumbs::for('admin.index', function (BreadcrumbTrail $trail) {
 });
 Breadcrumbs::for('admin.orders', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Список заказов', route('admin.orders'));
+    $trail->push('Заказы', route('admin.orders'));
 });
 Breadcrumbs::for('admin.orders.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.orders');
@@ -24,7 +24,7 @@ Breadcrumbs::for('admin.orders.edit', function (BreadcrumbTrail $trail) {
 /* Категории*/
 Breadcrumbs::for('admin.categories', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Список категорий', route('admin.categories'));
+    $trail->push('Категории', route('admin.categories'));
 });
 Breadcrumbs::for('admin.categories.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.categories');
@@ -54,7 +54,7 @@ Breadcrumbs::for('admin.settings.payments.custom', function (BreadcrumbTrail $tr
 /* Продукты*/
 Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Список продуктов', route('admin.products'));
+    $trail->push('Продукты', route('admin.products'));
 });
 Breadcrumbs::for('admin.products.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.products');
@@ -64,11 +64,15 @@ Breadcrumbs::for('admin.products.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.products');
     $trail->push('Редактировать продукт');
 });
+Breadcrumbs::for('admin.products.settings', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.products');
+    $trail->push('Настройки');
+});
 
 /* Пользователи*/
 Breadcrumbs::for('admin.users', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Список пользователей', route('admin.users'));
+    $trail->push('Пользователи', route('admin.users'));
 });
 Breadcrumbs::for('admin.users.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.users');

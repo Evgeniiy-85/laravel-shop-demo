@@ -1,12 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title')
-    Настройки продуктов
-@endsection
-
-@section('content_header')
-    <h1>Настройки продуктов</h1>
-@endsection
+@section('title') Настройки продуктов @endsection
+@section('breadcrumbs') {{ Breadcrumbs::render('admin.products.settings') }} @endsection
+@section('h1') Настройки продуктов @endsection
 
 @section('content')
     <div class="row">
@@ -17,7 +13,7 @@
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-five-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="tab_link_1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">Общие</a>
+                                <a class="nav-link active" id="tab_link_1" data-toggle="pill" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">Внешний вид</a>
                             </li>
                         </ul>
                     </div>

@@ -1,12 +1,6 @@
 @extends('admin/layouts.main')
 
-@section('title')
-    Список продуктов
-@endsection
-
-@section('content_header')
-    <h1>Список продуктов</h1>
-@endsection
+@section('title') Главная панель @endsection
 
 @section('content')
     <div class="row">

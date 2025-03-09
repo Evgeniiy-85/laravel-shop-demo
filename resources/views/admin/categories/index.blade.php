@@ -1,8 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Список категорий @endsection
+@section('title') Категории @endsection
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.categories') }} @endsection
-@section('h1') Список категорий @endsection
+@section('h1') Категории @endsection
 
 @section('content')
     <div class="row mb-3">

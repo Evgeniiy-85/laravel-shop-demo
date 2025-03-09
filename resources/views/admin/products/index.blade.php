@@ -1,8 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Список продуктов @endsection
+@section('title') Продукты @endsection
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.products') }} @endsection
-@section('h1') Список продуктов @endsection
+@section('h1') Продукты @endsection
 
 @section('content')
     <div class="row mb-3">

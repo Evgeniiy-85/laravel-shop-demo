@@ -1,8 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Список пользователей @endsection
+@section('title') Пользователи @endsection
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.users') }} @endsection
-@section('h1') Список пользователей @endsection
+@section('h1') Пользователи @endsection
 
 @section('content')
     <div class="row mb-3">

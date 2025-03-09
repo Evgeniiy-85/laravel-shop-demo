@@ -1,12 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title')
-    Основные настройки
-@endsection
-
-@section('content_header')
-    <h1>Основные настройки</h1>
-@endsection
+@section('title') Настройки @endsection
+@section('breadcrumbs') {{ Breadcrumbs::render('admin.settings') }} @endsection
+@section('h1') Настройки @endsection
 
 @section('content')
     <div class="row">

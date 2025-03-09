@@ -1,8 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Список заказов @endsection
+@section('title') Заказы @endsection
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.orders') }} @endsection
-@section('h1') Список заказов @endsection
+@section('h1') Заказы @endsection
 
 @section('content')
     <div class="row">
