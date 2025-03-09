@@ -8,15 +8,11 @@ use App\Http\Requests\Admin\SettingsRequest;
 class SettingsController extends AdminController {
 
     public function index() {
-        $setting = Setting::find(1);
-
-        return view('admin.settings.index', [
-            'settings' => $setting->settings,
-        ]);
+        return view('admin.settings.index');
     }
 
     public function update(SettingsRequest $request) {
-        $setting = Setting::find(1) ?: new Setting();
+        $setting = Setting::firstOrNew();
         $settings = $request->input('settings');
 
         if ($request->hasFile('files.logo')) {

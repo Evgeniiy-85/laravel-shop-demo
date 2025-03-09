@@ -20,6 +20,21 @@ class Setting extends Model {
 
     public $timestamps = false;
 
+    protected $attributes = [
+        'params' => [
+            'count_items' => 20,
+            'site_name' => 'Laravel Shop',
+            'logo' => null,
+            'currency' => '₽',
+            'mail_send_type' => self::MAIL_SEND_TYPE_PHP,
+            'mail_encrypt_type' => self::MAIL_ENCRYPT_TYPE_SSL
+        ]
+    ];
+
+    public function __construct() {
+        $this->params = json_encode($this->attributes['params']);
+    }
+
     public static function getMailSendTypes() {
         return [
             self::MAIL_SEND_TYPE_PHP => 'PHP Mail',
@@ -52,7 +67,7 @@ class Setting extends Model {
      */
     protected function logoUrl(): Attribute {
         return Attribute::make(
-            get: fn () =>  $this->settings->logo ? Storage::disk('main')->url($this->settings->logo) : asset('/images/icons/logo.svg'),
+            get: fn () =>  $this->settings && $this->settings->logo ? Storage::disk('main')->url($this->settings->logo) : asset('/images/icons/logo.svg'),
         );
     }
 
@@ -69,6 +84,6 @@ class Setting extends Model {
      * @var string[]
      */
     protected $fillable = [
-        'params', 'id'
+        'params'
     ];
 }

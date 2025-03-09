@@ -32,6 +32,11 @@ Route::group( ['namespace' => 'Admin', 'prefix' => '/admin', 'middleware' => 'ad
         Route::get('/edit/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'edit'])->name('admin.products.edit');
         Route::post('/update/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'update'])->name('admin.products.update');
         Route::get('/delete/{id}', [App\Http\Controllers\Admin\ProductsController::class, 'delete'])->name('admin.products.delete');
+
+        Route::group(['prefix' => '/settings'], function () {
+            Route::get('/', [App\Http\Controllers\Admin\ProductsSettingsController::class, 'index'])->name('admin.products.settings');
+            Route::post('/update', [App\Http\Controllers\Admin\ProductsSettingsController::class, 'update'])->name('admin.products.settings.update');
+        });
     });
 
     Route::group(['prefix' => '/users'], function () {

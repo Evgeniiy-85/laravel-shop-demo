@@ -32,6 +32,12 @@ return [
                 'url' => 'admin.products',
                 'active' => ['admin.products', 'admin.products.*'],
             ],
+            [
+                'text' => 'Настройки',
+                'icon' => 'fa fa-solid fa-gear',
+                'url' => 'admin.products.settings',
+                'active' => ['admin.products.settings'],
+            ],
         ],
     ],
     [
@@ -50,12 +56,12 @@ return [
     ],
     [
         'text' => 'Настройки',
-        'icon' => 'bi bi-wrench-adjustable',
+        'icon' => 'fa fa-solid fa-gears',
         'active' => ['admin.settings', 'admin.settings.*'],
         'submenu' => [
             [
                 'text' => 'Основные настройки',
-                'icon' => 'bi bi-wrench-adjustable',
+                'icon' => 'fa fa-solid fa-gear',
                 'url' => 'admin.settings',
                 'active' => ['admin.settings'],
             ],
