@@ -70,7 +70,7 @@ class User extends Authenticatable {
         );
     }
 
-    protected $fillable = ['user_email', 'user_password', 'user_name', 'user_surname',
+    protected $fillable = ['user_email', 'user_name', 'user_surname',
         'user_patronymic', 'user_phone', 'user_status', 'user_role', 'user_sex', 'user_photo'
     ];
 

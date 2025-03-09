@@ -71,11 +71,9 @@
                     </table>
                 </div>
 
-                @if(!$orders->count())
-                    <div class="card-footer clearfix">
-                        Ничего не найдено
-                    </div>
-                @endif
+                <div class="card-footer clearfix">
+                    {{ $orders->links('admin.layouts.paginator') }}
+                </div>
             </div>
         </div>
     </div>

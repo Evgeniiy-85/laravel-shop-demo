@@ -92,11 +92,9 @@
                     </table>
                 </div>
 
-                @if(!$users->count())
-                    <div class="card-footer clearfix">
-                        Ничего не найдено
-                    </div>
-                @endif
+                <div class="card-footer clearfix">
+                    {{ $users->links('admin.layouts.paginator')}}
+                </div>
             </div>
         </div>
     </div>

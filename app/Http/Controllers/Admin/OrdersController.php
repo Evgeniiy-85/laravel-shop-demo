@@ -9,10 +9,8 @@ use App\Models\Order;
 class OrdersController extends AdminController {
 
     public function index() {
-        $orders = Order::orderBy('order_id', 'desc')->get();
-
         return view('admin.orders.index', [
-            'orders' => $orders,
+            'orders' => Order::paginate($this->settings->count_items),
         ]);
     }
 

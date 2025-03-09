@@ -11,10 +11,8 @@ use Illuminate\Support\Facades\Storage;
 class ProductsController extends AdminController {
 
     public function index() {
-        $products = Product::all();
-
         return view('admin.products.index', [
-            'products' => $products,
+            'products' => Product::paginate($this->settings->count_items),
         ]);
     }
 

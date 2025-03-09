@@ -54,7 +54,7 @@
                                     </div>
 
                                     <div class="form-group field-settings-page_count_entries required"><label class="control-label" for="settings-page_count_entries">Количество записей на странице</label>
-                                        <input type="number" id="settings-page_count_entries" class="form-control" name="settings[page_count_entries]" value="{{ $settings ? $settings->page_count_entries : '20' }}" aria-required="true">
+                                        <input type="number" id="settings-page_count_entries" class="form-control" name="settings[count_items]" value="{{ $settings ? $settings->count_items : '20' }}" aria-required="true">
                                         <div class="help-block"></div>
                                     </div>
                                 </div>

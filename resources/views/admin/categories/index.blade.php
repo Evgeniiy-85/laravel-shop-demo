@@ -79,11 +79,9 @@
                     </table>
                 </div>
 
-                @if(!$categories->count())
-                    <div class="card-footer clearfix">
-                        Ничего не найдено
-                    </div>
-                @endif
+                <div class="card-footer clearfix">
+                    {{ $categories->links('admin.layouts.paginator') }}
+                </div>
             </div>
         </div>
     </div>

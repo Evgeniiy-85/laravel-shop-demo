@@ -10,15 +10,17 @@ use App\Helpers\Helper;
 use Carbon\Carbon;
 
 class AdminController extends Controller {
+    public object $settings;
 
     public function __construct() {
         $this->middleware('admin');
 
         $setting = Setting::first();
+        $this->settings = $setting->settings;
 
         \View::share([
             'setting' => $setting,
-            'settings' => $setting->settings,
+            'settings' => $this->settings,
         ]);
     }
 

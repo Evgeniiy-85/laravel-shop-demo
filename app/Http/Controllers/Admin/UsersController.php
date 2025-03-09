@@ -11,7 +11,7 @@ class UsersController extends AdminController {
 
     public function index() {
         return view('admin.users.index', [
-            'users' => User::all(),
+            'users' => User::paginate($this->settings->count_items),
         ]);
     }
 
@@ -70,7 +70,9 @@ class UsersController extends AdminController {
             $user->user_photo = $image->store('', "users");
         }
 
-        $user->user_password = Hash::make($request->input('user_password'));
+        if ($request->input('user_password')) {
+            $user->user_password = Hash::make($request->input('user_password'));
+        }
         $user->save();
 
         return redirect()->route('admin.users')->with('success', 'Успешно');

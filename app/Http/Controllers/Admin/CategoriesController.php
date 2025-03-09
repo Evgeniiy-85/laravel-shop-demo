@@ -15,7 +15,7 @@ class CategoriesController extends AdminController {
      */
     public function index() {
         return view('admin.categories.index', [
-            'categories' => Category::all(),
+            'categories' => Category::paginate($this->settings->count_items),
         ]);
     }
 
