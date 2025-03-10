@@ -17,4 +17,10 @@
     <script src="{{ asset('js/popper.min.js') }}" ></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
+
+    <style>
+        .products-list {
+            grid-template-columns: repeat(auto-fill, minmax(min-content, calc({{ number_format(100 / $products_settings->columns, 2) }}% - 10px)));
+        }
+    </style>
 </head>

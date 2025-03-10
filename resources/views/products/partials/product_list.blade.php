@@ -34,10 +34,3 @@
         </div>
     @endif
 </div>
-
-
-<style>
-    .products-list {
-        grid-template-columns: repeat(auto-fill, minmax(min-content, calc({{ number_format(100 / $products_settings->columns, 2) }}% - 10px)));
-    }
-</style>
