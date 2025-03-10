@@ -22,7 +22,7 @@
         <div class="container">
             <div class="header-left">
                 <a class="logo-wrap" href="/">
-                    <img src="{{ $settings_model->logo_url }}">
+                    <img src="{{ $settings->logo_url }}">
                 </a>
 
                 @if(1)

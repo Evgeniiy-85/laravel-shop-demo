@@ -1,7 +1,7 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <div class="sidebar-brand justify-items-center">
         <a href="{{ route('admin') }}" class="brand-link">
-            <img src="{{ $settings_model->logo_url }}" alt="" class="brand-image opacity-75 shadow"/>
+            <img src="{{ $settings->logo_url }}" alt="" class="brand-image opacity-75 shadow"/>
 
             <span class="brand-text fw-light">{{ $settings->site_name }}</span>
         </a>

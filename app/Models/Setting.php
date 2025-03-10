@@ -56,28 +56,30 @@ class Setting extends Model {
     protected function settings(): Attribute {
         return Attribute::make(
             get: function() {
-                return $this->params ? json_decode($this->params) : null;
+                $settings = $this->params ? json_decode($this->params) : null;
+                $settings->logo_url = self::getLogoUrl($settings);
+                $settings->favicon_url = self::getFaviconUrl($settings);
+
+                return $settings;
             }
         );
     }
 
 
     /**
-     * Get the user's first name.
+     * @param $settings
+     * @return string
      */
-    protected function logoUrl(): Attribute {
-        return Attribute::make(
-            get: fn () =>  $this->settings && $this->settings->logo ? Storage::disk('main')->url($this->settings->logo) : asset('/images/icons/logo.svg'),
-        );
+    private static function getLogoUrl($settings): string {
+        return $settings && $settings->logo ? Storage::disk('main')->url($settings->logo) : asset('/images/icons/logo.svg');
     }
 
     /**
-     * Get the user's first name.
+     * @param $settings
+     * @return string
      */
-    protected function faviconUrl(): Attribute {
-        return Attribute::make(
-            get: fn () =>  $this->settings->favicon ? Storage::disk('main')->url($this->settings->favicon) : asset('/images/icons/favicon.svg'),
-        );
+    private static function getFaviconUrl($settings): string {
+        return $settings->favicon ? Storage::disk('main')->url($settings->favicon) : asset('/images/icons/favicon.svg');
     }
 
     /**

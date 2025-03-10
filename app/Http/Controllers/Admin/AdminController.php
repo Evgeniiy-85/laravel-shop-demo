@@ -11,17 +11,13 @@ use Carbon\Carbon;
 
 class AdminController extends Controller {
 
-    public \App\Models\Setting $settings_model;
     public object $settings;
 
     public function __construct() {
         $this->middleware('admin');
-
-        $this->settings_model = Setting::firstOrNew();
-        $this->settings = $this->settings_model->settings;
+        $this->settings = Setting::firstOrNew()->settings;
 
         \View::share([
-            'settings_model' => $this->settings_model,
             'settings' => $this->settings,
         ]);
     }
