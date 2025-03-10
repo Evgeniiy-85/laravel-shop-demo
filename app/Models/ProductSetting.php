@@ -11,16 +11,9 @@ class ProductSetting extends Model {
 
     public $timestamps = false;
 
-    protected $attributes = [
-        'params' => [
-            'width' => 100,
-        ]
+    private array $default =  [
+        'width' => 100,
     ];
-
-    public function __construct() {
-        $this->params = json_encode($this->attributes['params']);
-    }
-
 
     /**
      * @return Attribute
@@ -28,7 +21,8 @@ class ProductSetting extends Model {
     protected function settings(): Attribute {
         return Attribute::make(
             get: function() {
-                return $this->params ? json_decode($this->params) : null;
+                $settings = $this->params ? json_decode($this->params, true) : [];
+                return (object)array_merge($this->default, $settings);
             }
         );
     }

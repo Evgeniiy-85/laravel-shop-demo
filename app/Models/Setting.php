@@ -20,20 +20,14 @@ class Setting extends Model {
 
     public $timestamps = false;
 
-    protected $attributes = [
-        'params' => [
-            'count_items' => 20,
-            'site_name' => 'Laravel Shop',
-            'logo' => null,
-            'currency' => '₽',
-            'mail_send_type' => self::MAIL_SEND_TYPE_PHP,
-            'mail_encrypt_type' => self::MAIL_ENCRYPT_TYPE_SSL
-        ]
+    private array $default =  [
+        'count_items' => 20,
+        'site_name' => 'Laravel Shop',
+        'logo' => null,
+        'currency' => '₽',
+        'mail_send_type' => self::MAIL_SEND_TYPE_PHP,
+        'mail_encrypt_type' => self::MAIL_ENCRYPT_TYPE_SSL,
     ];
-
-    public function __construct() {
-        $this->params = json_encode($this->attributes['params']);
-    }
 
     public static function getMailSendTypes() {
         return [
@@ -56,7 +50,8 @@ class Setting extends Model {
     protected function settings(): Attribute {
         return Attribute::make(
             get: function() {
-                $settings = $this->params ? json_decode($this->params) : null;
+                $settings = $this->params ? json_decode($this->params, true) : [];
+                $settings = (object)array_merge($this->default, $settings);
                 $settings->logo_url = self::getLogoUrl($settings);
                 $settings->favicon_url = self::getFaviconUrl($settings);
 
@@ -71,7 +66,7 @@ class Setting extends Model {
      * @return string
      */
     private static function getLogoUrl($settings): string {
-        return $settings && $settings->logo ? Storage::disk('main')->url($settings->logo) : asset('/images/icons/logo.svg');
+        return !empty($settings->logo) ? Storage::disk('main')->url($settings->logo) : asset('/images/icons/logo.svg');
     }
 
     /**
@@ -79,7 +74,7 @@ class Setting extends Model {
      * @return string
      */
     private static function getFaviconUrl($settings): string {
-        return $settings->favicon ? Storage::disk('main')->url($settings->favicon) : asset('/images/icons/favicon.svg');
+        return !empty($settings->favicon) ? Storage::disk('main')->url($settings->favicon) : asset('/images/icons/favicon.svg');
     }
 
     /**
