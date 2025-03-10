@@ -1,5 +1,5 @@
-<div class="products-list columns-{{ $products_settings->columns }}">
-    @if($products && $products->count())
+@if($products && $products->count())
+    <div class="products-list columns-{{ $products_settings->columns }}">
         @foreach($products as $product)
             <div class="product">
                 <div class="product-cover">
@@ -28,9 +28,9 @@
                 </div>
             </div>
         @endforeach
-    @else
-        <div class="empty-result">
-            <h3>Ничего не найдено</h3>
-        </div>
-    @endif
-</div>
+    </div>
+@else
+    <div class="empty-result">
+        <h3>Ничего не найдено</h3>
+    </div>
+@endif
