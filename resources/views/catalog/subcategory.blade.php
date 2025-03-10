@@ -20,9 +20,7 @@
                     @include('products.partials.product_filter')
                 </div>
 
-                <div class="products-list">
-                    @include('products.partials.product_list')
-                </div>
+                @include('products.partials.product_list')
             </div>
         @endif
     </div>

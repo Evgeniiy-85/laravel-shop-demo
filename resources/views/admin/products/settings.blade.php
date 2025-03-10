@@ -22,11 +22,11 @@
                         <div class="tab-content" id="custom-tabs-five-tabContent">
                             <div class="tab-pane fade active show" id="tab_1" role="tabpanel" aria-labelledby="tab_link_1">
                                 <div class="overlay-wrapper">
-                                    <div class="form-group field-settings-mail_encrypt_type required"><label class="control-label" for="settings-width">Ширина блока</label>
-                                        <select id="settings-width" class="form-control" name="settings[width]" aria-required="true">
-                                            <option value="25" {{ $product_settings->width == 25 ? 'selected' : '' }}>25%</option>
-                                            <option value="50" {{ $product_settings->width == 50 ? 'selected' : '' }}>50%</option>
-                                            <option value="100" {{ $product_settings->width == 100 ? 'selected' : '' }}>100%</option>
+                                    <div class="form-group field-settings-mail_encrypt_type required"><label class="control-label" for="settings-width">Шаблон страницы</label>
+                                        <select id="settings-width" class="form-control" name="settings[columns]" aria-required="true">
+                                            <option value="1" {{ $product_settings->columns == 1 ? 'selected' : '' }}>В 1 колонку</option>
+                                            <option value="2" {{ $product_settings->columns == 2 ? 'selected' : '' }}>В 2 колонки</option>
+                                            <option value="3" {{ $product_settings->columns == 3 ? 'selected' : '' }}>В 3 колонки</option>
                                         </select>
                                         <div class="help-block"></div>
                                     </div>

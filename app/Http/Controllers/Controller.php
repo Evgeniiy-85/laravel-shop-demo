@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductSetting;
 use App\Models\Setting;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -16,6 +17,7 @@ class Controller extends BaseController {
 
         \View::share([
             'settings' => $this->settings,
+            'products_settings' => ProductSetting::firstOrNew()->settings,
         ]);
     }
 }

@@ -13,9 +13,7 @@
         <h1>Избранное</h1>
 
         <div class="products">
-            <div class="products-list">
-                @include('products.partials.product_list')
-            </div>
+            @include('products.partials.product_list')
         </div>
     </div>
 @endsection

@@ -12,7 +12,7 @@ class ProductSetting extends Model {
     public $timestamps = false;
 
     private array $default =  [
-        'width' => 100,
+        'columns' => 1,
     ];
 
     /**
