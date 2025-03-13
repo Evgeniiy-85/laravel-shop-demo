@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Favorites;
 use App\Models\Product;
 use App\Models\ProductFilter;
-use App\models\ProductReview;
+use App\Models\ProductReview;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller {

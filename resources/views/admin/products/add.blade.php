@@ -58,7 +58,7 @@
                                     <input type="file" class="custom-file-input hidden" name="files[prod_image][]" id="prod_image" data-ajax_upload="" multiple>
                                 </label>
 
-                                <x-adminattachments :data="[
+                                <x-admin-attachments :data="[
                                     'field' => 'prod_images',
                                     'storage' => 'products',
                                     'images' => null

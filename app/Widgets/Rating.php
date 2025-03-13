@@ -2,7 +2,7 @@
 
 namespace App\Widgets;
 
-use App\models\ProductReview;
+use App\Models\ProductReview;
 use Arrilot\Widgets\AbstractWidget;
 use View;
 
@@ -22,7 +22,7 @@ class Rating extends AbstractWidget {
     public function run() {
         $rating = $this->config['rating'];
         $count_starts = intval($rating);
-        
+
         if ($rating - $count_starts > 0.6) {
             $count_starts += 1;
         }

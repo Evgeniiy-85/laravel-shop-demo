@@ -2,7 +2,7 @@
 
 namespace App\Widgets;
 
-use App\models\ProductReview;
+use App\Models\ProductReview;
 use Arrilot\Widgets\AbstractWidget;
 
 class ProductReviews extends AbstractWidget {

@@ -121,7 +121,7 @@
                                                 <input type="hidden" class="current-image" name="settings[favicon]" value="{{ $settings->favicon ?? '' }}">
                                             </label>
 
-                                            <x-adminattachments :data="[
+                                            <x-admin-attachments :data="[
                                                 'field' => 'favicon',
                                                 'storage' => 'main',
                                                 'image' => $settings->favicon ?? '',
@@ -137,7 +137,7 @@
                                                 <input type="hidden" class="current-image" name="settings[logo]" value="{{ $settings->logo ?? '' }}">
                                             </label>
 
-                                            <x-adminattachments :data="[
+                                            <x-admin-attachments :data="[
                                                 'field' => 'favicon',
                                                 'storage' => 'main',
                                                 'image' => $settings->logo ?? '',

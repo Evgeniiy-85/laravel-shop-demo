@@ -50,7 +50,7 @@
                                     <input type="file" class="custom-file-input hidden" name="files[cat_image]" id="cat_image" data-ajax_upload="">
                                 </label>
 
-                                <x-adminattachments :data="[
+                                <x-admin-attachments :data="[
                                     'field' => 'cat_image',
                                     'storage' => 'categories',
                                     'image' => null

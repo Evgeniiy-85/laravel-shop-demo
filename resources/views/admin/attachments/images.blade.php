@@ -1,4 +1,4 @@
-<x-adminattachments :data="[
+<x-admin-attachments :data="[
     'field' => $field,
     'storage' => $storage,
     'images' => $images,

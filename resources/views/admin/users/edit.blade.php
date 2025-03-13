@@ -51,7 +51,7 @@
                                     <div class="user-info">
                                         <div class="form-group user-photo">
                                             <div class="input-group">
-                                                <x-adminattachments :data="[
+                                                <x-admin-attachments :data="[
                                                     'field' => 'user_photo',
                                                     'storage' => 'users',
                                                     'image' => $user->user_photo,

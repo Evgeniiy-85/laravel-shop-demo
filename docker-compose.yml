@@ -6,10 +6,15 @@ services:
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         ports:
             - "8876:80"
+            - "80:80"
+            - "443:443"
+        environment:
+            VIRTUAL_HOST: app.docker
         depends_on:
             - app
         container_name: project_nginx
-
+        networks:
+            - laravel
     app:
         build:
             context: .
@@ -21,12 +26,15 @@ services:
         ports:
             - "8081:80"
         container_name: project_app
-
+        networks:
+            - laravel
     db:
         image: mysql:8.0
         restart: always
+        tty: true
         volumes:
-            - ./tmp/db:/var/lib/mysql
+            - ./sql-data:/var/lib/mysql/
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
         environment:
             MYSQL_DATABASE: laravel
             MYSQL_ROOT_USER: root
@@ -35,6 +43,10 @@ services:
             - "8105:3306"
         command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
         container_name: project_db
-
-
+        networks:
+            - laravel
+networks:
+    laravel:
+        driver: bridge
+        name: laravel.local
 
