@@ -5,11 +5,8 @@ services:
             - ./:/var/www/
             - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
         ports:
-            - "8876:80"
             - "80:80"
             - "443:443"
-        environment:
-            VIRTUAL_HOST: app.docker
         depends_on:
             - app
         container_name: project_nginx
@@ -34,6 +31,7 @@ services:
         tty: true
         volumes:
             - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+            - ./docker/tmp/dbdata:/var/lib/mysql/
         environment:
             MYSQL_DATABASE: laravel
             MYSQL_ROOT_USER: root
