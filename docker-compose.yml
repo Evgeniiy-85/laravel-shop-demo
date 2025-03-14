@@ -33,7 +33,6 @@ services:
         restart: always
         tty: true
         volumes:
-            - ./sql-data:/var/lib/mysql/
             - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
         environment:
             MYSQL_DATABASE: laravel
