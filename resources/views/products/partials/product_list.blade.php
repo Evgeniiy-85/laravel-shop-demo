@@ -17,8 +17,13 @@
                     </div>
 
                     <div class="product-buttons">
-                        <livewire:product-favorites :product_id="$product->prod_id"/>
-                        <livewire:product-buy :product="$product"/>
+                        <div class="product-favorites">
+                            <button type="button" class="button button-ui btn_a-grey" data-prod_id="{{ $product->prod_id }}" data-action_type="add"></button>
+                        </div>
+
+                        <div class="product-by">
+                            <button type="button" class="button button-ui btn_a-outline-primary" data-prod_id="{{ $product->prod_id }}" data-action_type="append">Купить</button>
+                        </div>
                     </div>
                 </div>
             </div>

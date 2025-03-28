@@ -60,7 +60,16 @@
                             </a>
                         </div>
 
-                        @livewire('cart')
+                        <div class="btn-wrap">
+                            <a href="/cart" class="btn-cart">
+                                <i class="btn-icon"></i>
+                                <i class="count-products-icon hidden"></i>
+                                <span class="btn-title">
+                                    <span>Корзина</span>
+                                </span>
+                            </a>
+                            @include('cart.cart_modal')
+                        </div>
                     @endif
 
                     @if(!Auth::check())

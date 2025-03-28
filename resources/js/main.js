@@ -1,3 +1,5 @@
+import Cart from './cart.js';
+import Favorites from './favorites.js';
 import Search from './search.js';
 import route from './route.js';
 
@@ -7,6 +9,12 @@ $(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    let cart = new Cart();
+    cart.init();
+
+    let favorites = new Favorites();
+    favorites.init();
 
     let search = new Search();
     search.init();
