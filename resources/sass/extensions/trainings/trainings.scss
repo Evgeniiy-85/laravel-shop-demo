@@ -1,0 +1,69 @@
+.site-trainings {
+    .trainings-list, .categories-list, .sections-list, .lessons-list {
+        grid-gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+        .t-card {
+            display: flex;
+            flex-direction: column;
+            height: 340px;
+            position: relative;
+            vertical-align: top;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .16);
+
+            .t-card__cover {
+                width: 100%;
+                display: inline-block;
+                height: 160px;
+                line-height: 150px;
+                text-align: center;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    max-width: 100%;
+                    display: block;
+                }
+            }
+
+            .t-card__body {
+                padding: 16px;
+                overflow: hidden;
+
+                .t-card__title {
+                    margin-top: 10px;
+                    font-size: 22px;
+                    line-height: 1.2;
+                }
+
+                .t-card__desc {
+                    margin-top: 4px;
+                    font-size: 14px;
+                }
+
+                .button-wrap {
+                    margin-top: auto;
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
+
+            &:hover {
+                color: #4e4e4e;
+                text-decoration: none;
+                box-shadow: 0 8px 8px 0 rgba(0, 0, 0, .05), 0 29px 26px 0 rgba(0, 0, 0, .08)
+            }
+
+            .t-card__footer {
+                padding: 16px;
+                margin-top: auto;
+                color: #00000080;
+            }
+        }
+    }
+}

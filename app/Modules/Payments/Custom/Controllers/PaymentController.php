@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Modules\Payments\Custom\Controllers;
+use App\Enums\OrderStatus;
 use App\Http\Controllers\Controller;
-use App\Models\Order;
+use App\Models\Order\Order;
 use App\Modules\Payments\Custom\Models\Payment;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class PaymentController extends Controller {
             'address' => 'required|string',
         ]);
 
-        $order = Order::where('order_status', Order::STATUS_NO_PAID)
+        $order = Order::where('order_status', OrderStatus::STATUS_NO_PAID)
             ->where('order_id', $order_id)
             ->first();
 

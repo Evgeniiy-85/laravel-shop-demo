@@ -96,6 +96,14 @@ return [
             'throw' => false,
         ],
 
+        'trainings' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/trainings'),
+            'url' => '/storage/trainings',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'main' => [
             'driver' => 'local',
             'root' => storage_path('app/public/main'),

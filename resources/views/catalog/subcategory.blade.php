@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    {{ $subcategory->cat_title }}
+    {{ $subcategory->title }}
 @endsection
 
 @section('breadcrumbs')
@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="site-catalog">
-        <h1>{{ $subcategory->cat_title }}</h1>
+        <h1>{{ $subcategory->title }}</h1>
 
         @if($subcategories->count())
             @include('catalog.partials.subcategory_list')

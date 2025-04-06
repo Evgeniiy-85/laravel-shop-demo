@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id('cat_id');
-            $table->string('cat_title', 256);
-            $table->string('cat_alias', 256)->unique();
-            $table->string('cat_image')->nullable();
-            $table->integer('cat_parent')->default(0);
-            $table->boolean('cat_status')->default(1);
+            $table->id('id');
+            $table->string('title', 256);
+            $table->string('alias', 256)->unique();
+            $table->string('image')->nullable();
+            $table->integer('parent')->default(0);
+            $table->boolean('status')->default(1);
+            $table->string('seo_title', 128)->nullable();
+            $table->string('meta_desc', 256)->nullable();
+            $table->string('meta_keys', 256)->nullable();
         });
     }
 

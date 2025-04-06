@@ -1,4 +1,4 @@
-<div class="modal fade " id="modalPay_{{ $payment->pay_name }}">
+<div class="modal fade" id="modalPay_{{ $payment->pay_name }}">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,13 +6,13 @@
                     <h4 class="modal-title">К оплате {{ $order->order_sum }} р.</h4>
                 </div>
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span>×</span>
                 </button>
             </div>
 
             <div class="modal-body">
-                <form id="form-pay-tinkoff" action="{{ route('payments.custom.pay', $order->order_id) }}" method="post">
+                <form action="{{ route('payments.custom.pay', $order->order_id) }}" method="post">
                     @csrf
                     <div class="c-card-body column-2">
                         <div class="form-group"><label class="control-label">Наименование организации</label>

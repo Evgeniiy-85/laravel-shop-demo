@@ -1,6 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Главная панель @endsection
+@section('title')
+    {{ __('Главная панель') }}
+@endsection
 
 @section('content')
     <div class="row">
@@ -9,7 +11,7 @@
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3>{{ $statistics['new_orders'] }}</h3>
-                    <p>Новых заказов</p>
+                    <p>{{ __('Новых заказов') }}</p>
                 </div>
             </div>
         </div>
@@ -20,7 +22,7 @@
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>{{ $statistics['pay_orders'] }}</h3>
-                    <p>Оплаченных заказов</p>
+                    <p>{{ __('Оплаченных заказов') }}</p>
                 </div>
             </div>
         </div>
@@ -31,7 +33,7 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ \App\Helpers\Helper::formatPrice($statistics['new_orders_sum']) }}</h3>
-                    <p>Заработано</p>
+                    <p>{{ __('Заработано') }}</p>
                 </div>
             </div>
         </div>
@@ -42,7 +44,7 @@
             <div class="small-box bg-orange color-palette">
                 <div class="inner">
                     <h3>{{ $statistics['new_clients'] }}</h3>
-                    <p>Новых клиентов</p>
+                    <p>{{ __('Новых клиентов') }}</p>
                 </div>
             </div>
         </div>
@@ -57,7 +59,7 @@
                 <div class="card-header">
                     <h3 class="card-title">
                         <i class="fas fa-chart-pie mr-1"></i>
-                        Продажи
+                        {{ __('Продажи') }}
                     </h3>
                 </div><!-- /.card-header -->
 

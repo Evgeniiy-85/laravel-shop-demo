@@ -1,0 +1,11 @@
+.lesson-elements .add-elements {
+    margin: 0 -10px;
+}
+.lesson-elements .elements-list {
+
+}
+.lesson-elements .elements-list .element-title div:first-child {
+    color: #6c757d;
+}
+
+

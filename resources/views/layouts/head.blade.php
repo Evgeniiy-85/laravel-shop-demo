@@ -3,10 +3,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link href="{{ $settings->favicon_url }}" rel="shortcut icon" type="image/vnd.microsoft.icon" />
-
-    <title>{{ $settings->site_name }}</title>
-
+    <link href="{{ Setting::get('favicon_url') }}" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+    <title>@hasSection('title') @yield('title') | @endif {{ Setting::get('site_name') }}</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link rel="stylesheet"  href="{{ asset('css/bootstrap-icons.min.css') }}" />

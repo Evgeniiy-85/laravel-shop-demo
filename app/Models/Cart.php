@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Product\Product;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
 
@@ -42,30 +43,30 @@ class Cart extends Model {
 
 
     /**
-     * @param int $prod_id
+     * @param int $id
      * @param int $quantity
      * @return bool
      */
-    public function changeProduct(int $prod_id, int $quantity) {
+    public function changeProduct(int $id, int $quantity) {
         $this->loadCart();
-        $product = $this->products[$prod_id] ?? Product::where(['prod_status' => Product::STATUS_ACTIVE, 'prod_id' => $prod_id])->first();
+        $product = $this->products[$id] ?? Product::where(['status' => 1, 'id' => $id])->first();
         if (!$product) {
             return false;
         }
 
-        $current_quantity = $this->quantity[$prod_id] ?? 0;
+        $current_quantity = $this->quantity[$id] ?? 0;
         $new_quantity = $quantity ? $current_quantity + $quantity : 0;
 
         if ($new_quantity == 0) {
-            $this->total -= $product->prod_price * $current_quantity;
+            $this->total -= $product->price * $current_quantity;
             $this->count_products -= $current_quantity;
-            unset($this->products[$prod_id]);
-            unset($this->quantity[$prod_id]);
+            unset($this->products[$id]);
+            unset($this->quantity[$id]);
         } else {
-            $this->total += $product->prod_price * $quantity;
+            $this->total += $product->price * $quantity;
             $this->count_products += $quantity;
-            $this->products[$prod_id] = $product;
-            $this->quantity[$prod_id] = $new_quantity;
+            $this->products[$id] = $product;
+            $this->quantity[$id] = $new_quantity;
         }
 
         $this->saveCart();

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Requests\Admin\ProductsSettingsRequest;
-use App\Models\ProductSetting;
+use App\Models\Product\ProductSetting;
 
 class ProductsSettingsController extends AdminController {
 

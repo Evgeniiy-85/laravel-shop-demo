@@ -7,6 +7,9 @@ return [
     'modules' => [
         'Payments' => [
             'Custom'
-        ]
+        ],
+        'Extensions' => [
+            'Trainings'
+        ],
     ]
 ];

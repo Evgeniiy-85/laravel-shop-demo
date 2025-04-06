@@ -1,8 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Платежные модули @endsection
+@section('title') {{ __('Платежные модули') }} @endsection
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.settings.payments') }} @endsection
-@section('h1') Платежные модули @endsection
+@section('h1') {{ __('Платежные модули') }} @endsection
 
 @section('content')
     <div class="row">
@@ -17,7 +17,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-md-1">
-                                                    <a class="card_cover" href="/admin/settings/payments/{{ $payment->pay_name }}">
+                                                    <a class="card_cover" href="{{ route("admin.settings.payments.{$payment->pay_name}") }}">
                                                         <img src="{{ $payment->pay_image_url }}">
                                                     </a>
                                                 </div>

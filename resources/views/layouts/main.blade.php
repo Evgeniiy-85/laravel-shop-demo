@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 @include('layouts.head')
 @include('layouts.header')
 <body>
@@ -8,5 +8,6 @@
         @yield('content')
     </div>
     @include('layouts.footer')
+    @include('auth.login-modal')
 </body>
 </html>

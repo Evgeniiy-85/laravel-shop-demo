@@ -31,7 +31,17 @@ input:-webkit-autofill:focus {
     display: none;
     padding: 0;
 
+    .modal-content {
+        background-color: #fff;
+        .modal-header {
+            &.no-border {
+                border-bottom: none;
+            }
+        }
+    }
+
     .close {
+        padding: 0;
         border: none;
         background: none;
         font-size: 28px;
@@ -44,6 +54,9 @@ input:-webkit-autofill:focus {
 .modal-open {
     overflow: auto;
 }
+#login-modal .modal-content {
+    max-width: 410px;
+}
 
 .hidden {
     display: none!important;
@@ -52,7 +65,7 @@ h1, .h1 {
     font-size: 32px;
     line-height: 32px;
     margin-top: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 20px!important;
 }
 .width-100 {
     width: 100%;
@@ -348,4 +361,30 @@ html {
     margin: 0;
     padding: 0 20px 20px;
     text-align: center;
+}
+
+.filter {
+    display: flex;
+    margin: 0 -5px 20px;
+
+    .filter-item {
+        margin: 5px;
+        button {
+            border-radius: 5px;
+            padding: 8px 15px;
+            border-width: 1px;
+            background-color: #fff;
+        }
+        &.filter-reset {
+            button {
+                background-color: #0000000f;
+            }
+        }
+        &.active {
+            button {
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    }
 }

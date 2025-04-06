@@ -31,24 +31,24 @@ class Favorites extends Model {
     }
 
     /**
-     * @param int $prod_id
+     * @param int $id
      * @return true
      */
-    public function addProduct(int $prod_id) {
+    public function addProduct(int $id) {
         $this->loadProducts();
-        $this->products[$prod_id] = true;
+        $this->products[$id] = true;
 
         return $this->saveProducts();
     }
 
     /**
-     * @param $prod_id
+     * @param $id
      * @return true
      */
-    public function removeProduct($prod_id) {
+    public function removeProduct($id) {
         $this->loadProducts();
-        if (isset($this->products[$prod_id])) {
-            unset($this->products[$prod_id]);
+        if (isset($this->products[$id])) {
+            unset($this->products[$id]);
         }
 
         return $this->saveProducts();

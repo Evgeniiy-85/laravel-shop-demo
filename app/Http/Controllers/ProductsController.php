@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Favorites;
-use App\Models\Product;
-use App\Models\ProductFilter;
-use App\Models\ProductReview;
+use App\Models\Product\Product;
+use App\Models\Product\ProductFilter;
+use App\Models\Product\ProductReview;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller {
 
     public function index() {
-        $products = Product::where('prod_status', Product::STATUS_ACTIVE)->get();
+        $products = Product::where('status', 1)->get();
 
         return view('products.index', [
             'products' => $products
@@ -20,18 +20,18 @@ class ProductsController extends Controller {
     }
 
     public function product($alias) {
-        $product = Product::where('prod_status', Product::STATUS_ACTIVE)
-        ->where('prod_alias', $alias)
+        $product = Product::where('status', 1)
+        ->where('alias', $alias)
         ->first();
 
         if (!$product) {
             abort(404);
         }
 
-        $category = $product->prod_category ? Category::find($product->prod_category) : false;
+        $category = $product->category_id ? Category::find($product->category_id) : false;
 
-        $reviews = ProductReview::where('review_status', ProductReview::STATUS_ACTIVE)
-            ->where('prod_id', $product->prod_id);
+        $reviews = ProductReview::where('review_status', 1)
+            ->where('id', $product->id);
         $count_reviews = $reviews->count();
         $product_rating = $count_reviews ? number_format($reviews->sum('review_rating') / $count_reviews, 1) : 0;
 
@@ -46,11 +46,11 @@ class ProductsController extends Controller {
 
     public function search(Request $request) {
         $search = $request->input('q');
-        $products = Product::where('prod_status', Product::STATUS_ACTIVE)
-            ->leftJoin('categories', 'categories.cat_id', '=', 'products.prod_category');
+        $products = Product::where('status', 1)
+            ->leftJoin('categories', 'categories.cat_id', '=', 'products.category');
 
         if ($search) {
-            $products->where('prod_title', 'like', "%{$search}%")
+            $products->where('title', 'like', "%{$search}%")
             ->orWhere('cat_title', 'like', "%{$search}%");
         }
 
@@ -71,8 +71,8 @@ class ProductsController extends Controller {
         $favorites = new Favorites();
         $f_products = $favorites->getProducts();
 
-        $products = $f_products ? Product::where('prod_status', Product::STATUS_ACTIVE)
-            ->whereIn('prod_id', array_keys($f_products))
+        $products = $f_products ? Product::where('status', 1)
+            ->whereIn('id', array_keys($f_products))
             ->get() : [];
 
         return view('products.favorites', [

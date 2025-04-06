@@ -39,7 +39,7 @@
             <!--end::Notifications Dropdown Menu-->
 
             <li class="nav-item">
-                <a class="nav-link" href="/admin/logout" data-method="post"><i class="bi bi-box-arrow-right"></i></a>
+                <a class="nav-link" href="{{ route('admin.logout') }}" data-method="post"><i class="bi bi-box-arrow-right"></i></a>
             </li>
 
             <!--begin::Fullscreen Toggle-->

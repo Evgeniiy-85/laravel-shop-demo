@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Cart;
-use App\Models\Order;
-use App\Models\OrderItems;
+use App\Models\Order\Order;
+use App\Models\Order\OrderItems;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class CartController extends Controller {
 
@@ -59,9 +58,9 @@ class CartController extends Controller {
                 $order_items = new OrderItems();
                 $order_items->fill([
                     'order_id' => $order->order_id,
-                    'prod_id' => $product->prod_id,
-                    'prod_price' => $product->prod_price,
-                    'prod_title' => $product->prod_title,
+                    'prod_id' => $product->id,
+                    'prod_price' => $product->price,
+                    'prod_title' => $product->title,
                     'quantity' => $cart->quantity[$prod_id],
                 ]);
                 $order_items->save();

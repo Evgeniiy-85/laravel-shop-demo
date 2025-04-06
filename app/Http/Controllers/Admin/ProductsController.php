@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\ProductsRequest;
-use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Str;
+use App\Models\Product\Product;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductsController extends AdminController {
 
@@ -19,7 +19,6 @@ class ProductsController extends AdminController {
     public function add() {
         return view('admin.products.add', [
             'categories' => Category::all(),
-            'statuses' => Product::getStatuses(),
         ]);
     }
 
@@ -33,7 +32,6 @@ class ProductsController extends AdminController {
         return view('admin.products.edit', [
             'product' => $product,
             'categories' => Category::all(),
-            'statuses' => Product::getStatuses(),
         ]);
     }
 
@@ -44,12 +42,6 @@ class ProductsController extends AdminController {
     public function store(ProductsRequest $request) {
         $product = new Product();
         $product->fill($request->all());
-        $product->prod_images = $request->input('prod_images') ? collect($product->prod_images)->toJson() : null;
-
-        if (!$product->prod_alias) {
-            $product->prod_alias = Str::slug($product->prod_title);
-        }
-
         $product->save();
 
         return redirect()->route('admin.products')->with('success', 'Успешно');
@@ -63,11 +55,6 @@ class ProductsController extends AdminController {
     public function update($id, ProductsRequest $request) {
         $product = Product::findOrFail($id);
         $product->fill($request->all());
-
-        if (!$product->prod_alias) {
-            $product->prod_alias = Str::slug($product->prod_title);
-        }
-        $product->prod_images = $request->input('prod_images') ? collect($product->prod_images)->toJson() : null;
         $product->save();
 
         return redirect()->route('admin.products')->with('success', 'Успешно');
@@ -83,8 +70,8 @@ class ProductsController extends AdminController {
             return view('admin.errors.404');
         }
 
-        if ($product->prod_image) {
-            Storage::disk('products')->delete($product->prod_image);
+        if ($product->image) {
+            Storage::disk('products')->delete($product->image);
         }
         $product->delete();
 

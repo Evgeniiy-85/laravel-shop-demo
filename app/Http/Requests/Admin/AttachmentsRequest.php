@@ -23,7 +23,7 @@ class AttachmentsRequest extends FormRequest {
             'field_name' => 'required|string',
             'multiple' => 'nullable|string',
             'attachments' =>  'required',
-            'attachments.*' => 'image|mimes:jpg,jpeg,png,webp|max:4096',
+            'attachments.*' => 'image|mimes:jpg,jpeg,png,webp,svg|max:4096',
         ];
     }
 
@@ -37,7 +37,7 @@ class AttachmentsRequest extends FormRequest {
     public function messages(): array {
         return [
             'attachments.required' => 'Не выбрал файл',
-            'attachments.*.mimes' => 'Тип файла должен соответствовать типу: jpg, jpeg, png, gif, webp',
+            'attachments.*.mimes' => 'Тип файла должен соответствовать типу: jpg, jpeg, png, gif, webp, svg',
             'attachments.*.max' => 'Размер файла не должен превышать 4096 кб',
         ];
     }

@@ -10,98 +10,108 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 
 Breadcrumbs::for('admin.index', function (BreadcrumbTrail $trail) {
-    $trail->push('Главная панель', route('admin'));
+    $trail->push(__('Главная панель'), route('admin'));
 });
 Breadcrumbs::for('admin.orders', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Заказы', route('admin.orders'));
+    $trail->push(__('Заказы'), route('admin.orders'));
 });
 Breadcrumbs::for('admin.orders.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.orders');
-    $trail->push('Редактировать заказ');
+    $trail->push(__('Редактировать заказ'));
 });
 
 /* Категории*/
 Breadcrumbs::for('admin.categories', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Категории', route('admin.categories'));
+    $trail->push(__('Категории'), route('admin.categories'));
 });
 Breadcrumbs::for('admin.categories.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.categories');
-    $trail->push('Добавить категорию', route('admin.categories.add'));
+    $trail->push(__('Добавить категорию'), route('admin.categories.add'));
 });
 Breadcrumbs::for('admin.categories.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.categories');
-    $trail->push('Редактировать категорию');
+    $trail->push(__('Редактировать категорию'));
 });
 
 Breadcrumbs::for('admin.settings', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Настройки', route('admin.settings'));
+    $trail->push(__('Настройки'), route('admin.settings'));
 });
+
+Breadcrumbs::for('admin.settings.extensions', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.settings');
+    $trail->push(__('Расширения'), route('admin.settings.extensions'));
+});
+Breadcrumbs::for('admin.settings.extensions.edit', function (BreadcrumbTrail $trail, $ext_title) {
+    $trail->parent('admin.settings.extensions');
+    $trail->push($ext_title);
+});
+
 
 Breadcrumbs::for('admin.settings.payments', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.settings');
-    $trail->push('Платежные модули', route('admin.settings.payments'));
+    $trail->push(__('Платежные модули'), route('admin.settings.payments'));
 });
 
 Breadcrumbs::for('admin.settings.payments.custom', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.settings.payments');
-    $trail->push('Ручной способ', route('admin.settings.payments.custom'));
+    $trail->push(__('Ручной способ'), route('admin.settings.payments.custom'));
 });
 
 
 /* Продукты*/
 Breadcrumbs::for('admin.products', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Продукты', route('admin.products'));
+    $trail->push(__('Продукты'), route('admin.products'));
 });
 Breadcrumbs::for('admin.products.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.products');
-    $trail->push('Добавить продукт', route('admin.products.add'));
+    $trail->push(__('Добавить продукт'), route('admin.products.add'));
 });
 Breadcrumbs::for('admin.products.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.products');
-    $trail->push('Редактировать продукт');
+    $trail->push(__('Редактировать продукт'));
 });
 Breadcrumbs::for('admin.products.settings', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.products');
-    $trail->push('Настройки');
+    $trail->push(__('Настройки'));
 });
 
 /* Пользователи*/
 Breadcrumbs::for('admin.users', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.index');
-    $trail->push('Пользователи', route('admin.users'));
+    $trail->push(__('Пользователи'), route('admin.users'));
 });
 Breadcrumbs::for('admin.users.add', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.users');
-    $trail->push('Добавить пользователя', route('admin.users.add'));
+    $trail->push(__('Добавить пользователя'), route('admin.users.add'));
 });
 Breadcrumbs::for('admin.users.edit', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.users');
-    $trail->push('Редактировать пользователя');
+    $trail->push(__('Редактировать пользователя'));
 });
 
 
 /*FrontEnd*/
 Breadcrumbs::for('catalog', function (BreadcrumbTrail $trail) {
-    $trail->push('Каталог', route('catalog'));
+    $trail->push(__('Каталог'), route('catalog'));
 });
 Breadcrumbs::for('category', function (BreadcrumbTrail $trail, $category) {
     $trail->parent('catalog');
 
     $data = [];
-    while($category->cat_parent) {
-        $parent = \App\Models\Category::find($category->cat_parent);
+    while($category->parent) {
+        $parent = \App\Models\Category::find($category->parent);
         array_unshift($data, [
-            'title' => $category->cat_title,
-            'url' => "/catalog/{$parent->cat_alias}/{$category->cat_alias}"
+            'title' => $category->title,
+            'url' => "/catalog/{$parent->alias}/{$category->alias}"
         ]);
 
         $category = $parent;
     }
-    array_unshift($data, ['title' => $category->cat_title, 'url' => "/catalog/{$category->cat_alias}"]);
+    array_unshift($data, ['title' => $category->title, 'url' => "/catalog/{$category->alias}"]);
 
     if ($data) {
         foreach ($data as $item) {
@@ -114,9 +124,11 @@ Breadcrumbs::for('product', function (BreadcrumbTrail $trail, $product, $categor
     if ($category) {
         $trail->parent('category', $category);
     }
-    $trail->push($product->prod_title);
+    $trail->push($product->title);
 });
 Breadcrumbs::for('favorites', function (BreadcrumbTrail $trail) {
     $trail->parent('catalog');
-    $trail->push('Избранное');
+    $trail->push(__('Избранное'));
 });
+
+$modules = config('modules.modules');

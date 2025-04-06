@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\User\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 
 class LoginController extends Controller {
 
@@ -29,7 +28,7 @@ class LoginController extends Controller {
             'password' => $request->password,
             'user_status' => User::STATUS_ACTIVE,
         ])) {
-            return redirect()->route('home');
+            return redirect()->back();
         }
 
         return back();

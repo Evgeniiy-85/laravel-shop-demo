@@ -4,7 +4,7 @@
     padding: 0;
 }
 .hidden {
-    display: none;
+    display: none!important;
 }
 .btn-tool {
     color: #fff;
@@ -23,6 +23,9 @@
 .btn-tool.text-bg-danger:hover {
     background: #dc3545 linear-gradient(180deg, #c7424f, #bd2130) repeat-x !important;
     border-color: #b21f2d;
+}
+.button-drag:hover {
+    cursor: move;
 }
 
 table td {
@@ -318,4 +321,74 @@ table.table tbody tr td {
 }
 .order-status.status-1 {
     background-color: #28a745;
+}
+.structure {
+    position: relative;
+    margin-left: 40px;
+}
+.structure::before {
+    border-radius: 0.25rem;
+    background-color: #dee2e6;
+    bottom: 36px;
+    content: "";
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 4px;
+
+}
+.structure-item {
+    position: relative;
+}
+.structure-item.level-0 {
+    margin-left: -40px;
+}
+.structure-item:before {
+    border-radius: 0.25rem;
+    background-color: #dee2e6;
+    bottom: 0;
+    content: "";
+    left: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    width: 100%;
+}
+.structure-item-wrap.moving .structure-item:before {
+    background: none;
+}
+.structure .button-drag:hover {
+    cursor: move;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    color: inherit!important;
+    font-size: 18px!important;
+}
+.select2-container--default .select2-search--inline .select2-search__field {
+    border: none!important;
+    font-size: 18px!important;
+    margin-bottom: 0!important;
+    margin-top: 0!important;
+    height: 27px!important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    padding-left: 4px!important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    margin-left: 0!important;
+    font-size: 20px!important;
+    top: -3px!important;
+    padding: 0 2px 0 4px!important;
+}
+.select2-container--default.select2-container {
+    border-color: #ced4da!important;
+}
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #80bdff!important;
 }

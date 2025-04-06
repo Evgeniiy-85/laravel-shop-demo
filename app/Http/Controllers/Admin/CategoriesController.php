@@ -24,7 +24,6 @@ class CategoriesController extends AdminController {
      */
     public function add() {
         return view('admin.categories.add', [
-            'statuses' => Category::getStatuses(),
             'categories' => Category::all(),
         ]);
     }
@@ -39,9 +38,8 @@ class CategoriesController extends AdminController {
         }
 
         return view('admin.categories.edit', [
-            'statuses' => Category::getStatuses(),
             'category' => $category,
-            'categories' => Category::where('cat_id', '<>', $id)->get(),
+            'categories' => Category::where('id', '<>', $id)->get(),
         ]);
     }
 
@@ -51,32 +49,20 @@ class CategoriesController extends AdminController {
     public function store(CategoriesRequest $request) {
         $category = new Category();
         $category->fill($request->all());
-
-        if (!$category->cat_alias) {
-            $category->cat_alias = Str::slug($category->cat_title);
-        }
-
-        $category->cat_image = $request->input('cat_image') ?: '';
         $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
     }
 
-    /*
-     * Update category
-     */
     /**
-     * @throws FileNotFoundException
+     * Update category
+     * @param $id
+     * @param CategoriesRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id, CategoriesRequest $request) {
         $category = Category::findOrFail($id);
         $category->fill($request->all());
-
-        if (!$category->cat_alias) {
-            $category->cat_alias = Str::slug($category->cat_title);
-        }
-
-        $category->cat_image = $request->input('cat_image') ?: '';
         $category->save();
 
         return redirect()->route('admin.categories')->with('success', 'Успешно');
@@ -91,8 +77,8 @@ class CategoriesController extends AdminController {
             return view('admin.errors.404');
         }
 
-        if ($category->cat_image) {
-            Storage::disk('categories')->delete($category->cat_image);
+        if ($category->image) {
+            Storage::disk('categories')->delete($category->image);
         }
         $category->delete();
 

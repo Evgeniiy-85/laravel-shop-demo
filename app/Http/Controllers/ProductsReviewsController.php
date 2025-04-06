@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\ProductReview;
+use App\Models\Product\Product;
+use App\Models\Product\ProductReview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ProductsReviewsController extends Controller {
 
-    public function add($prod_alias) {
-        $product = Product::where('prod_status', Product::STATUS_ACTIVE)
-            ->where('prod_alias', $prod_alias)
+    public function add($alias) {
+        $product = Product::where('status', 1)
+            ->where('alias', $alias)
             ->first();
         if (!$product) {
             abort(404);
@@ -24,9 +24,9 @@ class ProductsReviewsController extends Controller {
     /*
      * Create category
      */
-    public function store(Request $request, $prod_alias) {
-        $product = Product::where('prod_status', Product::STATUS_ACTIVE)
-            ->where('prod_alias', $prod_alias)
+    public function store(Request $request, $alias) {
+        $product = Product::where('status', 1)
+            ->where('alias', $alias)
             ->first();
         $user_id = Auth::check() ? Auth::user()->user_id : null;
         if (!$product || !$user_id) {
@@ -42,10 +42,10 @@ class ProductsReviewsController extends Controller {
 
         $review = new ProductReview();
         $review->fill($data);
-        $review->prod_id = $product->prod_id;
+        $review->id = $product->id;
         $review->user_id = $user_id;
         $review->save();
 
-        return redirect()->route('products.product', $product->prod_alias)->with('success', 'Успешно');
+        return redirect()->route('products.product', $product->alias)->with('success', 'Успешно');
     }
 }

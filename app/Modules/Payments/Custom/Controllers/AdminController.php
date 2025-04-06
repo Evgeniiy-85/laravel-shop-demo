@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Modules\Payments\Custom\Controllers;
-use App\Http\Controllers\Controller;
-use App\Models\Order;
-use Illuminate\Http\Request;
 use App\Models\Payment;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends \App\Http\Controllers\Admin\AdminController {

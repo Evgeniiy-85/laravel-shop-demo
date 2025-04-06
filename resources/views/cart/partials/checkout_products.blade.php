@@ -1,4 +1,3 @@
-
 <div class="cart">
     @if($cart->products)
         <div class="cart-header">
@@ -6,19 +5,19 @@
         </div>
 
         <div class="cart-body cart-products" data-count_products="{{ $cart->count_products }}">
-            @foreach($cart->products as $prod_id => $product)
+            @foreach($cart->products as $id => $product)
                 @php
-                    $quantity = $cart->quantity[$prod_id]
+                    $quantity = $cart->quantity[$id]
                 @endphp
 
-                <div class="cart-product" data-prod_id="{{ $product->prod_id }}">
+                <div class="cart-product" data-id="{{ $product->id }}">
                     <div class="cart-product-cover">
-                        <img src="{{ $product->prod_image_url }}">
+                        <img src="{{ $product->image_url }}">
                     </div>
 
                     <div class="cart-product_info">
-                        <div class="cart-product_title">{{ $product->prod_title }}</div>
-                        <div class="cart-product_price">{{ $product->prod_price * $quantity}} {{ $settings->currency }}</div>
+                        <div class="cart-product_title">{{ $product->title }}</div>
+                        <div class="cart-product_price">{{ $product->price * $quantity}} {{ Setting::get('currency') }}</div>
                     </div>
                 </div><hr>
             @endforeach
@@ -27,7 +26,7 @@
         <div class="cart-footer">
             <div class="cart-footer_left">
                 <span>Итого: </span>
-                <span class="cart-sum">{{ $cart->total }} {{ $settings->currency }}</span>
+                <span class="cart-sum">{{ $cart->total }} {{ Setting::get('currency') }}</span>
             </div>
         </div>
     @else

@@ -1,7 +1,7 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Добавить продукт
+    {{ __('Добавить пользователя') }}
 @endsection
 
 @section('breadcrumbs')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('h1')
-    Добавить пользователя
+    {{ __('Добавить пользователя') }}
 @endsection
 
 @section('content')
@@ -17,47 +17,47 @@
         <div class="col-md-5">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title">Новый пользователь</h3>
+                    <h3 class="card-title">{{ __('Новый пользователь') }}</h3>
                 </div>
 
                 <form action="{{ route('admin.users.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group mb-3"><label class="form-label">Имя</label>
-                            <input type="text" class="form-control" name="user_name" placeholder="Введите имя пользователя">
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Имя') }}</label>
+                            <input type="text" class="form-control" name="user_name">
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Фамилия</label>
-                            <input type="text" class="form-control" name="user_surname" placeholder="Введите фамилию пользователя">
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Фамилия') }}</label>
+                            <input type="text" class="form-control" name="user_surname">
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Отчество</label>
-                            <input type="text" class="form-control" name="user_patronymic" placeholder="Введите отчество пользователя">
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Отчество') }}</label>
+                            <input type="text" class="form-control" name="user_patronymic">
                         </div>
 
-                        <div class="form-group mb-3"><label class="mb-2">Фото</label>
+                        <div class="form-group mb-3"><label class="mb-2">{{ __('Фото') }}</label>
                             <div class="input-group">
                                 <label class="btn bg-purple input-file form-label btn-info" for="logo_image">
-                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить фото</text>
+                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; {{ __('Загрузить фото') }}</text>
                                     <input type="file" class="custom-file-input hidden" name="files[logo]" id="logo_image">
                                     <input type="hidden" class="current-image" name="user_photo" value="{{ $user->user_photo ?? '' }}">
                                 </label>
                             </div>
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">E-mail</label>
-                            <input type="text" class="form-control" name="user_email" placeholder="Введите e-mail пользователя">
+                        <div class="form-group mb-3"><label class="form-label">{{ __('E-mail') }}</label>
+                            <input type="text" class="form-control" name="user_email">
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Телефон</label>
-                            <input type="text" class="form-control" name="user_phone" placeholder="Введите телефон пользователя">
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Телефон') }}</label>
+                            <input type="text" class="form-control" name="user_phone">
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Пароль</label>
-                            <input type="text" class="form-control" name="user_password" placeholder="Введите пароль, если нужно его обновить">
+                        <div class="form-group mb-3"><label class="form-label" title="Введите пароль, если нужно его обновить">{{ __('Пароль') }}</label>
+                            <input type="text" class="form-control" name="user_password">
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Пол</label>
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Пол') }}</label>
                             <select class="form-control" name="user_sex">
                                 @foreach ($sexes as $sex => $title)
                                     <option value="{{ $sex }}">{{ $title }}</option>
@@ -65,7 +65,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Роль</label>
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Роль') }}</label>
                             <select class="form-control" name="user_role">
                                 @foreach ($roles as $role => $title)
                                     <option value="{{ $role }}">{{ $title }}</option>
@@ -73,7 +73,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Статус</label>
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Статус') }}</label>
                             <select class="form-control" name="user_status">
                                 @foreach ($statuses as $status => $title)
                                     <option value="{{ $status }}">{{ $title }}</option>
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary float-end">Сохранить</button>
+                        <button type="submit" class="btn btn-primary float-end">{{ __('Сохранить') }}</button>
                     </div>
                 </form>
             </div>

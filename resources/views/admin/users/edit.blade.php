@@ -1,7 +1,7 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Редактировать пользователя
+    {{__('Редактировать пользователя')}}
 @endsection
 
 @section('breadcrumbs')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('h1')
-    Редактировать пользователя
+    {{__('Редактировать пользователя')}}
 @endsection
 
 @section('content')
@@ -25,24 +25,24 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-7">
-                                <div class="form-group mb-3"><label class="form-label">Имя</label>
-                                    <input type="text" class="form-control" name="user_name" value="{{ $user->user_name }}" placeholder="Введите имя пользователя">
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Имя') }}</label>
+                                    <input type="text" class="form-control" name="user_name" value="{{ $user->user_name }}">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Фамилия</label>
-                                    <input type="text" class="form-control" name="user_surname" value="{{ $user->user_surname }}" placeholder="Введите фамилию пользователя">
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Фамилия') }}</label>
+                                    <input type="text" class="form-control" name="user_surname" value="{{ $user->user_surname }}">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Отчество</label>
-                                    <input type="text" class="form-control" name="user_patronymic" value="{{ $user->user_patronimic }}" placeholder="Введите отчество пользователя">
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Отчество') }}</label>
+                                    <input type="text" class="form-control" name="user_patronymic" value="{{ $user->user_patronimic }}">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">E-mail</label>
-                                    <input type="text" class="form-control" name="user_email" value="{{ $user->user_email }}" placeholder="Введите e-mail пользователя">
+                                <div class="form-group mb-3"><label class="form-label">{{ __('E-mail') }}</label>
+                                    <input type="text" class="form-control" name="user_email" value="{{ $user->user_email }}">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Телефон</label>
-                                    <input type="text" class="form-control" name="user_phone" value="{{ $user->user_phone }}" placeholder="Введите телефон пользователя">
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Телефон') }}</label>
+                                    <input type="text" class="form-control" name="user_phone" value="{{ $user->user_phone }}">
                                 </div>
                             </div>
 
@@ -59,15 +59,15 @@
                                                 ]" />
 
                                                 <label class="btn bg-purple input-file form-label btn-info" for="logo_image">
-                                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить фото</text>
+                                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; {{ __('Загрузить фото') }}</text>
                                                     <input type="file" class="custom-file-input hidden" name="files[logo]" id="logo_image">
                                                     <input type="hidden" class="current-image" name="user_photo" value="{{ $user->user_photo ?? '' }}">
                                                 </label>
                                             </div>
                                         </div>
 
-                                        <div><b>Дата регистрации: </b>{{ Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i') }}</div>
-                                        <div><b>Последний вход: </b>{{ Carbon\Carbon::parse($user->user_last_visit_date)->format('d.m.Y H:i') }}</div>
+                                        <div><b>{{ __('Дата регистрации') }}: </b>{{ Carbon\Carbon::parse($user->created_at)->format('d.m.Y H:i') }}</div>
+                                        <div><b>{{ __('Последний вход') }}: </b>{{ Carbon\Carbon::parse($user->user_last_visit_date)->format('d.m.Y H:i') }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -75,11 +75,11 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group mb-3"><label class="form-label">Пароль</label>
-                                    <input type="text" class="form-control" name="user_password" value="" placeholder="Введите пароль, если нужно его обновить">
+                                <div class="form-group mb-3"><label class="form-label" title="{{ __('Введите пароль, если нужно его обновить') }}">{{ __('Пароль') }}</label>
+                                    <input type="text" class="form-control" name="user_password" value="">
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Пол</label>
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Пол') }}</label>
                                     <select class="form-control" name="user_sex">
                                         @foreach ($sexes as $sex => $title)
                                             <option value="{{ $sex }}"  @if($user->user_sex == $sex) selected @endif">{{ $title }}</option>
@@ -87,7 +87,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Роль</label>
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Роль') }}</label>
                                     <select class="form-control" name="user_role">
                                         @foreach ($roles as $role => $title)
                                             <option value="{{ $role }}"  @if($user->user_role == $role) selected @endif">{{ $title }}</option>
@@ -95,7 +95,7 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group mb-3"><label class="form-label">Статус</label>
+                                <div class="form-group mb-3"><label class="form-label">{{ __('Статус') }}</label>
                                     <select class="form-control" name="user_status">
                                         @foreach ($statuses as $status => $title)
                                             <option value="{{ $status }}"  @if($user->user_role == $status) selected @endif">{{ $title }}</option>
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary float-end">Сохранить</button>
+                        <button type="submit" class="btn btn-primary float-end">{{ __('Сохранить') }}</button>
                     </div>
                 </form>
             </div>

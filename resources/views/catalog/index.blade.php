@@ -10,12 +10,12 @@
     <div class="site-catalog">
         <div class="categories-list">
             @foreach ($categories as $category)
-                <a class="category" href="/catalog/{{ $category->cat_alias }}">
+                <a class="category" href="/catalog/{{ $category->alias }}">
                     <div class="category-cover">
-                        <img src="{{ $category->cat_image_url }}">
+                        <img src="{{ $category->image_url }}">
                     </div>
 
-                    <div class="category-title">{{ $category->cat_title }}</div>
+                    <div class="category-title">{{ $category->title }}</div>
                 </a>
             @endforeach
         </div>

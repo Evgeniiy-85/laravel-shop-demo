@@ -14,7 +14,7 @@
             <div class="c-card-body column-2">
                 <div class="row>">
                     <div class="col-6">
-                        <form id="form-pay-tinkoff" action="{{ route('products.reviews.add', $product->prod_alias) }}" method="post">
+                        <form id="form-pay-tinkoff" action="{{ route('products.reviews.add', $product->alias) }}" method="post">
                             @csrf
 
                             <div class="form-group mb-3"><label class="control-label mb-1 width-100">Общая оценка</label>

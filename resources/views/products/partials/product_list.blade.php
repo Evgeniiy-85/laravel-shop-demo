@@ -3,27 +3,22 @@
         @foreach($products as $product)
             <div class="product">
                 <div class="product-cover">
-                    <img src="{{ $product->prod_image_url }}">
+                    <img src="{{ $product->image_url }}">
                 </div>
 
                 <div class="product-center">
-                    <a class="product-title" href="/products/{{ $product->prod_alias }}">{{ $product->prod_title }}</a>
+                    <a class="product-title" href="/products/{{ $product->alias }}">{{ $product->title }}</a>
                     <div class="card-bottom"></div>
                 </div>
 
                 <div class="product-right">
                     <div class="product-price">
-                        {{ $product->prod_price }} {{ $settings->currency }}
+                        {{ $product->price }} {{ Setting::get('currency') }}
                     </div>
 
                     <div class="product-buttons">
-                        <div class="product-favorites">
-                            <button type="button" class="button button-ui btn_a-grey" data-prod_id="{{ $product->prod_id }}" data-action_type="add"></button>
-                        </div>
-
-                        <div class="product-by">
-                            <button type="button" class="button button-ui btn_a-outline-primary" data-prod_id="{{ $product->prod_id }}" data-action_type="append">Купить</button>
-                        </div>
+                        <livewire:product-favorites :product_id="$product->id"/>
+                        <livewire:product-buy :product="$product"/>
                     </div>
                 </div>
             </div>

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\OrderStatus;
+use App\Models\Order\Order;
+use App\Models\Order\OrderItems;
 use App\Models\Payment;
-use App\Models\Order;
-use App\Models\OrderItems;
 
 class OrdersController extends Controller {
 
     public function pay($order_id) {
-        $order = Order::where('order_status', Order::STATUS_NO_PAID)
+        $order = Order::where('order_status', OrderStatus::STATUS_NO_PAID)
             ->where('order_id', $order_id)
             ->first();
         $order_items = OrderItems::where(['order_id' => $order_id])->get();

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    {{ $product->prod_title }}
+    {{ $product->title }}
 @endsection
 
 @section('breadcrumbs')
@@ -10,27 +10,27 @@
 
 @section('content')
     <div class="site-product">
-        <h1>{{ $product->prod_title }}</h1>
+        <h1>{{ $product->title }}</h1>
 
         <div class="product-card">
             <div class="product-images-slider">
-                @if($images = $product->prod_images_data)
+                @if($images = $product->images_data)
                     <div class="images-thumbs">
-                        @foreach($images as $key => $prod_image)
-                            <div data-img_src="{{ $product->getImageUrl($prod_image) }}" class="image-thumb{{ $key == 0 ? ' active' : '' }}">
-                                <img src="{{ $product->getImageUrl($prod_image) }}">
+                        @foreach($images as $key => $image)
+                            <div data-img_src="{{ $product->getImageUrl($image) }}" class="image-thumb{{ $key == 0 ? ' active' : '' }}">
+                                <img src="{{ $product->getImageUrl($image) }}">
                             </div>
                         @endforeach
                     </div>
                 @endif
 
                 <div class="images-main">
-                    <img src="{{ $product->prod_image_url }}">
+                    <img src="{{ $product->image_url }}">
                 </div>
             </div>
 
             <div class="product-center">
-                <div class="short_desc">{{ $product->prod_short_desc }} <a class="ui-link" href="#product_desc">Подробнее</a></div>
+                <div class="short_desc">{{ $product->short_desc }} <a class="ui-link" href="#product_desc">Подробнее</a></div>
 
                 <div class="product-stat">
                     <a class="product-rating" href="#product_reviews">
@@ -48,17 +48,12 @@
 
                 <div class="product-buttons-one_line">
                     <div class="product-price">
-                        {{ $product->prod_price }} {{ $settings->currency }}
+                        {{ $product->price }} {{ Setting::get('currency') }}
                     </div>
 
                     <div class="product-buttons">
-                        <div class="product-favorites">
-                            <button type="button" class="button button-ui btn_a-grey" data-prod_id="{{ $product->prod_id }}" data-action_type="add"></button>
-                        </div>
-
-                        <div class="product-by">
-                            <a class="button button-ui btn_a-outline-primary" href="/buy/{{ $product->prod_alias }}" data-prod_id="{{ $product->prod_id }}" data-action_type="append">Купить</a>
-                        </div>
+                        <livewire:product-favorites :product_id="$product->id"/>
+                        <livewire:product-buy :product="$product"/>
                     </div>
                 </div>
 
@@ -70,12 +65,12 @@
             <div class="product-desc-header">Описание</div>
 
             <div class="product-desc-text">
-                {{ $product->prod_desc }}
+                {{ $product->desc }}
             </div>
         </div>
 
         <div class="products-reviews_wrap" id="product_reviews">
-            {{ Widget::ProductReviews(['prod_id' => $product->prod_id, 'prod_alias' => $product->prod_alias]) }}
+            {{ Widget::ProductReviews(['id' => $product->id, 'alias' => $product->alias]) }}
         </div>
     </div>
 @endsection

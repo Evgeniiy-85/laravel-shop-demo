@@ -23,7 +23,7 @@
 
                     <div class="col-md-3 text-right flex-column mt-2">
                         <div class="btn-group">
-                            <button type="submit" class="button button-ui btn_a-primary button-small" name="apply" data-target="#modalPay_{{ $payment->pay_name }}" data-toggle="modal">{{ $payment->pay_button_title }}</button>
+                            <button type="submit" class="button button-ui btn_a-primary button-small" name="apply" data-bs-target="#modalPay_{{ $payment->pay_name }}" data-bs-toggle="modal">{{ $payment->pay_button_title }}</button>
                         </div>
                     </div>
                 </div>

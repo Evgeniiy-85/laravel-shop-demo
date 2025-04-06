@@ -2,7 +2,6 @@
 
 namespace App\Widgets;
 
-use App\Models\ProductReview;
 use Arrilot\Widgets\AbstractWidget;
 use View;
 

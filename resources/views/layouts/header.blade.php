@@ -22,7 +22,7 @@
         <div class="container">
             <div class="header-left">
                 <a class="logo-wrap" href="/">
-                    <img src="{{ $settings->logo_url }}">
+                    <img src="{{ Setting::get('logo_url') }}">
                 </a>
 
                 @if(1)
@@ -60,21 +60,12 @@
                             </a>
                         </div>
 
-                        <div class="btn-wrap">
-                            <a href="/cart" class="btn-cart">
-                                <i class="btn-icon"></i>
-                                <i class="count-products-icon hidden"></i>
-                                <span class="btn-title">
-                                    <span>Корзина</span>
-                                </span>
-                            </a>
-                            @include('cart.cart_modal')
-                        </div>
+                        @livewire('cart')
                     @endif
 
                     @if(!Auth::check())
                         <div class="btn-wrap">
-                            <a href="{{ route('login') }}" class="btn-login">
+                            <a href="#login-modal" data-bs-toggle="modal" data-bs-target="#login-modal" class="btn-login">
                                 <i class="btn-icon"></i>
                                 <span class="btn-title">Войти</span>
                             </a>

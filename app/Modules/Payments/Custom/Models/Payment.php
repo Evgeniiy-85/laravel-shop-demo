@@ -17,11 +17,11 @@ class Payment extends Model {
      */
     public function label($key) {
         $labels = [
-            'inn' => 'ИНН/КПП',
-            'bik' => 'БИК',
-            'billing_number' => 'Р/счёт',
-            'address' => 'Адрес для отправки закрывающих документов',
-            'organization' => 'Наименование организации',
+            'inn' => __('ИНН/КПП'),
+            'bik' => __('БИК'),
+            'billing_number' => __('Р/счёт'),
+            'address' => __('Адрес для отправки закрывающих документов'),
+            'organization' => __('Наименование организации'),
         ];
 
         return $labels[$key] ?? $key;

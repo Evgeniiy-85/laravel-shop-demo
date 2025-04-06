@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Setting;
 use App\Http\Requests\Admin\SettingsRequest;
+use App\Models\Setting;
 
 class SettingsController extends AdminController {
 
     public function index() {
-        return view('admin.settings.index');
+        return view('admin.settings.index', [
+            'settings' => $this->settings,
+        ]);
     }
 
     public function update(SettingsRequest $request) {
@@ -25,7 +27,7 @@ class SettingsController extends AdminController {
             $settings['favicon'] = $image->storeAs('', 'favicon.ico', 'main');
         }
 
-        $setting->fill(['params' => collect($settings)->toJson(), 'id' => 1]);
+        $setting->fill(['params' => $settings]);
         $setting->save();
 
         return redirect()->route('admin.settings')->with('success', 'Успешно');

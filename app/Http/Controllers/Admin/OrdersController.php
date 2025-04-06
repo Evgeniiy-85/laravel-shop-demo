@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\OrdersRequest;
+use App\Models\Order\Order;
 use App\Models\Payment;
-use App\Models\Order;
 
 class OrdersController extends AdminController {
 
     public function index() {
         return view('admin.orders.index', [
-            'orders' => Order::paginate($this->settings->count_items),
+            'orders' => Order::orderBy('order_date', 'desc')->paginate($this->settings->count_items),
         ]);
     }
 
@@ -25,7 +25,6 @@ class OrdersController extends AdminController {
 
         return view('admin.orders.edit', [
             'order' => $order,
-            'statuses' => Order::getStatuses(),
             'payment' => $payment ? $payment->payment() : null,
         ]);
     }

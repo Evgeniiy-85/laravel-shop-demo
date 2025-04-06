@@ -2,7 +2,7 @@
 
 namespace App\Widgets;
 
-use App\Models\ProductReview;
+use App\Models\Product\ProductReview;
 use Arrilot\Widgets\AbstractWidget;
 
 class ProductReviews extends AbstractWidget {
@@ -19,14 +19,14 @@ class ProductReviews extends AbstractWidget {
      */
     public function run() {
         $reviews = ProductReview
-            ::where('review_status', ProductReview::STATUS_ACTIVE)
-            ->where('prod_id', $this->config['prod_id'])
+            ::where('review_status', 1)
+            ->where('id', $this->config['id'])
             ->join('users', 'product_reviews.user_id', '=', 'users.user_id');
 
         return view('widgets.product_reviews.reviews', [
             'reviews' => $reviews->get(),
             'count' => $reviews->count(),
-            'prod_alias' => $this->config['prod_alias']
+            'alias' => $this->config['alias']
         ]);
     }
 }

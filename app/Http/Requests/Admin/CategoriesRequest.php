@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class CategoriesRequest extends FormRequest {
 
@@ -19,16 +20,24 @@ class CategoriesRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            'cat_title' => 'required|min:1|max:255',
-            'cat_status' => 'required',
+            'title' => 'required|min:1|max:255',
+            'status' => 'required',
         ];
+    }
+
+    public function prepareForValidation() {
+        $this->mergeIfMissing([
+            'image' => null,
+        ]);
+
+        $this->merge(['alias' => Str::slug($this->input('alias') ?: $this->input('title'))]);
     }
 
     public function messages(): array {
         return [
-            'cat_title.required' => 'Заполните поле «Название»',
-            'cat_title.min' => 'Поле «Название» должно содержать мин. 1 символ',
-            'cat_title.max' => 'Поле «Название» должно содержать макс. 255 символов',
+            'title.required' => 'Заполните поле «Название»',
+            'title.min' => 'Поле «Название» должно содержать мин. 1 символ',
+            'title.max' => 'Поле «Название» должно содержать макс. 255 символов',
         ];
     }
 }

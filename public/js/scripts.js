@@ -2,249 +2,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/js/cart.js":
-/*!******************************!*\
-  !*** ./resources/js/cart.js ***!
-  \******************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Cart)
-/* harmony export */ });
-/* harmony import */ var _route_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./route.js */ "./resources/js/route.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Cart = /*#__PURE__*/function () {
-  function Cart() {
-    _classCallCheck(this, Cart);
-  }
-  return _createClass(Cart, [{
-    key: "init",
-    value: function init() {
-      this.updElements();
-      this.events();
-    }
-  }, {
-    key: "events",
-    value: function events() {
-      var cart = this;
-      $(document).on('click', '.cart [data-action_type], .product-by [data-action_type]', function () {
-        var action_type = $(this).data('action_type');
-        if (action_type == 'show') {
-          $('#cart_modal').addClass('show');
-          return false;
-        }
-        var prod_id = typeof $(this).data('prod_id') !== 'undefined' ? $(this).data('prod_id') : null;
-        cart.runAction($(this).data(), function (html) {
-          cart.updCart(html, action_type);
-          cart.updProdButtons(prod_id);
-        });
-      });
-      $(".btn-cart, #cart_modal").hover(function () {}, function () {
-        $('#cart_modal').removeClass('show');
-      });
-      $("body").click(function () {
-        $('#cart_modal').removeClass('show');
-      });
-    }
-  }, {
-    key: "updCart",
-    value: function updCart(html, action_type) {
-      var cart_title = '<span>Корзина</span>';
-      var count_products = '';
-      var $cart = $('.site-cart .cart').length > 0 ? $('.site-cart .cart') : $('#cart_modal .cart');
-      if (html) {
-        var price = $(html).find('.cart-sum').text();
-        cart_title = "<span class=\"cart-sum\">".concat(price, "</span>");
-        count_products = $(html).find('.cart-products').data('count_products');
-        if ($('.site-cart .cart').length > 0) {
-          $('#cart_modal').removeClass('has-products').find('.modal-body').html('');
-          $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
-        } else {
-          $('#cart_modal').addClass('has-products').find('.modal-body').html(html);
-          $('.btn-cart .count-products-icon').html(count_products).removeClass('hidden');
-        }
-      }
-      if (!html) {
-        $('#cart_modal').removeClass('has-products').find('.modal-body').html(html);
-        $('.btn-cart .count-products-icon').html(count_products).addClass('hidden');
-      }
-      if (action_type !== 'get' && $('.site-cart').find('.cart').length > 0) {
-        if (html) {
-          $('.site-cart').find('.cart').replaceWith(html);
-        } else {
-          $('.site-cart').find('.cart').html('<div class="empty-result"><h3>Корзина пуста</h3></div>');
-        }
-      }
-      $('.btn-cart .btn-title').html(cart_title);
-    }
-  }, {
-    key: "updProdButton",
-    value: function updProdButton($el, has_product) {
-      if ($el.parent('.product-by').length > 0) {
-        if (has_product) {
-          $el.html('В корзине');
-          $el.addClass('active');
-          $el.data('action_type', 'show');
-        } else {
-          $el.html('Купить');
-          $el.removeClass('active');
-          $el.data('action_type', 'append');
-        }
-      }
-    }
-  }, {
-    key: "updProdButtons",
-    value: function updProdButtons(prod_id) {
-      var buttons = prod_id ? $(".product-by .button[data-prod_id=\"".concat(prod_id, "\"]")) : $('.product-by .button[data-action_type]');
-      if (buttons.length > 0) {
-        var cart = this;
-        buttons.each(function () {
-          prod_id = $(this).data('prod_id');
-          var prod_exists = $("#cart_modal .cart-product[data-prod_id=\"".concat(prod_id, "\"]")).length;
-          cart.updProdButton($(this), prod_exists);
-        });
-      }
-    }
-  }, {
-    key: "updElements",
-    value: function updElements() {
-      var cart = this;
-      this.runAction({
-        action_type: 'get'
-      }, function (html) {
-        cart.updCart(html, 'get');
-        cart.updProdButtons();
-      });
-    }
-  }, {
-    key: "runAction",
-    value: function runAction(data, callback) {
-      $.ajax({
-        url: Cart.URL_ACTIONS,
-        type: 'post',
-        dataType: 'html',
-        data: data,
-        success: function success(html) {
-          callback(html);
-        },
-        error: function error() {
-          alert('Произошла ошибка при обновлении корзины');
-        }
-      });
-    }
-  }]);
-}();
-_defineProperty(Cart, "URL_ACTIONS", (0,_route_js__WEBPACK_IMPORTED_MODULE_0__["default"])('api.cart.actions'));
-
-
-/***/ }),
-
-/***/ "./resources/js/favorites.js":
-/*!***********************************!*\
-  !*** ./resources/js/favorites.js ***!
-  \***********************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Favorites)
-/* harmony export */ });
-/* harmony import */ var _route_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./route.js */ "./resources/js/route.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-
-var Favorites = /*#__PURE__*/function () {
-  function Favorites() {
-    _classCallCheck(this, Favorites);
-  }
-  return _createClass(Favorites, [{
-    key: "init",
-    value: function init() {
-      this.updElements();
-      this.events();
-    }
-  }, {
-    key: "events",
-    value: function events() {
-      var favorites = this;
-      $(document).on('click', '.product-favorites [data-action_type]', function () {
-        var _this = this;
-        var prod_id = $(this).data('prod_id');
-        var $el = $(this);
-        favorites.runAction($(this).data(), function (response) {
-          if ($(_this).data('action_type') == 'add') {
-            $el.addClass('active');
-            $el.data('action_type', 'remove');
-          } else {
-            $el.removeClass('active');
-            $el.data('action_type', 'add');
-          }
-        });
-      });
-    }
-  }, {
-    key: "updElements",
-    value: function updElements() {
-      var favorites = this;
-      var buttons = $('.product-favorites [data-action_type]');
-      if (buttons.length < 1) {
-        return false;
-      }
-      favorites.runAction({
-        action_type: 'get'
-      }, function (resp) {
-        if (resp.products) {
-          buttons.each(function () {
-            var prod_id = $(this).data('prod_id');
-            var $el = $(this);
-            if (resp.products && typeof resp.products[prod_id] !== 'undefined') {
-              $el.addClass('active');
-              $el.data('action_type', 'remove');
-            }
-          });
-        }
-      });
-    }
-  }, {
-    key: "runAction",
-    value: function runAction(data, callback) {
-      $.ajax({
-        url: Favorites.URL_ACTIONS,
-        type: 'post',
-        dataType: 'json',
-        data: data,
-        success: function success(response) {
-          if (response.status) {
-            callback(response);
-          } else {
-            alert('Произошла ошибка при обновлении данных');
-          }
-        },
-        error: function error() {
-          alert('Произошла ошибка при обновлении данных');
-        }
-      });
-    }
-  }]);
-}();
-_defineProperty(Favorites, "URL_ACTIONS", (0,_route_js__WEBPACK_IMPORTED_MODULE_0__["default"])('api.favorites.actions'));
-
-
-/***/ }),
-
 /***/ "./resources/js/main.js":
 /*!******************************!*\
   !*** ./resources/js/main.js ***!
@@ -252,12 +9,8 @@ _defineProperty(Favorites, "URL_ACTIONS", (0,_route_js__WEBPACK_IMPORTED_MODULE_
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _cart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./cart.js */ "./resources/js/cart.js");
-/* harmony import */ var _favorites_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./favorites.js */ "./resources/js/favorites.js");
-/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./search.js */ "./resources/js/search.js");
-/* harmony import */ var _route_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./route.js */ "./resources/js/route.js");
-
-
+/* harmony import */ var _search_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./search.js */ "./resources/js/search.js");
+/* harmony import */ var _route_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./route.js */ "./resources/js/route.js");
 
 
 $(function () {
@@ -266,11 +19,7 @@ $(function () {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
-  var cart = new _cart_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-  cart.init();
-  var favorites = new _favorites_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-  favorites.init();
-  var search = new _search_js__WEBPACK_IMPORTED_MODULE_2__["default"]();
+  var search = new _search_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
   search.init();
   $('.image-thumb').click(function () {
     var $container = $(this).closest('.product-images-slider');
@@ -417,6 +166,30 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************!*\
   !*** ./resources/sass/categories.scss ***!
   \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/extensions/trainings/categories.scss":
+/*!*************************************************************!*\
+  !*** ./resources/sass/extensions/trainings/categories.scss ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/extensions/trainings/trainings.scss":
+/*!************************************************************!*\
+  !*** ./resources/sass/extensions/trainings/trainings.scss ***!
+  \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -642,7 +415,9 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/product-card.scss")))
 /******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/product-reviews.scss")))
 /******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/cart.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/cart-modal.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/cart-modal.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/extensions/trainings/categories.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/style"], () => (__webpack_require__("./resources/sass/extensions/trainings/trainings.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

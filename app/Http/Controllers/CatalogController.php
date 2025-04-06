@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Product;
-use App\Models\ProductFilter;
+use App\Models\Product\Product;
+use App\Models\Product\ProductFilter;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller {
 
     public function index() {
-        $categories = Category::where('cat_status', Category::STATUS_ACTIVE)->where('cat_parent', 0)->get();
+        $categories = Category::where('status', 1)->where('parent', 0)->get();
 
         return view('catalog.index', [
             'categories' => $categories
@@ -18,23 +18,23 @@ class CatalogController extends Controller {
     }
 
     public function category(Request $request, $alias, $subcategory_alias = '') {
-        $category = Category::where('cat_status', Category::STATUS_ACTIVE)
-        ->where('cat_alias', $subcategory_alias ?: $alias)
+        $category = Category::where('status', 1)
+        ->where('alias', $subcategory_alias ?: $alias)
         ->first();
         if (!$category) {
             abort(404);
         }
 
-        $subcategories = Category::where('cat_status', Category::STATUS_ACTIVE)
-            ->where('cat_parent', $category->cat_id)
+        $subcategories = Category::where('status', 1)
+            ->where('parent', $category->id)
             ->get();
 
         $filter = new ProductFilter();
         $products = new Product();
 
         if (!$subcategories->count()) {
-            $products = Product::where('prod_status', Product::STATUS_ACTIVE)
-                ->where('prod_category', $category->cat_id);
+            $products = Product::where('status', 1)
+                ->where('category_id', $category->id);
 
             if ($filter->loadFilter($request->input('filter'))) {
                 $filter->add($products);

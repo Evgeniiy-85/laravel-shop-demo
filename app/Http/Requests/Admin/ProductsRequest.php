@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class ProductsRequest extends FormRequest {
 
@@ -18,22 +19,30 @@ class ProductsRequest extends FormRequest {
      */
     public function rules(): array {
         return [
-            'prod_title' => 'required|min:1|max:128',
-            'prod_alias' => 'nullable|min:1|max:128',
-            'prod_status' => 'required',
-            'prod_short_desc' => 'nullable|string|max:256',
-            'prod_desc' => 'nullable|string',
+            'title' => 'required|min:1|max:128',
+            'alias' => 'nullable|min:1|max:128',
+            'status' => 'required',
+            'short_desc' => 'nullable|string|max:256',
+            'desc' => 'nullable|string',
         ];
+    }
+
+    public function prepareForValidation() {
+        $this->mergeIfMissing([
+            'images' => null,
+        ]);
+
+        $this->merge(['alias' => Str::slug($this->input('alias') ?: $this->input('title'))]);
     }
 
     public function messages(): array {
         return [
-            'prod_title.required' => 'Заполните поле «Название»',
-            'prod_title.min' => 'Поле «Название» должно содержать мин. 1 символ',
-            'prod_title.max' => 'Поле «Название» должно содержать макс. 128 символов',
-            'prod_alias.min' => 'Поле «Алиас» должно содержать мин. 1 символ',
-            'prod_alias.max' => 'Поле «Алиас» должно содержать макс. 128 символов',
-            'prod_short_desc.max' => 'Поле «Название» должно содержать макс. 255 символов',
+            'title.required' => 'Заполните поле «Название»',
+            'title.min' => 'Поле «Название» должно содержать мин. 1 символ',
+            'title.max' => 'Поле «Название» должно содержать макс. 128 символов',
+            'alias.min' => 'Поле «Алиас» должно содержать мин. 1 символ',
+            'alias.max' => 'Поле «Алиас» должно содержать макс. 128 символов',
+            'short_desc.max' => 'Поле «Название» должно содержать макс. 255 символов',
         ];
     }
 }

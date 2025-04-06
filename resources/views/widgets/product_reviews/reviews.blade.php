@@ -3,8 +3,8 @@
         <div class="reviews-header">
             <a href="#">Отзывы {{ $count ? '('.$count.')' : '' }}</a>
         </div>
-        
-        <a class="button button-ui btn_a-outline-primary" href="{{ route('products.reviews.add', $prod_alias) }}">Добавить отзыв</a>
+
+        <a class="button button-ui btn_a-outline-primary" href="{{ route('products.reviews.add', $alias) }}">Добавить отзыв</a>
     </div>
 
     @if($reviews->count())

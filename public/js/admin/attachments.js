@@ -57,16 +57,7 @@ $(function(){
 
     function delete_file(input) {
         let $container = $(input).closest('.attach-wrap');
-        let file = $container.find('input[type="hidden"]').val();
         $container.remove();
-    }
-
-    if ($('.ui-sortable').length > 0 ) {
-        let $sortable = $('.ui-sortable');
-
-        $sortable.sortable({
-            cursor: "move",
-        });
     }
 
     $('input[type="file"]:not([data-ajax_upload])').closest('label').each(function(){

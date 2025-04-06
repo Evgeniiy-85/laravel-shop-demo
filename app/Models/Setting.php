@@ -20,13 +20,8 @@ class Setting extends Model {
 
     public $timestamps = false;
 
-    private array $default =  [
-        'count_items' => 20,
-        'site_name' => 'Laravel Shop',
-        'logo' => null,
-        'currency' => '₽',
-        'mail_send_type' => self::MAIL_SEND_TYPE_PHP,
-        'mail_encrypt_type' => self::MAIL_ENCRYPT_TYPE_SSL,
+    protected $casts = [
+        'params'  => 'array',
     ];
 
     public static function getMailSendTypes() {
@@ -45,21 +40,31 @@ class Setting extends Model {
     }
 
     /**
-     * @return Attribute
+     * @return mixed
      */
-    protected function settings(): Attribute {
-        return Attribute::make(
-            get: function() {
-                $settings = $this->params ? json_decode($this->params, true) : [];
-                $settings = (object)array_merge($this->default, $settings);
-                $settings->logo_url = self::getLogoUrl($settings);
-                $settings->favicon_url = self::getFaviconUrl($settings);
+    public function getSettingsAttribute() {
+        $settings = (object)array_merge(config('settings'), $this->params ?? []);
+        $settings->logo_url = self::getLogoUrl($settings);
+        $settings->favicon_url = self::getFaviconUrl($settings);
 
-                return $settings;
-            }
-        );
+        return $settings;
     }
 
+    /**
+     * @param string|null $key
+     * @return object|string|null
+     */
+    public static function get(string|null $key = null) : object|string|null {
+        static $settings;
+
+        try {
+            $settings = self::first()->settings;
+        } catch(\Exception $exception) {
+            $settings = (new static())->settings;
+        }
+
+        return $key ? $settings->$key : $settings;
+    }
 
     /**
      * @param $settings

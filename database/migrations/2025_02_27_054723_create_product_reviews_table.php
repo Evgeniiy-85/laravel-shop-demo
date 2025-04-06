@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('product_reviews', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
-            $table->integer('prod_id');
+            $table->integer('id');
             $table->text('review_advantage');
             $table->text('review_disadvantage');
             $table->text('review_comment');

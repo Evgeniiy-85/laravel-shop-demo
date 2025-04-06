@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="ru">
     @include('admin.layouts.head')
 
     <body class="layout-fixed sidebar-expand-lg sidebar-mini bg-body-tertiary">

@@ -1,8 +1,8 @@
 @extends('admin/layouts.main')
 
-@section('title') Настройки продуктов @endsection
+@section('title') {{ __('Настройки продуктов') }} @endsection
 @section('breadcrumbs') {{ Breadcrumbs::render('admin.products.settings') }} @endsection
-@section('h1') Настройки продуктов @endsection
+@section('h1') {{ __('Настройки продуктов') }} @endsection
 
 @section('content')
     <div class="row">
@@ -28,7 +28,6 @@
                                             <option value="2" {{ $product_settings->columns == 2 ? 'selected' : '' }}>В 2 колонки</option>
                                             <option value="3" {{ $product_settings->columns == 3 ? 'selected' : '' }}>В 3 колонки</option>
                                         </select>
-                                        <div class="help-block"></div>
                                     </div>
                                 </div>
                             </div>

@@ -55,6 +55,32 @@ return [
         ],
     ],
     [
+        'text' => 'Тренинги',
+        'icon' => 'bi bi-grid-3x3-gap',
+        'label_color' => 'success',
+        'active' => ['admin.trainings', 'admin.trainings.*'],
+        'submenu' => [
+            [
+                'text' => 'Тренинги',
+                'icon' => 'far fa-circle nav-icon',
+                'url' => 'admin.trainings',
+                'active' => ['admin.trainings', 'admin.trainings.*'],
+            ],
+            [
+                'text' => 'Категории',
+                'icon' => 'far fa-circle nav-icon',
+                'url' => 'admin.trainings.categories',
+                'active' => ['admin.trainings.categories', 'admin.trainings.categories.*'],
+            ],
+            [
+                'text' => 'Настройки',
+                'icon' => 'fa fa-solid fa-gear',
+                'url' => 'admin.trainings.settings.edit',
+                'active' => ['admin.trainings.settings.edit', 'admin.trainings.settings.edit.*'],
+            ],
+        ],
+    ],
+    [
         'text' => 'Настройки',
         'icon' => 'fa fa-solid fa-gears',
         'active' => ['admin.settings', 'admin.settings.*'],
@@ -64,6 +90,12 @@ return [
                 'icon' => 'fa fa-solid fa-gear',
                 'url' => 'admin.settings',
                 'active' => ['admin.settings'],
+            ],
+            [
+                'text' => 'Расширения',
+                'url' => 'admin.settings.extensions',
+                'icon' => 'bi bi-card-list',
+                'active' => ['admin.settings.extensions', 'admin.settings.extensions.*'],
             ],
             [
                 'text' => 'Платежные модули',

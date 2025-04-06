@@ -40,7 +40,14 @@ input:-webkit-autofill:focus {
   display: none;
   padding: 0;
 }
+.modal .modal-content {
+  background-color: #fff;
+}
+.modal .modal-content .modal-header.no-border {
+  border-bottom: none;
+}
 .modal .close {
+  padding: 0;
   border: none;
   background: none;
   font-size: 28px;
@@ -55,6 +62,10 @@ input:-webkit-autofill:focus {
   overflow: auto;
 }
 
+#login-modal .modal-content {
+  max-width: 410px;
+}
+
 .hidden {
   display: none !important;
 }
@@ -63,7 +74,7 @@ h1, .h1 {
   font-size: 32px;
   line-height: 32px;
   margin-top: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .width-100 {
@@ -325,6 +336,27 @@ html body footer li a {
   padding: 0 20px 20px;
   text-align: center;
 }
+
+.filter {
+  display: flex;
+  margin: 0 -5px 20px;
+}
+.filter .filter-item {
+  margin: 5px;
+}
+.filter .filter-item button {
+  border-radius: 5px;
+  padding: 8px 15px;
+  border-width: 1px;
+  background-color: #fff;
+}
+.filter .filter-item.filter-reset button {
+  background-color: rgba(0, 0, 0, 0.0588235294);
+}
+.filter .filter-item.active button {
+  background-color: #000;
+  color: #fff;
+}
 header {
   position: sticky;
   top: 0;
@@ -554,7 +586,7 @@ header .header-bottom .container .header-right .header-buttons .btn-wrap .btn-ca
   position: absolute;
   text-align: center;
 }
-header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #cart_modal.has-products {
+header .header-bottom .container .header-right .header-buttons .btn-wrap:hover #cart_modal {
   display: block !important;
 }
 header .header-bottom .container .header-right .header-buttons .user-profile__level {
@@ -568,12 +600,12 @@ header .header-bottom .container .header-right .header-buttons .user-profile__le
   width: 38px;
   border-radius: 50%;
 }
-.categories-list {
+.site-catalog .categories-list {
   grid-gap: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
-.categories-list .category {
+.site-catalog .categories-list .category {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
@@ -583,14 +615,14 @@ header .header-bottom .container .header-right .header-buttons .user-profile__le
   position: relative;
   vertical-align: top;
 }
-.categories-list .category .category-cover {
+.site-catalog .categories-list .category .category-cover {
   display: inline-block;
   height: 120px;
   line-height: 150px;
   text-align: center;
   width: 100%;
 }
-.categories-list .category .category-cover img {
+.site-catalog .categories-list .category .category-cover img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -598,7 +630,7 @@ header .header-bottom .container .header-right .header-buttons .user-profile__le
   max-width: 100%;
   display: block;
 }
-.categories-list .category .category-title {
+.site-catalog .categories-list .category .category-title {
   align-items: center;
   color: #4e4e4e;
   display: flex;
@@ -609,7 +641,7 @@ header .header-bottom .container .header-right .header-buttons .user-profile__le
   margin: 12px 0 0;
   text-align: center;
 }
-.categories-list .category:hover {
+.site-catalog .categories-list .category:hover {
   color: #4e4e4e;
   text-decoration: none;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.05), 0 29px 26px 0 rgba(0, 0, 0, 0.08);
@@ -1224,4 +1256,64 @@ header .header-bottom .container .header-right .header-buttons .user-profile__le
 #cart_modal .modal-dialog .modal-content .cart {
   border-radius: 0;
   padding: 0;
+}
+
+.site-trainings .trainings-list, .site-trainings .categories-list, .site-trainings .sections-list, .site-trainings .lessons-list {
+  grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.site-trainings .trainings-list .t-card, .site-trainings .categories-list .t-card, .site-trainings .sections-list .t-card, .site-trainings .lessons-list .t-card {
+  display: flex;
+  flex-direction: column;
+  height: 340px;
+  position: relative;
+  vertical-align: top;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+}
+.site-trainings .trainings-list .t-card .t-card__cover, .site-trainings .categories-list .t-card .t-card__cover, .site-trainings .sections-list .t-card .t-card__cover, .site-trainings .lessons-list .t-card .t-card__cover {
+  width: 100%;
+  display: inline-block;
+  height: 160px;
+  line-height: 150px;
+  text-align: center;
+  overflow: hidden;
+}
+.site-trainings .trainings-list .t-card .t-card__cover img, .site-trainings .categories-list .t-card .t-card__cover img, .site-trainings .sections-list .t-card .t-card__cover img, .site-trainings .lessons-list .t-card .t-card__cover img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-width: 100%;
+  display: block;
+}
+.site-trainings .trainings-list .t-card .t-card__body, .site-trainings .categories-list .t-card .t-card__body, .site-trainings .sections-list .t-card .t-card__body, .site-trainings .lessons-list .t-card .t-card__body {
+  padding: 16px;
+  overflow: hidden;
+}
+.site-trainings .trainings-list .t-card .t-card__body .t-card__title, .site-trainings .categories-list .t-card .t-card__body .t-card__title, .site-trainings .sections-list .t-card .t-card__body .t-card__title, .site-trainings .lessons-list .t-card .t-card__body .t-card__title {
+  margin-top: 10px;
+  font-size: 22px;
+  line-height: 1.2;
+}
+.site-trainings .trainings-list .t-card .t-card__body .t-card__desc, .site-trainings .categories-list .t-card .t-card__body .t-card__desc, .site-trainings .sections-list .t-card .t-card__body .t-card__desc, .site-trainings .lessons-list .t-card .t-card__body .t-card__desc {
+  margin-top: 4px;
+  font-size: 14px;
+}
+.site-trainings .trainings-list .t-card .t-card__body .button-wrap, .site-trainings .categories-list .t-card .t-card__body .button-wrap, .site-trainings .sections-list .t-card .t-card__body .button-wrap, .site-trainings .lessons-list .t-card .t-card__body .button-wrap {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+}
+.site-trainings .trainings-list .t-card:hover, .site-trainings .categories-list .t-card:hover, .site-trainings .sections-list .t-card:hover, .site-trainings .lessons-list .t-card:hover {
+  color: #4e4e4e;
+  text-decoration: none;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.05), 0 29px 26px 0 rgba(0, 0, 0, 0.08);
+}
+.site-trainings .trainings-list .t-card .t-card__footer, .site-trainings .categories-list .t-card .t-card__footer, .site-trainings .sections-list .t-card .t-card__footer, .site-trainings .lessons-list .t-card .t-card__footer {
+  padding: 16px;
+  margin-top: auto;
+  color: rgba(0, 0, 0, 0.5019607843);
 }

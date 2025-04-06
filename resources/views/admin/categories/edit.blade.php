@@ -1,7 +1,7 @@
 @extends('admin/layouts.main')
 
 @section('title')
-    Редактировать категорию
+    {{ __('Редактировать категорию') }}
 @endsection
 
 @section('breadcrumbs')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('h1')
-    Редактировать категорию
+    {{ __('Редактировать категорию') }}
 @endsection
 
 @section('content')
@@ -17,62 +17,62 @@
         <div class="col-md-5">
             <div class="card card-primary card-outline">
                 <div class="card-header flex">
-                    <h3 class="card-title">{{ $category->cat_title }}
-                        <a href="{{ route('catalog.category', $category->cat_alias) }}" target="_blank">
+                    <h3 class="card-title">{{ $category->title }}
+                        <a href="{{ route('catalog.category', $category->alias) }}" target="_blank">
                             <i class="fa fa-external-link-alt"></i>
                         </a>
                     </h3>
                 </div>
 
-                <form action="{{ route('admin.categories.update', $category->cat_id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.categories.update', $category->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group mb-3"><label class="form-label">Название</label>
-                            <input type="text" class="form-control" name="cat_title" placeholder="Введите название категории" value="{{ $category->cat_title }}" required>
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Название') }}</label>
+                            <input type="text" class="form-control" name="title" value="{{ $category->title }}" required>
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Алиас</label>
-                            <input type="text" class="form-control" name="cat_alias" placeholder="Алиас категории подставится автоматически" value="{{ $category->cat_alias }}">
+                        <div class="form-group mb-3"><label class="form-label" title="Алиас подставится автоматически">{{ __('Алиас') }}</label>
+                            <input type="text" class="form-control" name="alias" value="{{ $category->alias }}">
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Родительская категория</label>
-                            <select class="form-control" name="cat_parent">
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Родительская категория') }}</label>
+                            <select class="form-control" name="parent">
                                 <option value="0">-</option>
                                 @if($categories)
                                     @foreach ($categories as $cat)
-                                        <option value="{{ $cat->cat_id }}" @if($category->cat_parent == $cat->cat_id) selected @endif>{{ $cat->cat_title }}</option>
+                                        <option value="{{ $cat->id }}" @if($category->parent == $cat->id) selected @endif>{{ $cat->title }}</option>
                                     @endforeach
                                 @endif
                             </select>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label class="mb-2">Изображение</label>
+                            <label class="mb-2">{{ __('Изображение') }}</label>
                             <div class="input-group">
-                                <label class="btn bg-purple input-file form-label btn-info" for="cat_image">
-                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; Загрузить изображение</text>
-                                    <input type="file" class="custom-file-input hidden" name="files[cat_image]" id="cat_image" data-ajax_upload="">
+                                <label class="btn bg-purple input-file form-label btn-info" for="image">
+                                    <text><span class="fa fa-cloud-upload"></span>&nbsp; {{ __('Загрузить изображение') }}</text>
+                                    <input type="file" class="custom-file-input hidden" name="files[image]" id="image" data-ajax_upload="">
                                 </label>
 
                                 <x-admin-attachments :data="[
-                                    'field' => 'cat_image',
+                                    'field' => 'image',
                                     'storage' => 'categories',
-                                    'image' => $category->cat_image
+                                    'image' => $category->image
                                 ]" />
                             </div>
                         </div>
 
-                        <div class="form-group mb-3"><label class="form-label">Статус</label>
-                            <select class="form-control" name="cat_status">
-                                @foreach ($statuses as $status => $title)
-                                    <option value="{{ $status }}" @if($category->cat_category == $cat->cat_id) selected @endif">{{ $title }}</option>
+                        <div class="form-group mb-3"><label class="form-label">{{ __('Статус') }}</label>
+                            <select class="form-control" name="status">
+                                @foreach(\App\Enums\ActivityStatus::cases() as $type)
+                                    <option value="{{ $type->value }}" @if($category->status == $type) selected @endif>{{ $type->label() }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary float-end">Сохранить</button>
+                        <button type="submit" class="btn btn-primary float-end">{{ __('Сохранить') }}</button>
                     </div>
                 </form>
             </div>

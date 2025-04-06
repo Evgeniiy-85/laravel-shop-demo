@@ -13,4 +13,6 @@
     <link rel="stylesheet" href="{{ asset('css/admin/adminlte.3.2.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admin/adminlte-custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/admin/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}" />
+    @yield('styles')
 </head>
